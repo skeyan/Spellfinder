@@ -35,12 +35,36 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="PTO-1X-JSb"/>
                                 </connections>
                             </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaD-S5-v8z">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Vr5-8m-Q8I"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="4UV-wO-asx">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Yh7-lv-f0j">
+                                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Name"/>
+                                                <segment title="Level"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VWQ-9B-dcx"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Ig-mD-mBt"/>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="top" secondItem="qGd-NK-q4o" secondAttribute="bottom" id="415-29-Omr"/>
                             <constraint firstItem="dar-g0-gzd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="H3d-fd-O0n"/>
                             <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NdF-sU-jDs"/>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PhK-6M-mxj"/>
                             <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TbW-aT-eFI"/>
                             <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wps-br-Uee"/>
                             <constraint firstAttribute="bottom" secondItem="dar-g0-gzd" secondAttribute="bottom" id="djA-Pe-okU"/>
@@ -51,6 +75,7 @@
                     <tabBarItem key="tabBarItem" title="Spells" id="uUo-lK-0GM"/>
                     <connections>
                         <outlet property="searchBar" destination="qGd-NK-q4o" id="8aR-VO-QaR"/>
+                        <outlet property="segmentedControl" destination="Yh7-lv-f0j" id="5YK-Rs-zgN"/>
                         <outlet property="tableView" destination="dar-g0-gzd" id="74l-Rn-kzW"/>
                     </connections>
                 </viewController>

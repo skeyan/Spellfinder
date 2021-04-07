@@ -11,40 +11,56 @@ class AllSpellsViewController: UIViewController {
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // Store our search results
     var searchResults = [String]()
+    // TO-DO: Implement advanced search with filtering
     
     // MARK: - Actions
-    // IB Actions go here
-    
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
+        // Debug
+        print("Segment changed: \(sender.selectedSegmentIndex)")
+        
+        // TO-DO: Change sorting method for table view
+    }
     
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Prevent search bar from omverlapping the table view
-        tableView.contentInset = UIEdgeInsets(top: 56, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: 94, left: 0, bottom: 0, right: 0)
+ 
+        // Change color of segmented control text
+        let themeColor = UIColor(red: 27/255, green: 181/255, blue: 242/255, alpha: 1)
+        UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor], for: .selected)
+        
+        // TO-DO: Use URLSession to get all spells from API
     }
-
-
 }
 
 // MARK: - Search Bar Delegate
 extension AllSpellsViewController: UISearchBarDelegate {
+    // TO-DO: Make search call API and display results
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         // Debug
         print("The search text is '\(searchBar.text!)'")
         
-        // Remove keyboard after search is performed
-        searchBar.resignFirstResponder()   
-        
-        // Fake results
-        searchResults = []
-        for i in 0...2 {
-            searchResults.append(String(format:"Fake Results %d for '%@'", i, searchBar.text!))
+        // Perform search
+        if !searchBar.text!.isEmpty {
+            // Remove keyboard after search is performed
+            searchBar.resignFirstResponder()
+            
+            // Get all spells from the API
+            searchResults = []
+            for i in 0...2 {
+                searchResults.append(String(format:"Fake Results %d for '%@'", i, searchBar.text!))
+            }
+            
+            // Refresh table view
+            tableView.reloadData()
         }
-        tableView.reloadData()
     }
     
     // Testing advanced search button - using bookmarks button
