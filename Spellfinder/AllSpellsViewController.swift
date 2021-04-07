@@ -23,6 +23,9 @@ class AllSpellsViewController: UIViewController {
     // Keep the state - are we downloading stuff from API?
     var isLoading = false
     
+    // Keep track of our data task so it may be cancelled
+    var dataTask: URLSessionDataTask?
+    
     struct TableView {
       struct CellIdentifiers {
         static let loadingCell = "LoadingCell"
@@ -56,18 +59,6 @@ class AllSpellsViewController: UIViewController {
         
         // TO-DO: Integrate this with Core Data? Make more API calls for details?
         performSearch()
-    }
-    
-    // Retrieve spells from the API; currently all spells
-    func performSpellsRequest(with url: URL) -> Data? {
-        do {
-            print("Download Success")
-            return try Data(contentsOf: url)
-        } catch {
-            print("Download Error: \(error.localizedDescription)")
-            showNetworkError()
-            return nil
-        }
     }
     
     func parse(data: Data) -> [SearchResult] {
@@ -114,35 +105,46 @@ extension AllSpellsViewController: UISearchBarDelegate {
             searchBar.resignFirstResponder()
             
             // Indicate we are getting data from API
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
             
             // Get all spells from the API
             searchResults = []
             hasSearched = true
-            
-            let queue = DispatchQueue.global()
-            let url = self.spellsURL(searchText: searchBar.text!)
-            print("URL: '\(url)'")
-            
-            queue.async {
-                if let data = self.performSpellsRequest(with: url) {
-                    // Update with results from search
-                    self.searchResults = self.parse(data: data)
-                    print("Got parsed results successfully: \(self.searchResults)")
-                    
-                    DispatchQueue.main.async {
-                        self.isLoading = false
-                        self.tableView.reloadData()
+           
+            let url = spellsURL(searchText: searchBar.text!)
+            let session = URLSession.shared
+            dataTask = session.dataTask(with: url) {data, response, error in
+                if let error = error as NSError?, error.code == -999 {
+                    print("Failure! \(error.localizedDescription)")
+                } else if let httpResponse = response as? HTTPURLResponse,
+                          httpResponse.statusCode == 200 {
+                    if let data = data {
+                        // Parse JSON on a background thread
+                        self.searchResults = self.parse(data: data)
+                        DispatchQueue.main.async {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                        return
                     }
-                    return
+                }
+                else {
+                    print("Failure! \(response!)")
+                }
+                
+                // Inform user of network error
+                DispatchQueue.main.async {
+                    self.hasSearched = false
+                    self.isLoading = false
+                    self.tableView.reloadData()
+                    self.showNetworkError()
                 }
             }
-
             
-            // Refresh table view
-            // isLoading = false
-            // tableView.reloadData()
+            // Start the data task on an async background thread
+            dataTask?.resume()
         }
     }
     
