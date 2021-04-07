@@ -20,6 +20,15 @@ class AllSpellsViewController: UIViewController {
     // Keep the state - have we finished searching?
     var hasSearched = false
     
+    // Keep the state - are we downloading stuff from API?
+    var isLoading = false
+    
+    struct TableView {
+      struct CellIdentifiers {
+        static let loadingCell = "LoadingCell"
+      }
+    }
+    
     // TO-DO: Implement advanced search with filtering
     
     // MARK: - Actions
@@ -40,6 +49,10 @@ class AllSpellsViewController: UIViewController {
         // Change color of segmented control text
         let themeColor = UIColor(red: 27/255, green: 181/255, blue: 242/255, alpha: 1)
         UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor], for: .selected)
+        
+        // Register loading cell nib
+        let cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)
         
         // TO-DO: Integrate this with Core Data? Make more API calls for details?
         performSearch()
@@ -96,28 +109,40 @@ extension AllSpellsViewController: UISearchBarDelegate {
         print("The search text is '\(searchBar.text!)'")
         
         // Perform search
-        if searchBar.text!.isEmpty {
+        if searchBar.text!.isEmpty { // TO-DO: detect when run once?
             // Remove keyboard after search is performed
             searchBar.resignFirstResponder()
+            
+            // Indicate we are getting data from API
+            isLoading = true
+            tableView.reloadData()
             
             // Get all spells from the API
             searchResults = []
             hasSearched = true
             
-            let url = spellsURL(searchText: searchBar.text!)
+            let queue = DispatchQueue.global()
+            let url = self.spellsURL(searchText: searchBar.text!)
             print("URL: '\(url)'")
             
-            if let data = performSpellsRequest(with: url) {
-                // Debug
-                let results = parse(data: data)
-                print("Got parsed results successfully: \(results)")
-                
-                // Update with results from search
-                searchResults = parse(data: data)
+            queue.async {
+                if let data = self.performSpellsRequest(with: url) {
+                    // Update with results from search
+                    self.searchResults = self.parse(data: data)
+                    print("Got parsed results successfully: \(self.searchResults)")
+                    
+                    DispatchQueue.main.async {
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                    }
+                    return
+                }
             }
+
             
             // Refresh table view
-            tableView.reloadData()
+            // isLoading = false
+            // tableView.reloadData()
         }
     }
     
@@ -139,7 +164,9 @@ extension AllSpellsViewController: UISearchBarDelegate {
 extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Handle no results after a search
-        if !hasSearched {
+        if isLoading {
+            return 1
+        } else if !hasSearched {
             return 0
         } else if searchResults.count == 0 {
             return 1
@@ -149,23 +176,31 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "SearchResultCell"
-        
-        var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-        if cell == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        }
-        
-        if searchResults.count == 0 {
-            cell.textLabel!.text = "(Nothing found)"
-            cell.detailTextLabel!.text = "(Nothing found - subtitle)"
+        if isLoading {
+            let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.loadingCell, for: indexPath)
+            
+            let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
+            spinner.startAnimating()
+            return cell
         } else {
-            let searchResult = searchResults[indexPath.row]
-            cell.textLabel!.text = searchResult.name
-            cell.detailTextLabel!.text = searchResult.school
+            let cellIdentifier = "SearchResultCell"
+            
+            var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
+            if cell == nil {
+                cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+            }
+            
+            if searchResults.count == 0 {
+                cell.textLabel!.text = "(Nothing found)"
+                cell.detailTextLabel!.text = "(Nothing found - subtitle)"
+            } else {
+                let searchResult = searchResults[indexPath.row]
+                cell.textLabel!.text = searchResult.name
+                cell.detailTextLabel!.text = searchResult.school
+            }
+        
+            return cell
         }
-    
-        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -173,7 +208,8 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if searchResults.count == 0 {
+        // Prevent selection in certain cases
+        if searchResults.count == 0 || isLoading {
             return nil
         } else {
             return indexPath

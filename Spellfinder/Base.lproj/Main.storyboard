@@ -83,17 +83,35 @@
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="77.811094452773617"/>
         </scene>
+        <!--Characters-->
+        <scene sceneID="JQM-Hb-Tyq">
+            <objects>
+                <viewController id="AcN-5i-oFl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bap-og-hub">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="C6R-IY-N5D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Characters" id="EXI-Wc-ZJK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdh-Ht-Ndk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="837"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nhK-Ug-sYs">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1cL-Ey-P5f" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="76U-kw-apK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="kH3-Md-rcB"/>
+                        <segue destination="AcN-5i-oFl" kind="relationship" relationship="viewControllers" id="gIa-vv-pvY"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdU-xZ-SNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
