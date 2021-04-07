@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dar-g0-gzd">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="567"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="RFz-Fv-hJl"/>
@@ -68,7 +68,7 @@
                             <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TbW-aT-eFI"/>
                             <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wps-br-Uee"/>
                             <constraint firstAttribute="bottom" secondItem="dar-g0-gzd" secondAttribute="bottom" id="djA-Pe-okU"/>
-                            <constraint firstItem="dar-g0-gzd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qm0-LX-jN5"/>
+                            <constraint firstItem="dar-g0-gzd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="qm0-LX-jN5"/>
                             <constraint firstItem="dar-g0-gzd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wcL-eY-Hdu"/>
                         </constraints>
                     </view>
