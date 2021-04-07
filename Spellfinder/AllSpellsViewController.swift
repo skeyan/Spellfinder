@@ -162,7 +162,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let searchResult = searchResults[indexPath.row]
             cell.textLabel!.text = searchResult.name
-            cell.detailTextLabel!.text = searchResult.url
+            cell.detailTextLabel!.text = searchResult.school
         }
     
         return cell
@@ -186,7 +186,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     // Creates the properly encoded API URL to gather spells
     func spellsURL(searchText: String) -> URL {
         // Retrieve all spells
-        return URL(string: "https://www.dnd5eapi.co/api/spells")!
+        return URL(string: "https://api.open5e.com/spells/?limit=400")!
     }
     
 }
