@@ -76,7 +76,7 @@ class AllSpellsViewController: UIViewController {
     func showNetworkError() {
         let alert = UIAlertController(
             title: "Whoops...",
-            message: "There was an error accessing the spells API. " +
+            message: "There was an error accessing the Open5e API. " +
             "Please try again.",
             preferredStyle: .alert
         )
@@ -123,6 +123,9 @@ extension AllSpellsViewController: UISearchBarDelegate {
                     if let data = data {
                         // Parse JSON on a background thread
                         self.searchResults = self.parse(data: data)
+                        for spell in self.searchResults {
+                            print(spell)
+                        }
                         DispatchQueue.main.async {
                             self.isLoading = false
                             self.tableView.reloadData()

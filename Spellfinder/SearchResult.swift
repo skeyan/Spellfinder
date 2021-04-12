@@ -16,10 +16,44 @@ class ResultArray: Codable {
 }
 
 class SearchResult: Codable, CustomStringConvertible {
+    // Information from API
     var name: String? = ""
+    var slug: String? = ""
+    var desc: String? = ""
+    var higherLevelDesc: String? = ""
+    var page: String? = ""
+    var range: String? = ""
+    var components: String? = ""
+    var material: String? = ""
+    var ritual: String? = ""
+    var duration: String? = ""
+    var concentration: String? = ""
+    var castingTime: String? = ""
+    var level: String? = ""
+    var levelNum: Double?
     var school: String? = ""
+    var dndClass: String? = ""
+    var archetype: String? = ""
+    var circles: String? = ""
     
-    var description: String {
-        return "\nResult - Name: \(name ?? "None"), School of Magic: \(school as String?)"
+    // Define encoding mapping from API information onto variables in this class
+    enum CodingKeys: String, CodingKey {
+      case name, slug, desc
+      case higherLevelDesc = "higher_level"
+      case page, range, components, material, ritual
+      case duration, concentration
+      case castingTime = "casting_time"
+      case level
+      case levelNum = "level_int"
+      case school, archetype, circles
+      case dndClass = "dnd_class"
     }
+    
+    // Format information for debugging
+    var description: String {
+        return "\nResult - Name: \(name ?? "None"), School of Magic: \(school as String?)" +
+               "Description: \(desc ?? "None"), Duration: \(duration ?? "None")"
+    }
+  
+    // TO-DO: Comparison Operator
 }
