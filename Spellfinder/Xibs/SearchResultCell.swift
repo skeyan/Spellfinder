@@ -13,13 +13,13 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet var durationLabel: UILabel!
     @IBOutlet var rangeLabel: UILabel!
-    @IBOutlet var concentrationLable: UILabel!
     @IBOutlet var componentsLabel: UILabel!
     
     @IBOutlet var durationValueLabel: UILabel!
     @IBOutlet var rangeValueLabel: UILabel!
-    @IBOutlet var concentrationValueLabel: UILabel!
     @IBOutlet var componentsValueLabel: UILabel!
+    @IBOutlet var concentrationValueLabel: UILabel!
+    @IBOutlet var ritualValueLabel: UILabel!
     
     @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var addToCharacterButton: UIButton!

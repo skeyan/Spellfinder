@@ -36,6 +36,25 @@ class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsProtocol {
     var archetype: String? = ""
     var circles: String? = ""
   
+    // Other properties
+    var isConcentration: Bool {
+      if concentration == "yes" {
+        return true
+      } else if concentration == "no" {
+        return false
+      }
+      return false
+    }
+    var isRitual: Bool {
+      if ritual == "yes" {
+        return true
+      } else if ritual == "no" {
+        return false
+      }
+      return false
+    }
+  
+    // Conform to the FavoritingSpellsProtocol
     var isFavorited: Bool = false
     
     // Define encoding mapping from API information onto variables in this class
@@ -57,6 +76,4 @@ class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsProtocol {
                "Description: \(desc ?? "None"), Duration: \(duration ?? "None")" +
                " Level: \(level ?? "None"), isFavorited: \(isFavorited)"
     }
-  
-    // TO-DO: Comparison Operator
 }

@@ -72,7 +72,7 @@ class AllSpellsViewController: UIViewController {
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
         
         // TO-DO: Integrate this with Core Data? Make more API calls for details?
-        performSearch()
+        performSearch(firstLoad: true)
     }
     
     func parse(data: Data) -> [SearchResult] {
@@ -106,15 +106,15 @@ class AllSpellsViewController: UIViewController {
 extension AllSpellsViewController: UISearchBarDelegate {
     // TO-DO: Make search call API and display results on app load
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSearch()
+        performSearch(firstLoad: false)
     }
     
-    func performSearch() {
+    func performSearch(firstLoad: Bool) {
         // Debug
         print("The search text is '\(searchBar.text!)'")
         
         // Perform search
-        if searchBar.text!.isEmpty { // TO-DO: detect when run once?
+        if firstLoad || !searchBar.text!.isEmpty { // TO-DO: detect when run once?
             // Remove keyboard after search is performed
             searchBar.resignFirstResponder()
             
@@ -217,9 +217,19 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.spellNameLabel.text = searchResult.name
                 cell.levelSchoolLabel.text = searchResult.level! + " " + searchResult.school!
                 cell.componentsValueLabel.text = searchResult.components
-                cell.concentrationValueLabel.text = searchResult.concentration
                 cell.durationValueLabel.text = searchResult.duration
                 cell.rangeValueLabel.text = searchResult.range
+                if searchResult.isConcentration {
+                    cell.concentrationValueLabel.textColor = UIColor(named: "AccentColor")
+                } else {
+                    cell.concentrationValueLabel.textColor = UIColor(named: "GreyColor")
+                }
+                if searchResult.isRitual {
+                    cell.ritualValueLabel.textColor = UIColor(named: "AccentColor")
+                } else {
+                    cell.ritualValueLabel.textColor = UIColor(named: "GreyColor")
+                }
+
             }
         
             return cell
