@@ -38,19 +38,17 @@ class AllSpellsViewController: UIViewController {
       }
     }
     
-    // TO-DO: Implement advanced search with filtering
-    
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
-        // Debug
-        print("Segment changed: \(sender.selectedSegmentIndex)")
-        
-        // TO-DO: Change sorting method for table view
         if(segmentedControl.selectedSegmentIndex == 1) {
             sortSpells(by: "level")
         } else {
             sortSpells(by: "name")
         }
+        
+        UserDefaults.standard.set(
+            sender.selectedSegmentIndex,
+            forKey: "SegmentIndex")
     }
     
     // MARK: - View
@@ -71,7 +69,11 @@ class AllSpellsViewController: UIViewController {
         cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
         
-        // TO-DO: Integrate this with Core Data? Make more API calls for details?
+        // Register UserDefaults defaults
+        registerDefaults()
+        handleLoadSegment()
+        
+        // TO-DO: Integrate this with Core Data
         performSearch(firstLoad: true)
     }
     
@@ -100,21 +102,44 @@ class AllSpellsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // MARK: - User Defaults
+    func registerDefaults() {
+      let dictionary = [
+        "SegmentIndex": 0,
+        "FirstTime": true
+      ] as [String: Any]
+      UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    func handleLoadSegment() {
+      let userDefaults = UserDefaults.standard
+      let firstTime = userDefaults.bool(forKey: "FirstTime")
+
+      if firstTime {
+        // Run code during first launch
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+        userDefaults.set(false, forKey: "FirstTime")
+      } else {
+        // Set segmented control in accordance with value in UserDefaults
+        let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
+        segmentedControl.selectedSegmentIndex = segmentIndex
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+      }
+    }
 }
 
 // MARK: - Search Bar Delegate
 extension AllSpellsViewController: UISearchBarDelegate {
-    // TO-DO: Make search call API and display results on app load
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         performSearch(firstLoad: false)
     }
     
     func performSearch(firstLoad: Bool) {
-        // Debug
         print("The search text is '\(searchBar.text!)'")
         
         // Perform search
-        if firstLoad || !searchBar.text!.isEmpty { // TO-DO: detect when run once?
+        if firstLoad || !searchBar.text!.isEmpty {
             // Remove keyboard after search is performed
             searchBar.resignFirstResponder()
             
@@ -142,6 +167,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
                         }
                         DispatchQueue.main.async {
                             self.isLoading = false
+                            self.handleLoadSegment()
                             self.tableView.reloadData()
                         }
                         return
@@ -173,7 +199,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
         print("The button on the right side of my search bar was pressed")
     }
     
-    // UI improvement - unify status bar with search bar
+    // UI improvement - Unify status bar with search bar
     func position(for bar: UIBarPositioning) -> UIBarPosition {
         return .topAttached
     }
@@ -182,14 +208,17 @@ extension AllSpellsViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Handle no results after a search
         if isLoading {
+            // Handle in the middle of searching
             return 1
         } else if !hasSearched {
+            // Handle not having searched yet
             return 0
         } else if searchResults.count == 0 {
+            // Handle no results after a search
             return 1
         } else {
+            // Handle results after a search
             return searchResults.count
         }
     }
@@ -229,19 +258,19 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 } else {
                     cell.ritualValueLabel.textColor = UIColor(named: "GreyColor")
                 }
-
             }
-        
+            
             return cell
         }
     }
     
+    // UI improvement - Animate the deselection of a row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    // UI improvement - Prevent selection in certain cases
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        // Prevent selection in certain cases
         if searchResults.count == 0 || isLoading {
             return nil
         } else {
@@ -253,6 +282,11 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88;
     }
+    
+    // MARK: - Navigation
+    // TO-DO: Segues/navigaton stuff goes here
+    
+    
     
     // MARK: - Helper Methods
     // TO-DO: Implement this method for advanced filtering (user input changes API output)
@@ -267,7 +301,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func sortSpells(by: String) -> Void {
         if by == "level" {
             searchResults.sort { $0.levelNum! < $1.levelNum! }
-        } else {
+        } else if by == "name" {
             searchResults.sort { $0.name!.localizedStandardCompare($1.name!) == .orderedAscending }
         }
         tableView.reloadData() // TO-DO: Better way?
