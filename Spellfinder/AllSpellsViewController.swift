@@ -127,7 +127,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
                           httpResponse.statusCode == 200 {
                     if let data = data {
                         // Parse JSON on a background thread
-                        self.searchResults = self.parse(data: data)
+                        self.searchResults = self.parse(data: data) // TO-DO: make dict
                         for spell in self.searchResults {
                             print(spell)
                         }
