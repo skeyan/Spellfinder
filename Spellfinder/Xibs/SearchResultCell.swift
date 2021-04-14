@@ -23,7 +23,22 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var addToCharacterButton: UIButton!
-
+    
+    // MARK: - Actions
+    // TO-DO: Implement favoriting
+    @IBAction func favoriteSpell(_ sender: UIButton) {
+        // Animate the tap on the favorites button
+        sender.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+        UIView.animate(withDuration: 0.4,
+           delay: 0,
+           usingSpringWithDamping: 0.5,
+           initialSpringVelocity: 3,
+           options: [.curveEaseInOut, .allowUserInteraction],
+           animations: {
+                sender.transform = CGAffineTransform.identity }, completion: nil)
+    }
+    
+    // MARK: - Nib
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,5 +49,4 @@ class SearchResultCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

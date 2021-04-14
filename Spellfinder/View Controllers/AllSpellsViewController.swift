@@ -101,32 +101,6 @@ class AllSpellsViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
-    // MARK: - User Defaults
-    func registerDefaults() {
-      let dictionary = [
-        "SegmentIndex": 0,
-        "FirstTime": true
-      ] as [String: Any]
-      UserDefaults.standard.register(defaults: dictionary)
-    }
-    
-    func handleLoadSegment() {
-      let userDefaults = UserDefaults.standard
-      let firstTime = userDefaults.bool(forKey: "FirstTime")
-
-      if firstTime {
-        // Run code during first launch
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
-        userDefaults.set(false, forKey: "FirstTime")
-      } else {
-        // Set segmented control in accordance with value in UserDefaults
-        let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
-        segmentedControl.selectedSegmentIndex = segmentIndex
-        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
-      }
-    }
 }
 
 // MARK: - Search Bar Delegate
@@ -282,13 +256,8 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88;
     }
-    
-    // MARK: - Navigation
-    // TO-DO: Segues/navigaton stuff goes here
-    
-    
-    
-    // MARK: - Helper Methods
+
+    // MARK: - Table View Helper Methods
     // TO-DO: Implement this method for advanced filtering (user input changes API output)
                 // and utilize URL encoding for the Strings
     // Creates the properly encoded API URL to gather spells
@@ -305,5 +274,39 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             searchResults.sort { $0.name!.localizedStandardCompare($1.name!) == .orderedAscending }
         }
         tableView.reloadData() // TO-DO: Better way?
+    }
+}
+
+extension AllSpellsViewController {
+    // MARK: - Navigation
+    // TO-DO: Segues/navigaton stuff goes here
+    
+    
+    
+    
+    // MARK: - User Defaults
+    func registerDefaults() {
+      let dictionary = [
+        "SegmentIndex": 0,
+        "FirstTime": true
+      ] as [String: Any]
+      UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    func handleLoadSegment() {
+      let userDefaults = UserDefaults.standard
+      let firstTime = userDefaults.bool(forKey: "FirstTime")
+
+      if firstTime {
+        // Run code during first launch
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+        userDefaults.set(false, forKey: "FirstTime")
+      } else {
+        // Set segmented control in accordance with value in UserDefaults
+        let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
+        segmentedControl.selectedSegmentIndex = segmentIndex
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+      }
     }
 }
