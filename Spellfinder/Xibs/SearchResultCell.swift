@@ -23,7 +23,6 @@ class SearchResultCell: UITableViewCell {
     
     @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var addToCharacterButton: UIButton!
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -15,7 +15,7 @@ class ResultArray: Codable {
     var results = [SearchResult]()
 }
 
-class SearchResult: Codable, CustomStringConvertible {
+class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsProtocol {
     // Information from API
     var name: String? = ""
     var slug: String? = ""
@@ -35,6 +35,8 @@ class SearchResult: Codable, CustomStringConvertible {
     var dndClass: String? = ""
     var archetype: String? = ""
     var circles: String? = ""
+  
+    var isFavorited: Bool = false
     
     // Define encoding mapping from API information onto variables in this class
     enum CodingKeys: String, CodingKey {
@@ -53,7 +55,7 @@ class SearchResult: Codable, CustomStringConvertible {
     var description: String {
         return "\nResult - Name: \(name ?? "None"), School of Magic: \(school as String?)" +
                "Description: \(desc ?? "None"), Duration: \(duration ?? "None")" +
-               "Level: \(level ?? "None")"
+               " Level: \(level ?? "None"), isFavorited: \(isFavorited)"
     }
   
     // TO-DO: Comparison Operator

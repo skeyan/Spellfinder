@@ -7,6 +7,11 @@
 
 import UIKit
 
+// Favoriting protocol
+protocol FavoritingSpellsProtocol {
+    var isFavorited: Bool { get set }
+}
+
 class AllSpellsViewController: UIViewController {
     
     @IBOutlet var searchBar: UISearchBar!
@@ -41,6 +46,11 @@ class AllSpellsViewController: UIViewController {
         print("Segment changed: \(sender.selectedSegmentIndex)")
         
         // TO-DO: Change sorting method for table view
+        if(segmentedControl.selectedSegmentIndex == 1) {
+            sortSpells(by: "level")
+        } else {
+            sortSpells(by: "name")
+        }
     }
     
     // MARK: - View
@@ -63,7 +73,6 @@ class AllSpellsViewController: UIViewController {
         
         // TO-DO: Integrate this with Core Data? Make more API calls for details?
         performSearch()
-        
     }
     
     func parse(data: Data) -> [SearchResult] {
@@ -244,4 +253,13 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         return URL(string: "https://api.open5e.com/spells/?limit=400")!
     }
     
+    // Sort spells
+    func sortSpells(by: String) -> Void {
+        if by == "level" {
+            searchResults.sort { $0.levelNum! < $1.levelNum! }
+        } else {
+            searchResults.sort { $0.name!.localizedStandardCompare($1.name!) == .orderedAscending }
+        }
+        tableView.reloadData() // TO-DO: Better way?
+    }
 }
