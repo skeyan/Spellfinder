@@ -28,6 +28,7 @@ class AllSpellsViewController: UIViewController {
     
     struct TableView {
       struct CellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
         static let loadingCell = "LoadingCell"
       }
     }
@@ -46,19 +47,23 @@ class AllSpellsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Prevent search bar from omverlapping the table view
+        // Prevent search bar from overlapping the table view
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 94
  
         // Change color of segmented control text
-        let themeColor = UIColor(red: 27/255, green: 181/255, blue: 242/255, alpha: 1)
-        UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor], for: .selected)
+        let themeColor = UIColor(named: "AccentColor")
+        UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor!], for: .selected)
         
-        // Register loading cell nib
-        let cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
+        // Register loading cell nibs
+        var cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)
+        
+        cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
         
         // TO-DO: Integrate this with Core Data? Make more API calls for details?
         performSearch()
+        
     }
     
     func parse(data: Data) -> [SearchResult] {
@@ -188,20 +193,24 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             spinner.startAnimating()
             return cell
         } else {
-            let cellIdentifier = "SearchResultCell"
+            let cellIdentifier = TableView.CellIdentifiers.searchResultCell
             
-            var cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: cellIdentifier)
-            if cell == nil {
-                cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-            }
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: cellIdentifier,
+                for: indexPath) as! SearchResultCell
             
             if searchResults.count == 0 {
-                cell.textLabel!.text = "(Nothing found)"
-                cell.detailTextLabel!.text = "(Nothing found - subtitle)"
+                cell.spellNameLabel.text = "Nothing found"
+                cell.levelSchoolLabel.text = "(Nothing found)"
             } else {
+                // Fill in the table view cell
                 let searchResult = searchResults[indexPath.row]
-                cell.textLabel!.text = searchResult.name
-                cell.detailTextLabel!.text = searchResult.school
+                cell.spellNameLabel.text = searchResult.name
+                cell.levelSchoolLabel.text = searchResult.level! + " " + searchResult.school!
+                cell.componentsValueLabel.text = searchResult.components
+                cell.concentrationValueLabel.text = searchResult.concentration
+                cell.durationValueLabel.text = searchResult.duration
+                cell.rangeValueLabel.text = searchResult.range
             }
         
             return cell
@@ -219,6 +228,11 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             return indexPath
         }
+    }
+    
+    // UI improvement - change table view cell height to accomodate for XIB
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88;
     }
     
     // MARK: - Helper Methods

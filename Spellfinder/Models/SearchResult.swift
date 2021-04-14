@@ -52,7 +52,8 @@ class SearchResult: Codable, CustomStringConvertible {
     // Format information for debugging
     var description: String {
         return "\nResult - Name: \(name ?? "None"), School of Magic: \(school as String?)" +
-               "Description: \(desc ?? "None"), Duration: \(duration ?? "None")"
+               "Description: \(desc ?? "None"), Duration: \(duration ?? "None")" +
+               "Level: \(level ?? "None")"
     }
   
     // TO-DO: Comparison Operator
