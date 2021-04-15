@@ -206,41 +206,27 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cellIdentifier = TableView.CellIdentifiers.searchResultCell
-            
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: cellIdentifier,
                 for: indexPath) as! SearchResultCell
+            
+            cell.favoriteButton.addTarget(self, action: #selector(self.favoriteSpell(_:)), for: .touchUpInside);
             
             if searchResults.count == 0 {
                 cell.spellNameLabel.text = "Nothing found"
                 cell.levelSchoolLabel.text = "(Nothing found)"
             } else {
-                // Fill in the table view cell
                 let searchResult = searchResults[indexPath.row]
-                cell.spellNameLabel.text = searchResult.name
-                cell.levelSchoolLabel.text = searchResult.level! + " " + searchResult.school!
-                cell.componentsValueLabel.text = searchResult.components
-                cell.durationValueLabel.text = searchResult.duration
-                cell.rangeValueLabel.text = searchResult.range
-                if searchResult.isConcentration {
-                    cell.concentrationValueLabel.textColor = UIColor(named: "AccentColor")
-                } else {
-                    cell.concentrationValueLabel.textColor = UIColor(named: "GreyColor")
-                }
-                if searchResult.isRitual {
-                    cell.ritualValueLabel.textColor = UIColor(named: "AccentColor")
-                } else {
-                    cell.ritualValueLabel.textColor = UIColor(named: "GreyColor")
-                }
+                cell.configure(for: searchResult)
             }
             
             return cell
         }
     }
     
-    // UI improvement - Animate the deselection of a row
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "ShowSpellDetail", sender: nil)
     }
     
     // UI improvement - Prevent selection in certain cases
@@ -258,8 +244,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     // MARK: - Table View Helper Methods
-    // TO-DO: Implement this method for advanced filtering (user input changes API output)
-                // and utilize URL encoding for the Strings
     // Creates the properly encoded API URL to gather spells
     func spellsURL(searchText: String) -> URL {
         // Retrieve all spells
@@ -275,15 +259,14 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         tableView.reloadData() // TO-DO: Better way?
     }
+    
+    // MARK: - Data
+    @objc func favoriteSpell(_ sender: UIButton) {
+        print("inside favorite spell button")
+    }
 }
 
 extension AllSpellsViewController {
-    // MARK: - Navigation
-    // TO-DO: Segues/navigaton stuff goes here
-    
-    
-    
-    
     // MARK: - User Defaults
     func registerDefaults() {
       let dictionary = [
