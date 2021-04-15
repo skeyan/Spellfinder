@@ -101,6 +101,32 @@ class AllSpellsViewController: UIViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
+    // MARK: - User Defaults
+    func registerDefaults() {
+      let dictionary = [
+        "SegmentIndex": 0,
+        "FirstTime": true
+      ] as [String: Any]
+      UserDefaults.standard.register(defaults: dictionary)
+    }
+    
+    func handleLoadSegment() {
+      let userDefaults = UserDefaults.standard
+      let firstTime = userDefaults.bool(forKey: "FirstTime")
+
+      if firstTime {
+        // Run code during first launch
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+        userDefaults.set(false, forKey: "FirstTime")
+      } else {
+        // Set segmented control in accordance with value in UserDefaults
+        let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
+        segmentedControl.selectedSegmentIndex = segmentIndex
+        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+      }
+    }
 }
 
 // MARK: - Search Bar Delegate
@@ -221,7 +247,10 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: "ShowSpellDetail", sender: nil)
+        
+        // Perform segue to Spell Detail
+        let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
+        performSegue(withIdentifier: "ShowSpellDetail", sender: cell)
     }
     
     // UI improvement - Prevent selection in certain cases
@@ -255,36 +284,22 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.reloadData() // TO-DO: Better way?
     }
     
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShowSpellDetail" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailSpellViewController
+            if let indexPath = tableView.indexPath(
+                  for: sender as! SearchResultCell) {
+                   controller.searchResultToDisplay = searchResults[indexPath.row]
+            }
+        }
+    }
+    
     // MARK: - Data
+    // TO-DO: Add favoriting functionality locally and with Core Data
     @objc func favoriteSpell(_ sender: UIButton) {
         print("inside favorite spell button")
     }
 }
 
-extension AllSpellsViewController {
-    // MARK: - User Defaults
-    func registerDefaults() {
-      let dictionary = [
-        "SegmentIndex": 0,
-        "FirstTime": true
-      ] as [String: Any]
-      UserDefaults.standard.register(defaults: dictionary)
-    }
-    
-    func handleLoadSegment() {
-      let userDefaults = UserDefaults.standard
-      let firstTime = userDefaults.bool(forKey: "FirstTime")
-
-      if firstTime {
-        // Run code during first launch
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
-        userDefaults.set(false, forKey: "FirstTime")
-      } else {
-        // Set segmented control in accordance with value in UserDefaults
-        let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
-        segmentedControl.selectedSegmentIndex = segmentIndex
-        segmentedControl.sendActions(for: UIControl.Event.valueChanged)
-      }
-    }
-}

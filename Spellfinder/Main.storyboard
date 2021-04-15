@@ -212,15 +212,6 @@
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This spell also requires extra component 1, extra component 2..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnw-5R-eKi">
-                                <rect key="frame" x="16" y="285" width="343" height="38.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="343" id="lLC-Md-h7P"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
-                                <color key="textColor" name="DarkGreyColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="LQB-2Y-kkH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -253,12 +244,10 @@
                             <constraint firstItem="sez-KN-Gop" firstAttribute="leading" secondItem="Hzx-SJ-TbG" secondAttribute="trailing" constant="2" id="Xq7-vo-h4g"/>
                             <constraint firstItem="x0M-qc-umf" firstAttribute="trailing" secondItem="LQB-2Y-kkH" secondAttribute="trailing" id="Xra-CE-JMn"/>
                             <constraint firstItem="kv3-Gw-7fm" firstAttribute="top" secondItem="jR9-oN-zgK" secondAttribute="bottom" constant="1" id="ccV-sS-Pud"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Fnw-5R-eKi" secondAttribute="trailing" constant="16" id="djK-sf-sGG"/>
                             <constraint firstItem="rNe-b1-ca2" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="dkf-Ez-9or"/>
                             <constraint firstItem="x0M-qc-umf" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" id="e04-KE-EC3"/>
                             <constraint firstItem="Hzx-SJ-TbG" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="eJX-a9-ytj"/>
                             <constraint firstItem="xa8-sq-i3w" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="fX1-v4-iVa"/>
-                            <constraint firstItem="Fnw-5R-eKi" firstAttribute="top" secondItem="yTa-23-N8J" secondAttribute="bottom" constant="2" id="fyQ-yb-F0E"/>
                             <constraint firstItem="sez-KN-Gop" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="glX-64-jTa"/>
                             <constraint firstItem="enC-iz-NZv" firstAttribute="leading" secondItem="yTa-23-N8J" secondAttribute="trailing" constant="5" id="jfc-l1-aJE"/>
                             <constraint firstItem="jR9-oN-zgK" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="mEj-SY-LCI"/>
@@ -266,16 +255,96 @@
                             <constraint firstItem="ghr-pY-xBQ" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="ntA-h3-mlL"/>
                             <constraint firstItem="Hzx-SJ-TbG" firstAttribute="leading" secondItem="ghr-pY-xBQ" secondAttribute="trailing" constant="5" id="ob6-wm-Xae"/>
                             <constraint firstItem="5Ju-2h-Dnn" firstAttribute="top" secondItem="EKk-VT-hVy" secondAttribute="bottom" constant="1" id="rTx-eV-vyz"/>
-                            <constraint firstItem="Fnw-5R-eKi" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="w6m-Le-Hxv"/>
                             <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Ju-2h-Dnn" secondAttribute="trailing" constant="17" id="xy1-Hh-Zok"/>
                             <constraint firstItem="rNe-b1-ca2" firstAttribute="top" secondItem="x0M-qc-umf" secondAttribute="bottom" constant="15" id="zVk-ts-Vo6"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RjA-iR-R2E"/>
+                    <connections>
+                        <outlet property="castingTimeLabel" destination="xa8-sq-i3w" id="Fwt-2s-qxP"/>
+                        <outlet property="castingTimeValueLabel" destination="Gsq-DB-HLH" id="dje-Ao-mge"/>
+                        <outlet property="classesLabel" destination="1Dx-Ky-koj" id="QN7-IZ-rRz"/>
+                        <outlet property="classesValueLabel" destination="5Ju-2h-Dnn" id="oqE-zZ-74m"/>
+                        <outlet property="componentsLabel" destination="yTa-23-N8J" id="MbJ-Ge-KsM"/>
+                        <outlet property="componentsValueLabel" destination="enC-iz-NZv" id="eh1-6t-sMn"/>
+                        <outlet property="concentrationLabel" destination="Hzx-SJ-TbG" id="o8K-42-299"/>
+                        <outlet property="durationLabel" destination="kv3-Gw-7fm" id="J5s-al-8IG"/>
+                        <outlet property="durationValueLabel" destination="EKk-VT-hVy" id="Miw-2H-C6O"/>
+                        <outlet property="levelMagicClassLabel" destination="ghr-pY-xBQ" id="oWC-Yu-df1"/>
+                        <outlet property="rangeLabel" destination="jR9-oN-zgK" id="cse-Tp-8Ng"/>
+                        <outlet property="rangeValueLabel" destination="fCz-Hi-0Ju" id="4SK-vo-XYe"/>
+                        <outlet property="ritualLabel" destination="sez-KN-Gop" id="Q15-Pi-SvJ"/>
+                        <outlet property="spellNameLabel" destination="rNe-b1-ca2" id="WWb-Mb-bT2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nc9-Wr-MAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2584.8000000000002" y="77.811094452773617"/>
+            <point key="canvasLocation" x="2583.1999999999998" y="76.911544227886068"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="bxm-Sp-B3X">
+            <objects>
+                <viewController id="v78-sr-50p" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="a3p-N0-Eyg">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRh-FF-Avo">
+                                <rect key="frame" x="18" y="43" width="341" height="167"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="341" id="0fl-H6-rB5"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="167" id="zuW-yx-Nvi"/>
+                                </constraints>
+                                <mutableString key="text">Your magic and an offering put you in contact with a god or a god’s servants. You ask a single question concerning a specific goal, event, or activity to occur within 7 days. The GM offers a truthful reply. The reply might be a short phrase, a cryptic rhyme, or an omen.
+The spell doesn’t take into account any possible circumstances that might change the outcome, such as the casting of additional spells or the loss or gain of a companion.
+If you cast the spell two or more times before finishing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get a random reading. The GM makes this roll in secret.</mutableString>
+                                <color key="textColor" name="DarkGreyColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="At Higher Levels" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwb-fF-X0x">
+                                <rect key="frame" x="18" y="218" width="341" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="341" id="rS7-QJ-mAY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <color key="textColor" name="DarkGreyColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDV-UD-77T">
+                                <rect key="frame" x="18" y="245" width="341" height="73"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="341" id="ZRZ-DI-2bA"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="73" id="nau-NW-flP"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
+                                <color key="textColor" name="DarkGreyColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="This spell also requires extra component 1, extra component 2..." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75e-uO-ztq">
+                                <rect key="frame" x="34" y="374" width="342" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="342" id="oBi-pu-zIR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
+                                <color key="textColor" name="DarkGreyColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0S6-mG-zet"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Pwb-fF-X0x" firstAttribute="top" secondItem="hRh-FF-Avo" secondAttribute="bottom" constant="8" id="KNc-eL-Lph"/>
+                            <constraint firstItem="dDV-UD-77T" firstAttribute="top" secondItem="Pwb-fF-X0x" secondAttribute="bottom" constant="7.5" id="VYI-1k-sUM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fTa-rk-Leq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3364" y="54"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="26N-5m-E0G">
