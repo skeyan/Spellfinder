@@ -43,7 +43,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" id="4UV-wO-asx">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Yh7-lv-f0j">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Yh7-lv-f0j">
                                             <rect key="frame" x="16" y="5.5" width="343" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <segments>
@@ -94,7 +94,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="x0M-qc-umf">
-                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="379" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
@@ -105,13 +105,13 @@
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spell Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rNe-b1-ca2">
-                                <rect key="frame" x="16" y="115" width="343" height="32.5"/>
+                                <rect key="frame" x="20" y="115" width="339" height="32.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                 <color key="textColor" red="0.015686274510000001" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level and Magic Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghr-pY-xBQ">
-                                <rect key="frame" x="16" y="151" width="259" height="20"/>
+                                <rect key="frame" x="20" y="151" width="255" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="259" id="t3Y-c9-6JI"/>
                                 </constraints>
@@ -138,75 +138,75 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Casting Time:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xa8-sq-i3w">
-                                <rect key="frame" x="16" y="179" width="108" height="20"/>
+                                <rect key="frame" x="20" y="179" width="108" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 bonus action" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsq-DB-HLH">
-                                <rect key="frame" x="129" y="179" width="229" height="20"/>
+                                <rect key="frame" x="133" y="179" width="226" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="229" id="Xnm-ZB-Xtq"/>
+                                    <constraint firstAttribute="width" constant="226" id="Xnm-ZB-Xtq"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Range:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-oN-zgK">
-                                <rect key="frame" x="16" y="200" width="54.5" height="20"/>
+                                <rect key="frame" x="20" y="200" width="54.5" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kv3-Gw-7fm">
-                                <rect key="frame" x="16" y="221" width="73" height="20"/>
+                                <rect key="frame" x="20" y="221" width="73" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 feet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-Hi-0Ju">
-                                <rect key="frame" x="75.5" y="200" width="281" height="20"/>
+                                <rect key="frame" x="79.5" y="200" width="279" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="281" id="KdN-g6-dGJ"/>
+                                    <constraint firstAttribute="width" constant="279" id="KdN-g6-dGJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24 hours" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKk-VT-hVy">
-                                <rect key="frame" x="94" y="221" width="264" height="20"/>
+                                <rect key="frame" x="98" y="221" width="261" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="264" id="0ZV-D8-miJ"/>
+                                    <constraint firstAttribute="width" constant="261" id="0ZV-D8-miJ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Classes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dx-Ky-koj">
-                                <rect key="frame" x="16" y="242" width="66" height="20"/>
+                                <rect key="frame" x="20" y="242" width="66" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wizard, Sorcerer, Circle of Ancients" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ju-2h-Dnn">
-                                <rect key="frame" x="87" y="242" width="271" height="20"/>
+                                <rect key="frame" x="91" y="242" width="268" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="271" id="Zhs-Mc-3fM"/>
+                                    <constraint firstAttribute="width" constant="268" id="Zhs-Mc-3fM"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTa-23-N8J">
-                                <rect key="frame" x="16" y="263" width="104.5" height="20"/>
+                                <rect key="frame" x="20" y="263" width="104.5" height="20"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V, S, M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enC-iz-NZv">
-                                <rect key="frame" x="125.5" y="263" width="231" height="20"/>
+                                <rect key="frame" x="129.5" y="263" width="229" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="231" id="fak-I2-ovT"/>
+                                    <constraint firstAttribute="width" constant="229" id="fak-I2-ovT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" name="DarkGreyColor"/>
@@ -229,33 +229,33 @@
                             <constraint firstItem="5Ju-2h-Dnn" firstAttribute="leading" secondItem="1Dx-Ky-koj" secondAttribute="trailing" constant="5" id="FLj-gt-4JY"/>
                             <constraint firstItem="x0M-qc-umf" firstAttribute="top" secondItem="LQB-2Y-kkH" secondAttribute="top" id="HOM-7X-OJg"/>
                             <constraint firstItem="EKk-VT-hVy" firstAttribute="leading" secondItem="kv3-Gw-7fm" secondAttribute="trailing" constant="5" id="I1c-oN-j3g"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="enC-iz-NZv" secondAttribute="trailing" constant="17" id="ImU-Pn-llA"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="enC-iz-NZv" secondAttribute="trailing" constant="20" id="ImU-Pn-llA"/>
                             <constraint firstItem="5Ju-2h-Dnn" firstAttribute="leading" secondItem="1Dx-Ky-koj" secondAttribute="trailing" constant="5" id="JUp-bV-whD"/>
-                            <constraint firstItem="kv3-Gw-7fm" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="KIi-CH-ZhX"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EKk-VT-hVy" secondAttribute="trailing" constant="16" id="LJS-Ri-fzp"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fCz-Hi-0Ju" secondAttribute="trailing" constant="16" id="Q6e-d5-T9m"/>
-                            <constraint firstItem="yTa-23-N8J" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="Qzm-j9-vEf"/>
-                            <constraint firstItem="1Dx-Ky-koj" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="RbI-ob-JVP"/>
-                            <constraint firstItem="ghr-pY-xBQ" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="SVM-Nv-C3R"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gsq-DB-HLH" secondAttribute="trailing" constant="16" id="SWp-R8-pJn"/>
+                            <constraint firstItem="kv3-Gw-7fm" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="KIi-CH-ZhX"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="EKk-VT-hVy" secondAttribute="trailing" constant="20" id="LJS-Ri-fzp"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fCz-Hi-0Ju" secondAttribute="trailing" constant="20" id="Q6e-d5-T9m"/>
+                            <constraint firstItem="yTa-23-N8J" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="Qzm-j9-vEf"/>
+                            <constraint firstItem="1Dx-Ky-koj" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="RbI-ob-JVP"/>
+                            <constraint firstItem="ghr-pY-xBQ" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="SVM-Nv-C3R"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gsq-DB-HLH" secondAttribute="trailing" constant="20" id="SWp-R8-pJn"/>
                             <constraint firstItem="Gsq-DB-HLH" firstAttribute="top" secondItem="ghr-pY-xBQ" secondAttribute="bottom" constant="8" id="Tb4-p7-Hmh"/>
                             <constraint firstItem="EKk-VT-hVy" firstAttribute="top" secondItem="fCz-Hi-0Ju" secondAttribute="bottom" constant="1" id="Twt-jd-N3T"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" secondItem="sez-KN-Gop" secondAttribute="trailing" constant="16" id="VbQ-n0-Neb"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" secondItem="sez-KN-Gop" secondAttribute="trailing" constant="20" id="VbQ-n0-Neb"/>
                             <constraint firstItem="sez-KN-Gop" firstAttribute="leading" secondItem="Hzx-SJ-TbG" secondAttribute="trailing" constant="2" id="Xq7-vo-h4g"/>
                             <constraint firstItem="x0M-qc-umf" firstAttribute="trailing" secondItem="LQB-2Y-kkH" secondAttribute="trailing" id="Xra-CE-JMn"/>
                             <constraint firstItem="kv3-Gw-7fm" firstAttribute="top" secondItem="jR9-oN-zgK" secondAttribute="bottom" constant="1" id="ccV-sS-Pud"/>
-                            <constraint firstItem="rNe-b1-ca2" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="dkf-Ez-9or"/>
+                            <constraint firstItem="rNe-b1-ca2" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="dkf-Ez-9or"/>
                             <constraint firstItem="x0M-qc-umf" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" id="e04-KE-EC3"/>
                             <constraint firstItem="Hzx-SJ-TbG" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="eJX-a9-ytj"/>
-                            <constraint firstItem="xa8-sq-i3w" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="fX1-v4-iVa"/>
+                            <constraint firstItem="xa8-sq-i3w" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="fX1-v4-iVa"/>
                             <constraint firstItem="sez-KN-Gop" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="glX-64-jTa"/>
                             <constraint firstItem="enC-iz-NZv" firstAttribute="leading" secondItem="yTa-23-N8J" secondAttribute="trailing" constant="5" id="jfc-l1-aJE"/>
-                            <constraint firstItem="jR9-oN-zgK" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="16" id="mEj-SY-LCI"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" secondItem="rNe-b1-ca2" secondAttribute="trailing" constant="16" id="nBT-Ob-Gfs"/>
+                            <constraint firstItem="jR9-oN-zgK" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" constant="20" id="mEj-SY-LCI"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" secondItem="rNe-b1-ca2" secondAttribute="trailing" constant="20" id="nBT-Ob-Gfs"/>
                             <constraint firstItem="ghr-pY-xBQ" firstAttribute="top" secondItem="rNe-b1-ca2" secondAttribute="bottom" constant="3.5" id="ntA-h3-mlL"/>
                             <constraint firstItem="Hzx-SJ-TbG" firstAttribute="leading" secondItem="ghr-pY-xBQ" secondAttribute="trailing" constant="5" id="ob6-wm-Xae"/>
                             <constraint firstItem="5Ju-2h-Dnn" firstAttribute="top" secondItem="EKk-VT-hVy" secondAttribute="bottom" constant="1" id="rTx-eV-vyz"/>
-                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Ju-2h-Dnn" secondAttribute="trailing" constant="17" id="xy1-Hh-Zok"/>
+                            <constraint firstItem="LQB-2Y-kkH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="5Ju-2h-Dnn" secondAttribute="trailing" constant="20" id="xy1-Hh-Zok"/>
                             <constraint firstItem="rNe-b1-ca2" firstAttribute="top" secondItem="x0M-qc-umf" secondAttribute="bottom" constant="15" id="zVk-ts-Vo6"/>
                         </constraints>
                     </view>
@@ -296,9 +296,9 @@
                                     <constraint firstAttribute="width" constant="341" id="0fl-H6-rB5"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="167" id="zuW-yx-Nvi"/>
                                 </constraints>
-                                <mutableString key="text">Your magic and an offering put you in contact with a god or a god’s servants. You ask a single question concerning a specific goal, event, or activity to occur within 7 days. The GM offers a truthful reply. The reply might be a short phrase, a cryptic rhyme, or an omen.
+                                <string key="text">Your magic and an offering put you in contact with a god or a god’s servants. You ask a single question concerning a specific goal, event, or activity to occur within 7 days. The GM offers a truthful reply. The reply might be a short phrase, a cryptic rhyme, or an omen.
 The spell doesn’t take into account any possible circumstances that might change the outcome, such as the casting of additional spells or the loss or gain of a companion.
-If you cast the spell two or more times before finishing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get a random reading. The GM makes this roll in secret.</mutableString>
+If you cast the spell two or more times before finishing your next long rest, there is a cumulative 25 percent chance for each casting after the first that you get a random reading. The GM makes this roll in secret.</string>
                                 <color key="textColor" name="DarkGreyColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

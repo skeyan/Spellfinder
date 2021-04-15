@@ -24,8 +24,8 @@ class DetailSpellViewController: UIViewController {
     @IBOutlet var classesValueLabel: UILabel!
     @IBOutlet var componentsLabel: UILabel!
     @IBOutlet var componentsValueLabel: UILabel!
-    @IBOutlet var extraMaterialsLabel: UILabel!
     
+    @IBOutlet var extraMaterialsLabel: UILabel!
     @IBOutlet var descriptionTextView: UITextView!
     @IBOutlet var higherLevelLabel: UILabel!
     @IBOutlet var higherLevelValueTextView: UITextView!

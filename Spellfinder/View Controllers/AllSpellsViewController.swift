@@ -270,8 +270,13 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Table View Helper Methods
     // Creates the properly encoded API URL to gather spells
     func spellsURL(searchText: String) -> URL {
-        // Retrieve all spells
-        return URL(string: "https://api.open5e.com/spells/?limit=400")!
+        let encodedText = searchText.addingPercentEncoding(
+              withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+          let urlString = String(
+            format: "https://api.open5e.com/spells/?limit=400&search=%@",
+            encodedText)
+        let url = URL(string: urlString)
+        return url!
     }
     
     // Sort spells
