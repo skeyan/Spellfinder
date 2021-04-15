@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1cL-Ey-P5f">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--All Spells View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AllSpellsViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dar-g0-gzd">
+                                <rect key="frame" x="0.0" y="144" width="375" height="523"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="RFz-Fv-hJl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="lTm-wP-TO2"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="qGd-NK-q4o">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="PTO-1X-JSb"/>
+                                </connections>
+                            </searchBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eaD-S5-v8z">
+                                <rect key="frame" x="0.0" y="100" width="375" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Vr5-8m-Q8I"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" id="4UV-wO-asx">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Yh7-lv-f0j">
+                                            <rect key="frame" x="16" y="5.5" width="343" height="33"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <segments>
+                                                <segment title="Name"/>
+                                                <segment title="Level"/>
+                                            </segments>
+                                            <connections>
+                                                <action selector="segmentChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VWQ-9B-dcx"/>
+                                            </connections>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Ig-mD-mBt"/>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="top" secondItem="qGd-NK-q4o" secondAttribute="bottom" id="415-29-Omr"/>
+                            <constraint firstItem="dar-g0-gzd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="H3d-fd-O0n"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NdF-sU-jDs"/>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PhK-6M-mxj"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TbW-aT-eFI"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="W7e-Yy-owD"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wps-br-Uee"/>
+                            <constraint firstAttribute="bottom" secondItem="dar-g0-gzd" secondAttribute="bottom" id="djA-Pe-okU"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="noc-BY-LhW"/>
+                            <constraint firstItem="dar-g0-gzd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="qm0-LX-jN5"/>
+                            <constraint firstItem="dar-g0-gzd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wcL-eY-Hdu"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xMi-FM-0XA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hVa-QH-Nog"/>
+                    <connections>
+                        <outlet property="searchBar" destination="qGd-NK-q4o" id="8aR-VO-QaR"/>
+                        <outlet property="segmentedControl" destination="Yh7-lv-f0j" id="5YK-Rs-zgN"/>
+                        <outlet property="tableView" destination="dar-g0-gzd" id="74l-Rn-kzW"/>
+                        <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowSpellDetail" id="9eP-Od-IHh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864.8" y="77.811094452773617"/>
+        </scene>
+        <!--Detail Spell View Controller-->
+        <scene sceneID="bDi-Hp-NFQ">
+            <objects>
+                <viewController id="Hz5-9p-8rV" customClass="DetailSpellViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eo0-HG-GcD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="x0M-qc-umf">
+                                <rect key="frame" x="0.0" y="44" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Pdv-AC-WdP"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LQB-2Y-kkH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="x0M-qc-umf" firstAttribute="top" secondItem="LQB-2Y-kkH" secondAttribute="top" id="HOM-7X-OJg"/>
+                            <constraint firstItem="x0M-qc-umf" firstAttribute="trailing" secondItem="LQB-2Y-kkH" secondAttribute="trailing" id="Xra-CE-JMn"/>
+                            <constraint firstItem="x0M-qc-umf" firstAttribute="leading" secondItem="LQB-2Y-kkH" secondAttribute="leading" id="e04-KE-EC3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="RjA-iR-R2E"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc9-Wr-MAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2584.8000000000002" y="77.811094452773617"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="26N-5m-E0G">
+            <objects>
+                <viewController id="sXb-uH-fHs" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yhv-lK-oEm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3Jc-5n-joD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star.circle.fill" catalog="system" id="Vo3-uU-AW9"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aKI-zf-KSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="1537"/>
+        </scene>
+        <!--Characters-->
+        <scene sceneID="JQM-Hb-Tyq">
+            <objects>
+                <viewController id="AcN-5i-oFl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bap-og-hub">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="C6R-IY-N5D"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Characters" image="person.fill" catalog="system" id="EXI-Wc-ZJK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdh-Ht-Ndk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="837"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="nhK-Ug-sYs">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1cL-Ey-P5f" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="76U-kw-apK">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="eYv-ZQ-mjq" kind="relationship" relationship="viewControllers" id="kH3-Md-rcB"/>
+                        <segue destination="AcN-5i-oFl" kind="relationship" relationship="viewControllers" id="gIa-vv-pvY"/>
+                        <segue destination="sXb-uH-fHs" kind="relationship" relationship="viewControllers" id="j8o-eX-ylU"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cdU-xZ-SNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.840579710144929" y="78.260869565217391"/>
+        </scene>
+        <!--Spells-->
+        <scene sceneID="xIi-9w-sid">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eYv-ZQ-mjq" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Spells" image="books.vertical.fill" catalog="system" id="uUo-lK-0GM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u0j-z7-qfx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xPu-KZ-LMt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KNh-zX-Cn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="77.811094452773617"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="books.vertical.fill" catalog="system" width="128" height="100"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
+        <image name="star.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
