@@ -172,11 +172,6 @@ extension AllSpellsViewController: UISearchBarDelegate {
         // is not covered by the cancel button like the bookmarks button is.
         print("The button on the right side of my search bar was pressed")
     }
-    
-    // UI improvement - Unify status bar with search bar
-    func position(for bar: UIBarPositioning) -> UIBarPosition {
-        return .topAttached
-    }
 }
 
 // MARK: - Table View Delegate

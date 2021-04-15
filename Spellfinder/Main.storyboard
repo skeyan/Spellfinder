@@ -24,7 +24,7 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="lTm-wP-TO2"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="qGd-NK-q4o">
+                            <searchBar contentMode="scaleToFill" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="qGd-NK-q4o">
                                 <rect key="frame" x="0.0" y="44" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
@@ -61,18 +61,15 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eaD-S5-v8z" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Ig-mD-mBt"/>
-                            <constraint firstItem="eaD-S5-v8z" firstAttribute="top" secondItem="qGd-NK-q4o" secondAttribute="bottom" id="415-29-Omr"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6SB-s3-23j"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="9iH-8i-zOs"/>
                             <constraint firstItem="dar-g0-gzd" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="H3d-fd-O0n"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="NdF-sU-jDs"/>
                             <constraint firstItem="eaD-S5-v8z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="PhK-6M-mxj"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="TbW-aT-eFI"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="W7e-Yy-owD"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Wps-br-Uee"/>
                             <constraint firstAttribute="bottom" secondItem="dar-g0-gzd" secondAttribute="bottom" id="djA-Pe-okU"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="noc-BY-LhW"/>
+                            <constraint firstItem="qGd-NK-q4o" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pKA-9C-UCS"/>
                             <constraint firstItem="dar-g0-gzd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="qm0-LX-jN5"/>
+                            <constraint firstItem="eaD-S5-v8z" firstAttribute="top" secondItem="qGd-NK-q4o" secondAttribute="bottom" id="svY-z7-qME"/>
                             <constraint firstItem="dar-g0-gzd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wcL-eY-Hdu"/>
-                            <constraint firstItem="qGd-NK-q4o" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xMi-FM-0XA"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hVa-QH-Nog"/>
