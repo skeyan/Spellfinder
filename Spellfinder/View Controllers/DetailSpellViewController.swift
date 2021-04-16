@@ -9,6 +9,9 @@ import UIKit
 
 class DetailSpellViewController: UIViewController {
     
+    @IBOutlet var testLabel: UILabel!
+    @IBOutlet var scrollView: UIScrollView!
+    
     @IBOutlet var spellNameLabel: UILabel!
     @IBOutlet var levelMagicClassLabel: UILabel!
     @IBOutlet var concentrationLabel: UILabel!
@@ -38,10 +41,11 @@ class DetailSpellViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if let _ = searchResultToDisplay {
-            configure(for: searchResultToDisplay!)
+            print("here")
+            test(for: searchResultToDisplay!)
+            // configure(for: searchResultToDisplay!)
         }
     }
-    
 
     /*
     // MARK: - Navigation
@@ -54,6 +58,11 @@ class DetailSpellViewController: UIViewController {
     */
 
     // MARK: - Helper Methods
+    func test(for searchResult: SearchResult) {
+        testLabel.text = searchResult.desc!
+        testLabel.sizeToFit()
+    }
+    
     func configure(for searchResult: SearchResult) -> Void {
         spellNameLabel.text = searchResult.name
         levelMagicClassLabel.text = searchResult.level! + " " + searchResult.school!
