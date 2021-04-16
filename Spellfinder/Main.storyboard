@@ -97,10 +97,10 @@
                                 <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwH-HQ-V08" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="341"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="340.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At Higher Level Value" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yy-er-w3U">
-                                                <rect key="frame" x="20" y="281.5" width="355" height="19.5"/>
+                                                <rect key="frame" x="20" y="281" width="355" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
@@ -189,14 +189,14 @@
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wizard, Sorcerer, Circle of Ancients" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-tQ-dBj">
-                                                <rect key="frame" x="90.5" y="146" width="284.5" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wizard, Sorcerer, Circle of Ancients" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUb-tQ-dBj">
+                                                <rect key="frame" x="90.5" y="146" width="284.5" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpc-KL-vVT">
-                                                <rect key="frame" x="20" y="169" width="104.5" height="20"/>
+                                                <rect key="frame" x="20" y="168.5" width="104.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="104.5" id="Wch-Md-Nlu"/>
                                                 </constraints>
@@ -205,25 +205,25 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V, S, M" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WdJ-y9-cNa">
-                                                <rect key="frame" x="129" y="169" width="246" height="20"/>
+                                                <rect key="frame" x="129" y="168.5" width="246" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SPf-d0-4ID">
-                                                <rect key="frame" x="20" y="192" width="355" height="19.5"/>
+                                                <rect key="frame" x="20" y="191.5" width="355" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="16"/>
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ReN-2d-ooS">
-                                                <rect key="frame" x="20" y="225.5" width="355" height="19.5"/>
+                                                <rect key="frame" x="20" y="225" width="355" height="19.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" name="DarkGreyColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="At Higher Level" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0iP-Tm-Ot9">
-                                                <rect key="frame" x="20" y="259" width="131" height="19.5"/>
+                                                <rect key="frame" x="20" y="258.5" width="131" height="19.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="131" id="oZ1-v9-vqC"/>
                                                 </constraints>
@@ -279,6 +279,7 @@
                                             <constraint firstItem="GrD-Bj-uSE" firstAttribute="leading" secondItem="UwH-HQ-V08" secondAttribute="leading" constant="20" id="fHY-S2-Szl"/>
                                             <constraint firstItem="cUb-tQ-dBj" firstAttribute="leading" secondItem="leu-JJ-s6A" secondAttribute="trailing" constant="4.5" id="gYg-kZ-x2c"/>
                                             <constraint firstItem="cUb-tQ-dBj" firstAttribute="leading" secondItem="leu-JJ-s6A" secondAttribute="trailing" constant="4.5" id="hc6-WV-iEj"/>
+                                            <constraint firstItem="Mpc-KL-vVT" firstAttribute="top" secondItem="cUb-tQ-dBj" secondAttribute="bottom" constant="3" id="hg5-cX-1QH"/>
                                             <constraint firstItem="0iP-Tm-Ot9" firstAttribute="leading" secondItem="UwH-HQ-V08" secondAttribute="leading" constant="20" symbolic="YES" id="mEo-UH-pde"/>
                                             <constraint firstItem="eTU-3f-OzK" firstAttribute="leading" secondItem="n8F-MZ-TZE" secondAttribute="trailing" constant="4.5" id="p6n-7W-a7O"/>
                                             <constraint firstItem="Mpc-KL-vVT" firstAttribute="leading" secondItem="UwH-HQ-V08" secondAttribute="leading" constant="20" symbolic="YES" id="pu8-si-spY"/>
@@ -286,7 +287,6 @@
                                             <constraint firstItem="eTU-3f-OzK" firstAttribute="leading" secondItem="n8F-MZ-TZE" secondAttribute="trailing" constant="4.5" id="qlP-ke-wbo"/>
                                             <constraint firstAttribute="trailing" secondItem="YzM-pa-9jp" secondAttribute="trailing" id="si3-o0-owt"/>
                                             <constraint firstItem="tI1-iT-F70" firstAttribute="top" secondItem="2TM-sJ-Uou" secondAttribute="bottom" constant="14" id="teV-LK-abJ"/>
-                                            <constraint firstItem="Mpc-KL-vVT" firstAttribute="top" secondItem="leu-JJ-s6A" secondAttribute="bottom" constant="3" id="vGE-aw-0PC"/>
                                             <constraint firstItem="WdJ-y9-cNa" firstAttribute="top" secondItem="cUb-tQ-dBj" secondAttribute="bottom" constant="3" id="vei-T0-Ofe"/>
                                             <constraint firstItem="n8F-MZ-TZE" firstAttribute="leading" secondItem="UwH-HQ-V08" secondAttribute="leading" constant="20" symbolic="YES" id="ykc-SL-fjP"/>
                                             <constraint firstItem="O24-Pt-RPp" firstAttribute="leading" secondItem="UwH-HQ-V08" secondAttribute="leading" constant="20" symbolic="YES" id="zI7-ls-OT0"/>
@@ -353,7 +353,7 @@
             </objects>
             <point key="canvasLocation" x="2583.1999999999998" y="76.911544227886068"/>
         </scene>
-        <!--Favorites-->
+        <!--View Controller-->
         <scene sceneID="26N-5m-E0G">
             <objects>
                 <viewController id="sXb-uH-fHs" sceneMemberID="viewController">
@@ -363,13 +363,13 @@
                         <viewLayoutGuide key="safeArea" id="3Jc-5n-joD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favorites" image="star.circle.fill" catalog="system" id="Vo3-uU-AW9"/>
+                    <navigationItem key="navigationItem" id="2jS-4I-dkD"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKI-zf-KSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="1537"/>
+            <point key="canvasLocation" x="1864.8" y="1536.8815592203898"/>
         </scene>
-        <!--Characters-->
+        <!--View Controller-->
         <scene sceneID="JQM-Hb-Tyq">
             <objects>
                 <viewController id="AcN-5i-oFl" sceneMemberID="viewController">
@@ -379,11 +379,11 @@
                         <viewLayoutGuide key="safeArea" id="C6R-IY-N5D"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Characters" image="person.fill" catalog="system" id="EXI-Wc-ZJK"/>
+                    <navigationItem key="navigationItem" id="cQc-Su-Bbl"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdh-Ht-Ndk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926" y="837"/>
+            <point key="canvasLocation" x="1864.8" y="836.13193403298362"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nhK-Ug-sYs">
@@ -397,8 +397,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="eYv-ZQ-mjq" kind="relationship" relationship="viewControllers" id="kH3-Md-rcB"/>
-                        <segue destination="AcN-5i-oFl" kind="relationship" relationship="viewControllers" id="gIa-vv-pvY"/>
-                        <segue destination="sXb-uH-fHs" kind="relationship" relationship="viewControllers" id="j8o-eX-ylU"/>
+                        <segue destination="r9J-fE-3C9" kind="relationship" relationship="viewControllers" id="gIa-vv-pvY"/>
+                        <segue destination="bMa-2r-QVO" kind="relationship" relationship="viewControllers" id="j8o-eX-ylU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdU-xZ-SNv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -423,6 +423,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNh-zX-Cn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="925.60000000000002" y="77.811094452773617"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="fFz-iM-PGJ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bMa-2r-QVO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Favorites" image="star.circle.fill" catalog="system" id="Vo3-uU-AW9"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ko5-JV-wr3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="sXb-uH-fHs" kind="relationship" relationship="rootViewController" id="Q6J-5P-u7s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izC-ns-ego" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="1536.8815592203898"/>
+        </scene>
+        <!--Characters-->
+        <scene sceneID="2hn-6n-qV9">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r9J-fE-3C9" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Characters" image="person.fill" catalog="system" id="EXI-Wc-ZJK"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BtS-nZ-8iN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="AcN-5i-oFl" kind="relationship" relationship="rootViewController" id="Dfb-99-beO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="03G-pw-gmz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925.60000000000002" y="836.13193403298362"/>
         </scene>
     </scenes>
     <resources>
