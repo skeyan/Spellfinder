@@ -26,7 +26,7 @@ class DetailSpellViewController: UIViewController {
     @IBOutlet var componentsValueLabel: UILabel!
     
     @IBOutlet var extraMaterialsLabel: UILabel!
-    @IBOutlet var descriptionTextView: UITextView!
+    @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var higherLevelLabel: UILabel!
     @IBOutlet var higherLevelValueTextView: UITextView!
     
@@ -77,6 +77,8 @@ class DetailSpellViewController: UIViewController {
         
         extraMaterialsLabel.text = searchResult.material
         extraMaterialsLabel.sizeToFit()
+        descriptionLabel.text = searchResult.desc
+        descriptionLabel.sizeToFit()
         
         // TO-DO: Configure the rest after fixing the UI in the storyboard
     }
