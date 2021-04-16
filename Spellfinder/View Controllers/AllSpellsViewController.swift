@@ -34,6 +34,7 @@ class AllSpellsViewController: UIViewController {
     struct TableView {
       struct CellIdentifiers {
         static let searchResultCell = "SearchResultCell"
+        static let nothingFoundCell = "NothingFoundCell"
         static let loadingCell = "LoadingCell"
       }
     }
@@ -68,6 +69,9 @@ class AllSpellsViewController: UIViewController {
         
         cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
+        
+        cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
+        tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
         
         // Register UserDefaults defaults
         registerDefaults()
@@ -225,6 +229,10 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
             spinner.startAnimating()
             return cell
+        } else if searchResults.count == 0 {
+            return tableView.dequeueReusableCell(
+                  withIdentifier: TableView.CellIdentifiers.nothingFoundCell,
+                  for: indexPath)
         } else {
             let cellIdentifier = TableView.CellIdentifiers.searchResultCell
             let cell = tableView.dequeueReusableCell(
@@ -233,14 +241,9 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             
             cell.favoriteButton.addTarget(self, action: #selector(self.favoriteSpell(_:)), for: .touchUpInside);
             
-            if searchResults.count == 0 {
-                cell.spellNameLabel.text = "Nothing found"
-                cell.levelSchoolLabel.text = "(Nothing found)"
-            } else {
-                let searchResult = searchResults[indexPath.row]
-                cell.configure(for: searchResult)
-            }
-            
+            let searchResult = searchResults[indexPath.row]
+            cell.configure(for: searchResult)
+        
             return cell
         }
     }
@@ -264,7 +267,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // UI improvement - change table view cell height to accomodate for XIB
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88;
+        return 88
     }
 
     // MARK: - Table View Helper Methods
