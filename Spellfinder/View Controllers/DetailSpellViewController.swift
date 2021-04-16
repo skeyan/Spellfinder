@@ -9,7 +9,7 @@ import UIKit
 
 class DetailSpellViewController: UIViewController {
     
-    @IBOutlet var testLabel: UILabel!
+    @IBOutlet var higherLevelValueLabel: UILabel!
     @IBOutlet var scrollView: UIScrollView!
     
     @IBOutlet var spellNameLabel: UILabel!
@@ -31,7 +31,7 @@ class DetailSpellViewController: UIViewController {
     @IBOutlet var extraMaterialsLabel: UILabel!
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var higherLevelLabel: UILabel!
-    @IBOutlet var higherLevelValueTextView: UITextView!
+
     
     // The search result that will be displayed
     var searchResultToDisplay: SearchResult?
@@ -41,9 +41,7 @@ class DetailSpellViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if let _ = searchResultToDisplay {
-            print("here")
-            test(for: searchResultToDisplay!)
-            // configure(for: searchResultToDisplay!)
+            configure(for: searchResultToDisplay!)
         }
     }
 
@@ -58,11 +56,6 @@ class DetailSpellViewController: UIViewController {
     */
 
     // MARK: - Helper Methods
-    func test(for searchResult: SearchResult) {
-        testLabel.text = searchResult.desc!
-        testLabel.sizeToFit()
-    }
-    
     func configure(for searchResult: SearchResult) -> Void {
         spellNameLabel.text = searchResult.name
         levelMagicClassLabel.text = searchResult.level! + " " + searchResult.school!
@@ -89,6 +82,13 @@ class DetailSpellViewController: UIViewController {
         descriptionLabel.text = searchResult.desc
         descriptionLabel.sizeToFit()
         
-        // TO-DO: Configure the rest after fixing the UI in the storyboard
+        if searchResult.higherLevelDesc!.isEmpty {
+            higherLevelValueLabel.isHidden = true
+            higherLevelLabel.isHidden = true
+        } else {
+            higherLevelValueLabel.text = searchResult.higherLevelDesc
+            higherLevelLabel.isHidden = false
+            higherLevelValueLabel.isHidden = false
+        }
     }
 }

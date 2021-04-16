@@ -108,7 +108,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spell Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrD-Bj-uSE">
                                                 <rect key="frame" x="20" y="8" width="355" height="33"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
-                                                <color key="textColor" red="0.015686274510000001" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" name="AccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level and Magic Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2TM-sJ-Uou">
@@ -328,35 +328,30 @@
                     </view>
                     <navigationItem key="navigationItem" id="RjA-iR-R2E"/>
                     <connections>
+                        <outlet property="castingTimeLabel" destination="tI1-iT-F70" id="ni0-5n-aph"/>
+                        <outlet property="castingTimeValueLabel" destination="ISz-dv-9vF" id="UIC-d1-RKf"/>
+                        <outlet property="classesLabel" destination="leu-JJ-s6A" id="dxr-Jt-ixK"/>
+                        <outlet property="classesValueLabel" destination="cUb-tQ-dBj" id="naI-dh-TzZ"/>
+                        <outlet property="componentsLabel" destination="Mpc-KL-vVT" id="Zce-0K-dKh"/>
+                        <outlet property="componentsValueLabel" destination="WdJ-y9-cNa" id="E7s-Gm-XMV"/>
+                        <outlet property="concentrationLabel" destination="wvS-cj-nYS" id="gDE-H3-YwD"/>
+                        <outlet property="descriptionLabel" destination="ReN-2d-ooS" id="cDc-WK-PGo"/>
+                        <outlet property="durationLabel" destination="O24-Pt-RPp" id="5KP-U0-7Po"/>
+                        <outlet property="durationValueLabel" destination="YzM-pa-9jp" id="5kp-Ao-Kf6"/>
+                        <outlet property="extraMaterialsLabel" destination="SPf-d0-4ID" id="hL1-Qo-lEL"/>
+                        <outlet property="higherLevelLabel" destination="0iP-Tm-Ot9" id="2kU-Q5-Vc7"/>
+                        <outlet property="higherLevelValueLabel" destination="2Yy-er-w3U" id="z8Q-7h-bMp"/>
+                        <outlet property="levelMagicClassLabel" destination="2TM-sJ-Uou" id="nsm-D6-T55"/>
+                        <outlet property="rangeLabel" destination="n8F-MZ-TZE" id="ICg-NW-p8X"/>
+                        <outlet property="rangeValueLabel" destination="eTU-3f-OzK" id="s0w-EZ-gJ1"/>
+                        <outlet property="ritualLabel" destination="Z1r-fd-Xjd" id="3U7-Zy-xvM"/>
                         <outlet property="scrollView" destination="bNb-dM-Ali" id="QAn-8H-Zpd"/>
-                        <outlet property="testLabel" destination="2Yy-er-w3U" id="EzK-J1-9Ga"/>
+                        <outlet property="spellNameLabel" destination="GrD-Bj-uSE" id="MUa-7q-3dZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nc9-Wr-MAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2583.1999999999998" y="76.911544227886068"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Ldd-da-jdx">
-            <objects>
-                <viewController id="Duo-Gh-1zf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="3dN-7E-YWo">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVV-jw-6yT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="fHa-11-UyP"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TO6-f7-3Mf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3261.5999999999999" y="62.518740629685162"/>
         </scene>
         <!--Favorites-->
         <scene sceneID="26N-5m-E0G">
@@ -434,6 +429,9 @@
         <image name="books.vertical.fill" catalog="system" width="128" height="100"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="star.circle.fill" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
