@@ -75,6 +75,9 @@ class DetailSpellViewController: UIViewController {
         classesValueLabel.text = searchResult.dndClass
         componentsValueLabel.text=searchResult.components
         
+        extraMaterialsLabel.text = searchResult.material
+        extraMaterialsLabel.sizeToFit()
+        
         // TO-DO: Configure the rest after fixing the UI in the storyboard
     }
 }
