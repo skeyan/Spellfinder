@@ -72,8 +72,6 @@ class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsProtocol {
     
     // Format information for debugging
     var description: String {
-        return "\nResult - Name: \(name ?? "None"), School of Magic: \(school as String?)" +
-               "Description: \(desc ?? "None"), Duration: \(duration ?? "None")" +
-               " Level: \(level ?? "None"), isFavorited: \(isFavorited)"
+        return "Result - Name: \(name ?? "None"), isFavorited: \(isFavorited)\n"
     }
 }

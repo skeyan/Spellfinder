@@ -20,7 +20,11 @@ class AllSpellsViewController: UIViewController {
     
     // MARK: - Instance Variables
     // Store our search results
-    var searchResults = [SearchResult]()
+    var searchResults = [SearchResult]() // old
+    var searchResultsDict = Dictionary<String, SearchResult>()
+    var searchResultsKeysByName = [String]()
+    var searchResultsKeysByLevel = [String]()
+    var currentSort = "Name"
     
     // Keep the state - have we finished searching?
     var hasSearched = false
@@ -42,11 +46,11 @@ class AllSpellsViewController: UIViewController {
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if(segmentedControl.selectedSegmentIndex == 1) {
-            sortSpells(by: "level")
+            currentSort = "Level"
         } else {
-            sortSpells(by: "name")
+            currentSort = "Name"
         }
-        
+        tableView.reloadData()
         UserDefaults.standard.set(
             sender.selectedSegmentIndex,
             forKey: "SegmentIndex")
@@ -123,12 +127,18 @@ class AllSpellsViewController: UIViewController {
         // Run code during first launch
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+        currentSort = "Name"
         userDefaults.set(false, forKey: "FirstTime")
       } else {
         // Set segmented control in accordance with value in UserDefaults
         let segmentIndex = UserDefaults.standard.integer(forKey: "SegmentIndex")
         segmentedControl.selectedSegmentIndex = segmentIndex
         segmentedControl.sendActions(for: UIControl.Event.valueChanged)
+        if segmentIndex == 0 {
+            currentSort = "Name"
+        } else {
+            currentSort = "Level"
+        }
       }
     }
 }
@@ -153,7 +163,6 @@ extension AllSpellsViewController: UISearchBarDelegate {
             tableView.reloadData()
             
             // Get all spells from the API
-            searchResults = []
             hasSearched = true
            
             let url = spellsURL(searchText: searchBar.text!)
@@ -165,10 +174,9 @@ extension AllSpellsViewController: UISearchBarDelegate {
                           httpResponse.statusCode == 200 {
                     if let data = data {
                         // Parse JSON on a background thread
-                        self.searchResults = self.parse(data: data) // TO-DO: make dict
-                        for spell in self.searchResults {
-                            print(spell)
-                        }
+                        self.searchResults = self.parse(data: data)
+                        self.spellsArrayToDict(self.searchResults)
+
                         DispatchQueue.main.async {
                             self.isLoading = false
                             self.handleLoadSegment()
@@ -239,11 +247,16 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: cellIdentifier,
                 for: indexPath) as! SearchResultCell
             
-            cell.favoriteButton.addTarget(self, action: #selector(self.favoriteSpell(_:)), for: .touchUpInside);
+            cell.favoriteButton.addTarget(self, action: #selector(self.favoriteSpell(_:)), for: .touchUpInside)
             
-            let searchResult = searchResults[indexPath.row]
+            var searchKey: String
+            if currentSort == "Name" {
+                searchKey = searchResultsKeysByName[indexPath.row]
+            } else {
+                searchKey = searchResultsKeysByLevel[indexPath.row]
+            }
+            let searchResult = searchResultsDict[searchKey]!
             cell.configure(for: searchResult)
-        
             return cell
         }
     }
@@ -269,6 +282,30 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ShowSpellDetail" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailSpellViewController
+            if let indexPath = tableView.indexPath(
+                  for: sender as! SearchResultCell) {
+                var searchKey:String
+                if currentSort == "Name" {
+                    searchKey = searchResultsKeysByName[indexPath.row]
+                } else {
+                    searchKey = searchResultsKeysByLevel[indexPath.row]
+                }
+                controller.searchResultToDisplay = searchResultsDict[searchKey]
+            }
+        }
+    }
+    
+    // MARK: - Data
+    // TO-DO: Add favoriting functionality locally and with Core Data
+    @objc func favoriteSpell(_ sender: UIButton) {
+        print("inside favorite spell button")
+    }
 
     // MARK: - Table View Helper Methods
     // Creates the properly encoded API URL to gather spells
@@ -282,32 +319,21 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         return url!
     }
     
-    // Sort spells
-    func sortSpells(by: String) -> Void {
-        if by == "level" {
-            searchResults.sort { $0.levelNum! < $1.levelNum! }
-        } else if by == "name" {
-            searchResults.sort { $0.name!.localizedStandardCompare($1.name!) == .orderedAscending }
+    // Convert array of spells to dictionary of spells and populate instance variables
+    func spellsArrayToDict(_ arr: [SearchResult]) -> Void {
+        // By Name
+        for spell in arr {
+            searchResultsDict[spell.slug!] = spell
+            searchResultsKeysByName.append(spell.slug!)
         }
-        tableView.reloadData() // TO-DO: Better way?
-    }
-    
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "ShowSpellDetail" && sender != nil) {
-            // Pass data to next view
-            let controller = segue.destination as! DetailSpellViewController
-            if let indexPath = tableView.indexPath(
-                  for: sender as! SearchResultCell) {
-                   controller.searchResultToDisplay = searchResults[indexPath.row]
-            }
+        searchResultsKeysByName.sort { $0 < $1 }
+        
+        // By Level
+        var searchResultsSortedByLevel: [SearchResult] = searchResults
+        searchResultsSortedByLevel.sort{ $0.levelNum! < $1.levelNum! }
+        for spell in searchResultsSortedByLevel {
+            searchResultsKeysByLevel.append(spell.slug!)
         }
-    }
-    
-    // MARK: - Data
-    // TO-DO: Add favoriting functionality locally and with Core Data
-    @objc func favoriteSpell(_ sender: UIButton) {
-        print("inside favorite spell button")
     }
 }
 
