@@ -352,10 +352,10 @@
             </objects>
             <point key="canvasLocation" x="2583.1999999999998" y="76.911544227886068"/>
         </scene>
-        <!--View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="26N-5m-E0G">
             <objects>
-                <viewController id="sXb-uH-fHs" sceneMemberID="viewController">
+                <viewController id="sXb-uH-fHs" customClass="FavoritesViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yhv-lK-oEm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

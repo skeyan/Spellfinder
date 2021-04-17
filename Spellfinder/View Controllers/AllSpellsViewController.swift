@@ -19,21 +19,9 @@ class AllSpellsViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: - Instance Variables
-    // Store our search results
-    var searchResults = [SearchResult]() // old
-    var searchResultsDict = Dictionary<String, SearchResult>()
-    var searchResultsKeysByName = [String]()
-    var searchResultsKeysByLevel = [String]()
+    private let search = Search()
+    
     var currentSort = "Name"
-    
-    // Keep the state - have we finished searching?
-    var hasSearched = false
-    
-    // Keep the state - are we downloading stuff from API?
-    var isLoading = false
-    
-    // Keep track of our data task so it may be cancelled
-    var dataTask: URLSessionDataTask?
     
     struct TableView {
       struct CellIdentifiers {
@@ -83,17 +71,6 @@ class AllSpellsViewController: UIViewController {
         
         // TO-DO: Integrate this with Core Data
         performSearch(firstLoad: true)
-    }
-    
-    func parse(data: Data) -> [SearchResult] {
-        do {
-            let decoder = JSONDecoder()
-            let result = try decoder.decode(ResultArray.self, from: data)
-            return result.results
-        } catch {
-            print("JSON Decoding Error: \(error)")
-            return []
-        }
     }
     
     // Display network error to user
@@ -150,57 +127,18 @@ extension AllSpellsViewController: UISearchBarDelegate {
     }
     
     func performSearch(firstLoad: Bool) {
-        print("The search text is '\(searchBar.text!)'")
-        
-        // Perform search
-        if firstLoad || !searchBar.text!.isEmpty {
-            // Remove keyboard after search is performed
-            searchBar.resignFirstResponder()
-            
-            // Indicate we are getting data from API
-            dataTask?.cancel()
-            isLoading = true
-            tableView.reloadData()
-            
-            // Get all spells from the API
-            hasSearched = true
-           
-            let url = spellsURL(searchText: searchBar.text!)
-            let session = URLSession.shared
-            dataTask = session.dataTask(with: url) {data, response, error in
-                if let error = error as NSError?, error.code == -999 {
-                    print("Failure! \(error.localizedDescription)")
-                } else if let httpResponse = response as? HTTPURLResponse,
-                          httpResponse.statusCode == 200 {
-                    if let data = data {
-                        // Parse JSON on a background thread
-                        self.searchResults = self.parse(data: data)
-                        self.spellsArrayToDict(self.searchResults)
-
-                        DispatchQueue.main.async {
-                            self.isLoading = false
-                            self.handleLoadSegment()
-                            self.tableView.reloadData()
-                        }
-                        return
-                    }
-                }
-                else {
-                    print("Failure! \(response!)")
-                }
-                
-                // Inform user of network error
-                DispatchQueue.main.async {
-                    self.hasSearched = false
-                    self.isLoading = false
-                    self.tableView.reloadData()
-                    self.showNetworkError()
-                }
-            }
-            
-            // Start the data task on an async background thread
-            dataTask?.resume()
+      search.performSearch(
+        for: searchBar.text!,
+        category: segmentedControl.selectedSegmentIndex,
+        firstLoad: firstLoad) { success in
+          if !success {
+            self.showNetworkError()
+          }
+          self.tableView.reloadData()
         }
+      
+      tableView.reloadData()
+      searchBar.resignFirstResponder()
     }
     
     // Testing advanced search button - using bookmarks button
@@ -215,29 +153,29 @@ extension AllSpellsViewController: UISearchBarDelegate {
 // MARK: - Table View Delegate
 extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isLoading {
+        if search.isLoading {
             // Handle in the middle of searching
             return 1
-        } else if !hasSearched {
+        } else if !search.hasSearched {
             // Handle not having searched yet
             return 0
-        } else if searchResults.count == 0 {
+        } else if search.searchResults.count == 0 {
             // Handle no results after a search
             return 1
         } else {
             // Handle results after a search
-            return searchResults.count
+            return search.searchResults.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isLoading {
+        if search.isLoading {
             let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.loadingCell, for: indexPath)
             
             let spinner = cell.viewWithTag(100) as! UIActivityIndicatorView
             spinner.startAnimating()
             return cell
-        } else if searchResults.count == 0 {
+        } else if search.searchResults.count == 0 {
             return tableView.dequeueReusableCell(
                   withIdentifier: TableView.CellIdentifiers.nothingFoundCell,
                   for: indexPath)
@@ -251,11 +189,11 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             
             var searchKey: String
             if currentSort == "Name" {
-                searchKey = searchResultsKeysByName[indexPath.row]
+                searchKey = search.searchResultsKeysByName[indexPath.row]
             } else {
-                searchKey = searchResultsKeysByLevel[indexPath.row]
+                searchKey = search.searchResultsKeysByLevel[indexPath.row]
             }
-            let searchResult = searchResultsDict[searchKey]!
+            let searchResult = search.searchResultsDict[searchKey]!
             cell.configure(for: searchResult)
             return cell
         }
@@ -271,7 +209,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // UI improvement - Prevent selection in certain cases
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if searchResults.count == 0 || isLoading {
+        if search.searchResults.count == 0 || search.isLoading {
             return nil
         } else {
             return indexPath
@@ -292,11 +230,11 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                   for: sender as! SearchResultCell) {
                 var searchKey:String
                 if currentSort == "Name" {
-                    searchKey = searchResultsKeysByName[indexPath.row]
+                    searchKey = search.searchResultsKeysByName[indexPath.row]
                 } else {
-                    searchKey = searchResultsKeysByLevel[indexPath.row]
+                    searchKey = search.searchResultsKeysByLevel[indexPath.row]
                 }
-                controller.searchResultToDisplay = searchResultsDict[searchKey]
+                controller.searchResultToDisplay = search.searchResultsDict[searchKey]
             }
         }
     }
@@ -307,33 +245,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         print("inside favorite spell button")
     }
 
-    // MARK: - Table View Helper Methods
-    // Creates the properly encoded API URL to gather spells
-    func spellsURL(searchText: String) -> URL {
-        let encodedText = searchText.addingPercentEncoding(
-              withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-          let urlString = String(
-            format: "https://api.open5e.com/spells/?limit=400&search=%@",
-            encodedText)
-        let url = URL(string: urlString)
-        return url!
-    }
-    
-    // Convert array of spells to dictionary of spells and populate instance variables
-    func spellsArrayToDict(_ arr: [SearchResult]) -> Void {
-        // By Name
-        for spell in arr {
-            searchResultsDict[spell.slug!] = spell
-            searchResultsKeysByName.append(spell.slug!)
-        }
-        searchResultsKeysByName.sort { $0 < $1 }
-        
-        // By Level
-        var searchResultsSortedByLevel: [SearchResult] = searchResults
-        searchResultsSortedByLevel.sort{ $0.levelNum! < $1.levelNum! }
-        for spell in searchResultsSortedByLevel {
-            searchResultsKeysByLevel.append(spell.slug!)
-        }
-    }
+
 }
 
