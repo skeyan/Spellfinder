@@ -26,11 +26,9 @@ class Search {
     // Keep track of our data task so it may be cancelled
     private var dataTask: URLSessionDataTask?
 
-    
     // MARK: - Search Methods
     func performSearch(
         for text: String,
-        category: Int,
         firstLoad: Bool,
         completion: @escaping SearchComplete
     ) {

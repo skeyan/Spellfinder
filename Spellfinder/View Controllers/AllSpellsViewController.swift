@@ -122,14 +122,15 @@ class AllSpellsViewController: UIViewController {
 
 // MARK: - Search Bar Delegate
 extension AllSpellsViewController: UISearchBarDelegate {
+    // TO-DO: Put the results, filtered, into a new screen with a separate table view
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSearch(firstLoad: false)
+        performSegue(withIdentifier: "ShowSearchResults", sender: nil)
+        // performSearch(firstLoad: false)
     }
     
     func performSearch(firstLoad: Bool) {
       search.performSearch(
         for: searchBar.text!,
-        category: segmentedControl.selectedSegmentIndex,
         firstLoad: firstLoad) { success in
           if !success {
             self.showNetworkError()
@@ -244,7 +245,5 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     @objc func favoriteSpell(_ sender: UIButton) {
         print("inside favorite spell button")
     }
-
-
 }
 
