@@ -372,8 +372,8 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="cS5-Uz-oHH"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6i7-Gz-Bo2">
-                                <rect key="frame" x="0.0" y="220" width="375" height="398"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6i7-Gz-Bo2">
+                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <sections/>
                                 <connections>
@@ -381,36 +381,21 @@
                                     <outlet property="delegate" destination="6PI-43-Llt" id="pXI-Uj-Q5b"/>
                                 </connections>
                             </tableView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="euf-iP-cry">
-                                <rect key="frame" x="0.0" y="100" width="375" height="120"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="nio-uK-0ld"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="6PI-43-Llt" id="yZ5-V8-aCd"/>
-                                    <outlet property="delegate" destination="6PI-43-Llt" id="5VV-un-JKY"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nhz-hY-RUE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6i7-Gz-Bo2" firstAttribute="top" secondItem="euf-iP-cry" secondAttribute="bottom" id="AZO-WF-lgG"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="bottom" secondItem="nhz-hY-RUE" secondAttribute="bottom" id="BF1-e1-t8z"/>
                             <constraint firstItem="H3B-eS-uJ3" firstAttribute="trailing" secondItem="nhz-hY-RUE" secondAttribute="trailing" id="DJY-nd-UQ2"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="leading" secondItem="nhz-hY-RUE" secondAttribute="leading" id="Jjc-QJ-GfY"/>
-                            <constraint firstItem="euf-iP-cry" firstAttribute="top" secondItem="H3B-eS-uJ3" secondAttribute="bottom" id="Q0u-nk-n3M"/>
-                            <constraint firstItem="euf-iP-cry" firstAttribute="trailing" secondItem="nhz-hY-RUE" secondAttribute="trailing" id="aQn-XF-hjx"/>
                             <constraint firstItem="H3B-eS-uJ3" firstAttribute="leading" secondItem="nhz-hY-RUE" secondAttribute="leading" id="hX9-q1-JUw"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="trailing" secondItem="nhz-hY-RUE" secondAttribute="trailing" id="oHo-ZB-SzH"/>
-                            <constraint firstItem="euf-iP-cry" firstAttribute="leading" secondItem="nhz-hY-RUE" secondAttribute="leading" id="wDl-mJ-VFI"/>
+                            <constraint firstItem="6i7-Gz-Bo2" firstAttribute="top" secondItem="H3B-eS-uJ3" secondAttribute="bottom" id="uEK-qb-qFg"/>
                             <constraint firstItem="H3B-eS-uJ3" firstAttribute="top" secondItem="nhz-hY-RUE" secondAttribute="top" id="yUX-CA-LAU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PXl-r0-HqV"/>
                     <connections>
-                        <outlet property="staticTableView" destination="euf-iP-cry" id="KzX-XE-Mfn"/>
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
                     </connections>
                 </viewController>

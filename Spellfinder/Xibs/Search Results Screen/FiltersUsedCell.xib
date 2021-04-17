@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FiltersUsedCell" id="7Dk-1p-jGe">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7Dk-1p-jGe" id="YKj-cr-W8s">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="43E-Gf-tgX">
+                        <rect key="frame" x="20" y="5" width="49" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" name="DarkGreyColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter 1: Value, Filter 2: Value, Filter 3: Value" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ll-9T-CXV">
+                        <rect key="frame" x="20" y="26" width="335" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="MediumGreyColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9ll-9T-CXV" secondAttribute="bottom" constant="5" id="9rw-gE-Cad"/>
+                    <constraint firstItem="9ll-9T-CXV" firstAttribute="leading" secondItem="YKj-cr-W8s" secondAttribute="leading" constant="20" symbolic="YES" id="A4t-hM-Ptb"/>
+                    <constraint firstItem="43E-Gf-tgX" firstAttribute="top" secondItem="YKj-cr-W8s" secondAttribute="top" constant="5" id="FVb-DL-RMC"/>
+                    <constraint firstAttribute="trailing" secondItem="43E-Gf-tgX" secondAttribute="trailing" constant="306" id="Jqk-4q-nTA"/>
+                    <constraint firstAttribute="trailing" secondItem="9ll-9T-CXV" secondAttribute="trailing" constant="20" symbolic="YES" id="V4J-OV-DSr"/>
+                    <constraint firstItem="43E-Gf-tgX" firstAttribute="leading" secondItem="YKj-cr-W8s" secondAttribute="leading" constant="20" symbolic="YES" id="Voq-kl-k1V"/>
+                    <constraint firstItem="9ll-9T-CXV" firstAttribute="top" secondItem="43E-Gf-tgX" secondAttribute="bottom" constant="1" id="dag-Uk-RZh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="105.07246376811595" y="110.49107142857143"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="DarkGreyColor">
+            <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MediumGreyColor">
+            <color red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

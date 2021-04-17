@@ -9,7 +9,6 @@ import UIKit
 
 class SearchResultsViewController: UIViewController {
     
-    @IBOutlet var staticTableView: UITableView!
     @IBOutlet var tableView: UITableView!
     
     struct TableView {
@@ -17,6 +16,8 @@ class SearchResultsViewController: UIViewController {
         static let searchResultCell = "SearchResultCell"
         static let nothingFoundCell = "NothingFoundCell"
         static let loadingCell = "LoadingCell"
+        static let searchResultHeaderCell = "SearchResultHeaderCell"
+        static let filtersUsedCell = "FiltersUsedCell"
       }
     }
 
@@ -24,10 +25,16 @@ class SearchResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Register nibs
-        let cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
+        // TO-DO: nothingFound, loadingCell
+        var cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
-        // TO-DO: Replace with Search and Filter cells
-        staticTableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultCell)
+        
+        cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultHeaderCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.searchResultHeaderCell)
+        
+        cellNib = UINib(nibName: TableView.CellIdentifiers.filtersUsedCell, bundle: nil)
+        tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.filtersUsedCell)
+        
     }
     
 
@@ -45,30 +52,44 @@ class SearchResultsViewController: UIViewController {
 
 extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView === staticTableView {
-            return 2
-        } else {
-            return 1
-        }
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView === staticTableView {
-            return 1
-        } else {
+        if section == 2 {
+            // TO-DO: Return with dynamic count of search results
             return 10
+        } else {
+            return 1
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView === staticTableView {
+        switch indexPath.section {
+        case 0:
+            // Search Results Header
+            let cellIdentifier = TableView.CellIdentifiers.searchResultHeaderCell
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: cellIdentifier,
+                for: indexPath)
+            return cell
+        case 1:
+            // Filter
+            let cellIdentifier = TableView.CellIdentifiers.filtersUsedCell
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: cellIdentifier,
+                for: indexPath)
+            let filterDescription = cell.viewWithTag(101) as! UILabel
+            filterDescription.sizeToFit()
+            return cell
+        case 2:
+            // Search Results
             let cellIdentifier = TableView.CellIdentifiers.searchResultCell
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: cellIdentifier,
                 for: indexPath)
-            cell.backgroundColor = UIColor.yellow
             return cell
-        } else {
+        default:
             let cellIdentifier = TableView.CellIdentifiers.searchResultCell
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: cellIdentifier,
@@ -77,13 +98,16 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         }
     }
     
-    // UI improvement - change table view cell height to accomodate for XIB
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView === staticTableView {
-            return 60
-        } else {
+        switch indexPath.section {
+        case 0:
+            return 44
+        case 1:
+            return 68
+        case 2:
+            return 88
+        default:
             return 88
         }
     }
-  
 }

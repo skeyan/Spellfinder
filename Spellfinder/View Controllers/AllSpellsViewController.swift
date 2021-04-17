@@ -217,11 +217,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    // UI improvement - change table view cell height to accomodate for XIB
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88
-    }
-    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "ShowSpellDetail" && sender != nil) {
