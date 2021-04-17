@@ -110,19 +110,26 @@ class Search {
     
     // Convert array of spells to dictionary of spells and populate instance variables
     private func spellsArrayToDict(_ arr: [SearchResult]) -> Void {
+        var newSearchResultsDict = Dictionary<String, SearchResult>()
+        var newSearchResultsKeysByName = [String]()
+        var newSearchResultsKeysByLevel = [String]()
+        
         // By Name
         for spell in arr {
-            searchResultsDict[spell.slug!] = spell
-            searchResultsKeysByName.append(spell.slug!)
+            newSearchResultsDict[spell.slug!] = spell
+            newSearchResultsKeysByName.append(spell.slug!)
         }
-        searchResultsKeysByName.sort { $0 < $1 }
+        newSearchResultsKeysByName.sort { $0 < $1 }
+        searchResultsKeysByName = newSearchResultsKeysByName
+        searchResultsDict = newSearchResultsDict
         
         // By Level
         var searchResultsSortedByLevel: [SearchResult] = searchResults
         searchResultsSortedByLevel.sort{ $0.levelNum! < $1.levelNum! }
         for spell in searchResultsSortedByLevel {
-            searchResultsKeysByLevel.append(spell.slug!)
+            newSearchResultsKeysByLevel.append(spell.slug!)
         }
+        searchResultsKeysByLevel = newSearchResultsKeysByLevel
     }
 }
 

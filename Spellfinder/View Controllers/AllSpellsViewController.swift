@@ -135,7 +135,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
             self.showNetworkError()
           }
           self.tableView.reloadData()
-        }
+      }
       
       tableView.reloadData()
       searchBar.resignFirstResponder()
