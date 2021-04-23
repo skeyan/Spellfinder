@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Spell" representedClassName="Spell" syncable="YES">
+        <attribute name="archetype" optional="YES" attributeType="String"/>
+        <attribute name="castingTime" optional="YES" attributeType="String"/>
+        <attribute name="circles" optional="YES" attributeType="String"/>
+        <attribute name="components" optional="YES" attributeType="String"/>
+        <attribute name="concentration" optional="YES" attributeType="String"/>
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="dndClass" optional="YES" attributeType="String"/>
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="higherLevelDesc" optional="YES" attributeType="String"/>
+        <attribute name="isConcentration" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isFavorited" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isRitual" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
+        <attribute name="levelNum" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="material" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="page" optional="YES" attributeType="String"/>
+        <attribute name="range" optional="YES" attributeType="String"/>
+        <attribute name="ritual" optional="YES" attributeType="String"/>
+        <attribute name="school" optional="YES" attributeType="String"/>
+        <attribute name="slug" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Spell" positionX="-63" positionY="-18" width="128" height="344"/>
+    </elements>
 </model>

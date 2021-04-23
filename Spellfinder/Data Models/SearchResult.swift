@@ -15,7 +15,7 @@ class ResultArray: Codable {
     var results = [SearchResult]()
 }
 
-class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsProtocol {
+class SearchResult: Codable, CustomStringConvertible, FavoritingSpellsDelegate {
     // Information from API
     var name: String? = ""
     var slug: String? = ""

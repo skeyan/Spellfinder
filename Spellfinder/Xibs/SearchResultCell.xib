@@ -28,6 +28,7 @@
                         </state>
                         <connections>
                             <action selector="animateButton:" destination="5aP-BE-vPA" eventType="touchUpInside" id="YUn-lv-DXN"/>
+                            <action selector="favoritesButtonTappedWithSender:" destination="5aP-BE-vPA" eventType="touchUpInside" id="R73-XU-jpZ"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nej-K4-3a9">

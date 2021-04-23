@@ -10,6 +10,9 @@
 		B018E9082628128700638504 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B018E9072628128700638504 /* Main.storyboard */; };
 		B029DBBA262B82220004D096 /* SearchResultHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B029DBB9262B82220004D096 /* SearchResultHeaderCell.xib */; };
 		B029DBBD262B822D0004D096 /* FiltersUsedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B029DBBC262B822D0004D096 /* FiltersUsedCell.xib */; };
+		B029DBC126326D140004D096 /* Spell+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DBBF26326D140004D096 /* Spell+CoreDataClass.swift */; };
+		B029DBC226326D140004D096 /* Spell+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DBC026326D140004D096 /* Spell+CoreDataProperties.swift */; };
+		B029DBC6263272340004D096 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029DBC5263272340004D096 /* Functions.swift */; };
 		B0322D982626871B00C9FC32 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0322D972626871A00C9FC32 /* SearchResultCell.xib */; };
 		B03752BC262A95B60062E281 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03752BB262A95B60062E281 /* Search.swift */; };
 		B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03752BE262A962B0062E281 /* FavoritesViewController.swift */; };
@@ -31,6 +34,9 @@
 		B018E9072628128700638504 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B029DBB9262B82220004D096 /* SearchResultHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultHeaderCell.xib; sourceTree = "<group>"; };
 		B029DBBC262B822D0004D096 /* FiltersUsedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersUsedCell.xib; sourceTree = "<group>"; };
+		B029DBBF26326D140004D096 /* Spell+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spell+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B029DBC026326D140004D096 /* Spell+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spell+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B029DBC5263272340004D096 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		B0322D972626871A00C9FC32 /* SearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		B03752BB262A95B60062E281 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		B03752BE262A962B0062E281 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		B0845EA9261D45AC00D56FB0 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				B029DBBF26326D140004D096 /* Spell+CoreDataClass.swift */,
+				B029DBC026326D140004D096 /* Spell+CoreDataProperties.swift */,
 				B0845EAD261D82FD00D56FB0 /* SearchResult.swift */,
 				B03752BB262A95B60062E281 /* Search.swift */,
 			);
@@ -123,6 +131,7 @@
 			children = (
 				B0D6513326162B3B00919473 /* AppDelegate.swift */,
 				B0D6513526162B3B00919473 /* SceneDelegate.swift */,
+				B029DBC5263272340004D096 /* Functions.swift */,
 				B0322D9A2626872300C9FC32 /* Xibs */,
 				B0845EA9261D45AC00D56FB0 /* Data Models */,
 				B0851203262789E100000D46 /* View Controllers */,
@@ -210,15 +219,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B029DBC226326D140004D096 /* Spell+CoreDataProperties.swift in Sources */,
 				B0D6513E26162B3B00919473 /* Spellfinder.xcdatamodeld in Sources */,
 				B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */,
 				B0D6513826162B3B00919473 /* AllSpellsViewController.swift in Sources */,
 				B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */,
+				B029DBC6263272340004D096 /* Functions.swift in Sources */,
 				B0D6513426162B3B00919473 /* AppDelegate.swift in Sources */,
 				B05A329826269358002F630D /* SearchResultCell.swift in Sources */,
 				B03752BC262A95B60062E281 /* Search.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
 				B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */,
+				B029DBC126326D140004D096 /* Spell+CoreDataClass.swift in Sources */,
 				B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

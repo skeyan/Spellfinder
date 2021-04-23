@@ -7,6 +7,9 @@
 
 import UIKit
 
+protocol SearchResultCellDelegate: class {
+    func favoritesButtonTapped(cell: SearchResultCell)
+}
 class SearchResultCell: UITableViewCell {
     @IBOutlet var spellNameLabel: UILabel!
     @IBOutlet var levelSchoolLabel: UILabel!
@@ -24,6 +27,15 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet var favoriteButton: UIButton!
     @IBOutlet var addToCharacterButton: UIButton!
     
+    weak var delegate: SearchResultCellDelegate?
+    
+    var data: SearchResult!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.delegate = nil
+    }
+    
     // MARK: - Actions
     @IBAction func animateButton(_ sender: UIButton) {
         // Animate the tap on the favorites button
@@ -35,6 +47,10 @@ class SearchResultCell: UITableViewCell {
            options: [.curveEaseInOut, .allowUserInteraction],
            animations: {
                 sender.transform = CGAffineTransform.identity }, completion: nil)
+    }
+    
+    @IBAction func favoritesButtonTapped(sender: UIButton) {
+        self.delegate?.favoritesButtonTapped(cell: self)
     }
     
     // MARK: - Nib

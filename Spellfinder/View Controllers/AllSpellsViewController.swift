@@ -6,13 +6,14 @@
 //
 
 import UIKit
+import CoreData
 
 // Favoriting protocol
-protocol FavoritingSpellsProtocol {
+protocol FavoritingSpellsDelegate {
     var isFavorited: Bool { get set }
 }
 
-class AllSpellsViewController: UIViewController {
+class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
@@ -31,6 +32,10 @@ class AllSpellsViewController: UIViewController {
       }
     }
     
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    var coreDataSpells = [Spell]()
+
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         if(segmentedControl.selectedSegmentIndex == 1) {
@@ -69,8 +74,19 @@ class AllSpellsViewController: UIViewController {
         registerDefaults()
         handleLoadSegment()
         
-        // TO-DO: Integrate this with Core Data
+        // Load the spells from the API & from CoreData
+        fetchSpells()
         performSearch(firstLoad: true)
+    }
+    
+    // Get spells from CoreData
+    func fetchSpells() {
+        do {
+            // Get all Spell objects in Core Data
+            self.coreDataSpells = try managedObjectContext.fetch(Spell.fetchRequest())
+        } catch {
+            fatalError("Error: \(error)")
+        }
     }
     
     // Display network error to user
@@ -186,8 +202,9 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 withIdentifier: cellIdentifier,
                 for: indexPath) as! SearchResultCell
             
-            cell.favoriteButton.addTarget(self, action: #selector(self.favoriteSpell(_:)), for: .touchUpInside)
+            cell.delegate = self
             
+            // Get the data to display in the search result cell
             var searchKey: String
             if currentSort == "Name" {
                 searchKey = search.searchResultsKeysByName[indexPath.row]
@@ -195,7 +212,10 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 searchKey = search.searchResultsKeysByLevel[indexPath.row]
             }
             let searchResult = search.searchResultsDict[searchKey]!
+            
             cell.configure(for: searchResult)
+            
+            cell.data = searchResult
             return cell
         }
     }
@@ -237,8 +257,63 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Data
     // TO-DO: Add favoriting functionality locally and with Core Data
-    @objc func favoriteSpell(_ sender: UIButton) {
-        print("inside favorite spell button")
+    func favoritesButtonTapped(cell: SearchResultCell) {
+        print("-- inside favorite spell button")
+        
+        // Create the spell entity
+        let spellToSave = Spell(context: managedObjectContext)
+        spellToSave.archetype = cell.data.archetype
+        spellToSave.castingTime = cell.data.castingTime
+        spellToSave.circles = cell.data.circles
+        spellToSave.components = cell.data.components
+        spellToSave.concentration = cell.data.concentration
+        spellToSave.desc = cell.data.desc
+        spellToSave.dndClass = cell.data.dndClass
+        spellToSave.duration = cell.data.duration
+        spellToSave.higherLevelDesc = cell.data.higherLevelDesc
+        spellToSave.isConcentration = cell.data.isConcentration
+        spellToSave.isFavorited = cell.data.isFavorited
+        spellToSave.isRitual = cell.data.isRitual
+        spellToSave.level = cell.data.level
+        spellToSave.levelNum = cell.data.levelNum!
+        spellToSave.material = cell.data.material
+        spellToSave.name = cell.data.name
+        spellToSave.page = cell.data.page
+        spellToSave.range = cell.data.range
+        spellToSave.ritual = cell.data.ritual
+        spellToSave.school = cell.data.school
+        spellToSave.slug = cell.data.slug
+                
+        // Save the spell entity if no duplicate exists
+        // Otherwise, if a duplicate exists, update the spell entity
+        if !(someEntityExists(slug: cell.data.slug!)) {
+            do {
+               try managedObjectContext.save()
+            } catch {
+                fatalError("Error: \(error)")
+            }
+        } else {
+            
+        }
+        
+        print("End of favorites button function")
+    }
+    
+    // Avoid duplicates
+    func someEntityExists(slug: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Spell")
+        fetchRequest.predicate = NSPredicate(format: "slug = %@", slug)
+        
+        var results: [NSManagedObject] = []
+
+        do {
+            results = try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            print("Error executing fetch request: \(error)")
+        }
+
+        return results.count > 0
     }
 }
 
