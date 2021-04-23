@@ -57,6 +57,7 @@ class Search {
                         // Parse JSON on a background thread
                         self.searchResults = self.parse(data: data)
                         self.spellsArrayToDict(self.searchResults)
+                        // TO-DO: Core Data Overwrite Favorites
 
                         DispatchQueue.main.async {
                             self.isLoading = false

@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Global helper functions and variables
 let applicationDocumentsDirectory: URL = {
   let paths = FileManager.default.urls(
     for: .documentDirectory,

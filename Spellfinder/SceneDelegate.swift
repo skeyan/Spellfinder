@@ -19,13 +19,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         // guard let _ = (scene as? UIWindowScene) else { return }
+        print("in sceneWillConnectTo")
         let tabController = window!.rootViewController as! UITabBarController
-          if let tabViewControllers = tabController.viewControllers {
+        if let tabViewControllers = tabController.viewControllers {
             // First set of screens is All Spells
-            let navController = tabViewControllers[0] as! UINavigationController
+            var navController = tabViewControllers[0] as! UINavigationController
             let controller = navController.viewControllers.first as! AllSpellsViewController
             controller.managedObjectContext = managedObjectContext
-            print("in sceneWillConnectTo")
+            
+            // Third set of screens is Favorites
+            navController = tabViewControllers[2] as! UINavigationController
+            let controller2 = navController.viewControllers.first as! FavoritesViewController
+            controller2.managedObjectContext = managedObjectContext
         }
     }
 

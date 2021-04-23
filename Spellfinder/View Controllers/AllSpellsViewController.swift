@@ -239,6 +239,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Detail spell view
         if (segue.identifier == "ShowSpellDetail" && sender != nil) {
             // Pass data to next view
             let controller = segue.destination as! DetailSpellViewController
@@ -259,8 +260,8 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     // TO-DO: Add favoriting functionality locally and with Core Data
     func favoritesButtonTapped(cell: SearchResultCell) {
         print("-- inside favorite spell button")
-        // Save the spell entity if no duplicate exists
-        // Otherwise, if a duplicate exists, update the spell entity
+        // Save the spell entity if that spell doesn't already exist in Core Data
+        // Otherwise, if that spell is in Core Data, delete it (unfavorite it)
         if !(someEntityExists(slug: cell.data.slug!)) {
             // Create the spell entity
             let spellToSave = Spell(context: managedObjectContext)
@@ -302,8 +303,8 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
             
             // Update core data
-            let spellToUpdate = retrieveSpell(slug: cell.data.slug!)
-            spellToUpdate!.isFavorited = cell.data.isFavorited
+            let spellToDelete = retrieveSpell(slug: cell.data.slug!)
+            self.managedObjectContext.delete(spellToDelete!)
             
             do {
                try managedObjectContext.save()

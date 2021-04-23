@@ -6,9 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
-class FavoritesViewController: UIViewController {
-
+class FavoritesViewController: UIViewController, SearchResultCellDelegate {
+    // MARK: - Instance Variables
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    var coreDataSpells = [Spell]()
+    
+    
+    // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,5 +32,11 @@ class FavoritesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    // MARK: - Core Data
+    func favoritesButtonTapped(cell: SearchResultCell) {
+        <#code#>
+    }
 
 }

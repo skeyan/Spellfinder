@@ -72,15 +72,25 @@ class SearchResultCell: UITableViewCell {
         componentsValueLabel.text = searchResult.components
         durationValueLabel.text = searchResult.duration
         rangeValueLabel.text = searchResult.range
+        // Concentration
         if searchResult.isConcentration {
             concentrationValueLabel.textColor = UIColor(named: "AccentColor")
         } else {
             concentrationValueLabel.textColor = UIColor(named: "GreyColor")
         }
+        // Ritual
         if searchResult.isRitual {
             ritualValueLabel.textColor = UIColor(named: "AccentColor")
         } else {
             ritualValueLabel.textColor = UIColor(named: "GreyColor")
+        }
+        // Favorites
+        if(searchResult.isFavorited) {
+            let image = UIImage(systemName: "star.fill")
+            favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(systemName: "star")
+            favoriteButton.setImage(image, for: .normal)
         }
     }
 }
