@@ -31,11 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navController = tabViewControllers[2] as! UINavigationController
             let controller2 = navController.viewControllers.first as! FavoritesViewController
             controller2.managedObjectContext = managedObjectContext
+            controller2.allSpellsViewController = controller
             let _ = controller2.view
         }
         listenForFatalCoreDataNotifications()
     }
-
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

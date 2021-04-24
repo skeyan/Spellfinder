@@ -261,7 +261,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     // MARK: - Core Data
     // TO-DO: Add favoriting functionality locally and with Core Data
     func favoritesButtonTapped(cell: SearchResultCell) {
-        print("-- inside favorite spell button")
         // Save the spell entity if that spell doesn't already exist in Core Data
         // Otherwise, if that spell is in Core Data, delete it (unfavorite it)
         if !(someEntityExists(slug: cell.data.slug!)) {
@@ -323,8 +322,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             let image = UIImage(systemName: "star")
             cell.favoriteButton.setImage(image, for: .normal)
         }
-        
-        print("End of favorites button function")
     }
     
     // MARK: - Core Data Helpers

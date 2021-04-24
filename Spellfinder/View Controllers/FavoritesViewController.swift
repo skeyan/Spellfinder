@@ -92,6 +92,30 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
     func favoritesButtonTapped(cell: FavoritesCell) {
         // TO-DO: Core Data favoriting logic for favorites page
         print("-- in favorites button on Favorites screen")
+        let indexPath = tableView.indexPath(for: cell)
+        let favoritedSpell = fetchedResultsController.object(at: indexPath!)
+        
+        // Update instance spells array
+        allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
+        allSpellsViewController.tableView.reloadData()
+        
+        managedObjectContext.delete(favoritedSpell)
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        // TO-DO: Update the UI
+        if(cell.data.isFavorited) {
+            let image = UIImage(systemName: "star.fill")
+            cell.favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(systemName: "star")
+            cell.favoriteButton.setImage(image, for: .normal)
+        }
     }
 }
 
@@ -99,22 +123,12 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
 extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionInfo = fetchedResultsController.sections![section]
-        if (sectionInfo.numberOfObjects == 0) {
-            // return 1
-            return 0
-        } else {
-            return sectionInfo.numberOfObjects
-        }
+        return sectionInfo.numberOfObjects
+        
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if (fetchedResultsController.sections![indexPath.section].numberOfObjects == 0) {
-            /*
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: TableView.CellIdentifiers.noFavoritesCell,
-                for: indexPath)
-            return cell
-             */
             let cell = tableView.dequeueReusableCell(
                 withIdentifier: TableView.CellIdentifiers.noFavoritesCell,
                 for: indexPath)
@@ -136,7 +150,6 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     // Swipe to delete
-    // TO-DO: Also unfavorite the instance spell in AllSpellsViewController
     func tableView(
       _ tableView: UITableView,
       commit editingStyle: UITableViewCell.EditingStyle,
@@ -145,18 +158,44 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
       if editingStyle == .delete {
         let favoritedSpell = fetchedResultsController.object(
           at: indexPath)
+        
+        // Update instance spells array
+        allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
+        allSpellsViewController.tableView.reloadData()
+        
         managedObjectContext.delete(favoritedSpell)
+        
+        // Save context
         do {
-          try managedObjectContext.save()
+            try managedObjectContext.save()
         } catch {
-          fatalCoreDataError(error)
+            fatalCoreDataError(error)
         }
       }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        /*
+        // Perform segue to Spell Detail
+        let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
+        performSegue(withIdentifier: "ShowSpellDetail", sender: cell)
+         */
+    }
+    
+    // UI improvement - Prevent selection in certain cases
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if (fetchedResultsController.sections![indexPath.section].numberOfObjects == 0) {
+            return nil
+        } else {
+            return indexPath
+        }
+    }
 }
 
-// MARK: - NSFetchedResultsController Delegate Extension
 
+// MARK: - NSFetchedResultsController Delegate Extension
 extension FavoritesViewController: NSFetchedResultsControllerDelegate {
   func controllerWillChangeContent(
     _ controller: NSFetchedResultsController<NSFetchRequestResult>

@@ -32,7 +32,7 @@ class FavoritesCell: UITableViewCell {
     weak var delegate: FavoritesCellDelegate?
     
     var data: Spell!
-    
+        
     // MARK: - Actions
     @IBAction func animateButton(_ sender: UIButton) {
         // Animate the tap on the favorites button
