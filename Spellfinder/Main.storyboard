@@ -353,7 +353,7 @@
             </objects>
             <point key="canvasLocation" x="2583.1999999999998" y="76.911544227886068"/>
         </scene>
-        <!--Search Results View Controller-->
+        <!--Search Results-->
         <scene sceneID="uf6-oI-yh8">
             <objects>
                 <viewController id="6PI-43-Llt" customClass="SearchResultsViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -394,7 +394,7 @@
                             <constraint firstItem="H3B-eS-uJ3" firstAttribute="top" secondItem="nhz-hY-RUE" secondAttribute="top" id="yUX-CA-LAU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PXl-r0-HqV"/>
+                    <navigationItem key="navigationItem" title="Search Results" id="PXl-r0-HqV"/>
                     <connections>
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
                     </connections>
@@ -403,21 +403,40 @@
             </objects>
             <point key="canvasLocation" x="3325.5999999999999" y="76.911544227886068"/>
         </scene>
-        <!--Favorites View Controller-->
+        <!--Favorites-->
         <scene sceneID="26N-5m-E0G">
             <objects>
                 <viewController id="sXb-uH-fHs" customClass="FavoritesViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yhv-lK-oEm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pVk-qq-NQU">
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="sXb-uH-fHs" id="U92-Oy-11w"/>
+                                    <outlet property="delegate" destination="sXb-uH-fHs" id="vIi-TY-SIA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="3Jc-5n-joD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pVk-qq-NQU" firstAttribute="leading" secondItem="3Jc-5n-joD" secondAttribute="leading" id="3pF-wt-yt8"/>
+                            <constraint firstItem="pVk-qq-NQU" firstAttribute="top" secondItem="3Jc-5n-joD" secondAttribute="top" id="EjY-zb-1bs"/>
+                            <constraint firstItem="3Jc-5n-joD" firstAttribute="bottom" secondItem="pVk-qq-NQU" secondAttribute="bottom" id="a2C-3h-ozR"/>
+                            <constraint firstItem="pVk-qq-NQU" firstAttribute="trailing" secondItem="3Jc-5n-joD" secondAttribute="trailing" id="rbC-sG-iJd"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="2jS-4I-dkD"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="2jS-4I-dkD"/>
+                    <connections>
+                        <outlet property="tableView" destination="pVk-qq-NQU" id="zsK-Fg-d8c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKI-zf-KSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1864.8" y="1536.8815592203898"/>
+            <point key="canvasLocation" x="1864.8" y="1535.9820089955024"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="JQM-Hb-Tyq">
@@ -518,7 +537,7 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="star.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.40149587390000002" green="0.80285286899999997" blue="0.8549141884" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.40099999308586121" green="0.80299997329711914" blue="0.85500001907348633" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

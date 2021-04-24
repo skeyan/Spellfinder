@@ -23,3 +23,12 @@ func spellsEntitiesToDict(_ arr: [Spell]) -> Dictionary<String, Spell> {
     return spellsDict
 }
 
+let dataSaveFailedNotification = Notification.Name(
+  rawValue: "DataSaveFailedNotification")
+
+func fatalCoreDataError(_ error: Error) {
+  print("*** Fatal error: \(error)")
+  NotificationCenter.default.post(
+    name: dataSaveFailedNotification,
+    object: nil)
+}

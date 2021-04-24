@@ -86,7 +86,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
             self.coreDataSpells = try managedObjectContext.fetch(Spell.fetchRequest()) 
             
         } catch {
-            fatalError("Error: \(error)")
+            fatalCoreDataError(error)
         }
     }
     
@@ -297,7 +297,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             do {
                try managedObjectContext.save()
             } catch {
-                fatalError("Error: \(error)")
+                fatalCoreDataError(error)
             }
         } else {
             // Update local instance array for table
@@ -311,7 +311,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             do {
                try managedObjectContext.save()
             } catch {
-                fatalError("Error: \(error)")
+                fatalCoreDataError(error)
             }
         }
         
@@ -338,7 +338,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             results = try managedObjectContext.fetch(fetchRequest)
         }
         catch {
-            print("Error executing fetch request: \(error)")
+            fatalCoreDataError(error)
         }
 
         if results.count != 0 {
@@ -358,7 +358,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             results = try managedObjectContext.fetch(fetchRequest)
         }
         catch {
-            print("Error executing fetch request: \(error)")
+            fatalCoreDataError(error)
         }
 
         return results.count > 0
