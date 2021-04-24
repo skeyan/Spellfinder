@@ -30,12 +30,14 @@ class Search {
     func performSearch(
         for text: String,
         firstLoad: Bool,
+        coreDataSpells: [Spell],
         completion: @escaping SearchComplete
     ) {
-        print("The search text is '\(text)'")
-        
         // Perform search
         if firstLoad || !text.isEmpty {
+            // Debug only
+            // print("-- Printing Core Data Spells that were passed through")
+            // print(coreDataSpells)
             
             // Indicate we are getting data from API
             dataTask?.cancel()
@@ -57,7 +59,7 @@ class Search {
                         // Parse JSON on a background thread
                         self.searchResults = self.parse(data: data)
                         self.spellsArrayToDict(self.searchResults)
-                        // TO-DO: Core Data Overwrite Favorites
+                        self.coreDataOverwrite(coreDataSpells)
 
                         DispatchQueue.main.async {
                             self.isLoading = false
@@ -129,6 +131,13 @@ class Search {
             newSearchResultsKeysByLevel.append(spell.slug!)
         }
         searchResultsKeysByLevel = newSearchResultsKeysByLevel
+    }
+    
+    // Use Core Data favorited spells to overwrite instance array from API
+    private func coreDataOverwrite(_ spellEntities: [Spell]) -> Void {
+        for spell in spellEntities {
+            searchResultsDict[spell.slug!]?.isFavorited = spell.isFavorited
+        }
     }
 }
 

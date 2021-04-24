@@ -36,7 +36,7 @@ class FavoritesViewController: UIViewController, SearchResultCellDelegate {
     
     // MARK: - Core Data
     func favoritesButtonTapped(cell: SearchResultCell) {
-        <#code#>
+        // TO-DO: Core Data favoriting logic for favorites page
     }
 
 }

@@ -15,4 +15,11 @@ let applicationDocumentsDirectory: URL = {
   return paths[0]
 }()
 
+func spellsEntitiesToDict(_ arr: [Spell]) -> Dictionary<String, Spell> {
+    var spellsDict = Dictionary<String, Spell>()
+    for spell in arr {
+        spellsDict[spell.slug!] = spell
+    }
+    return spellsDict
+}
 

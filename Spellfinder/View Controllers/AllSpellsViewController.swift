@@ -76,14 +76,15 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         
         // Load the spells from the API & from CoreData
         fetchSpells()
-        performSearch(firstLoad: true)
+        performSearch(firstLoad: true, coreDataSpells: self.coreDataSpells)
     }
     
     // Get spells from CoreData
     func fetchSpells() {
         do {
             // Get all Spell objects in Core Data
-            self.coreDataSpells = try managedObjectContext.fetch(Spell.fetchRequest())
+            self.coreDataSpells = try managedObjectContext.fetch(Spell.fetchRequest()) 
+            
         } catch {
             fatalError("Error: \(error)")
         }
@@ -144,10 +145,11 @@ extension AllSpellsViewController: UISearchBarDelegate {
         // performSearch(firstLoad: false)
     }
     
-    func performSearch(firstLoad: Bool) {
+    func performSearch(firstLoad: Bool, coreDataSpells: [Spell]) {
       search.performSearch(
         for: searchBar.text!,
-        firstLoad: firstLoad) { success in
+        firstLoad: firstLoad,
+        coreDataSpells: coreDataSpells) { success in
           if !success {
             self.showNetworkError()
           }
