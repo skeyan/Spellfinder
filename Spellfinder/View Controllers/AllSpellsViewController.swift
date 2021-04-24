@@ -20,7 +20,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     // MARK: - Instance Variables
-    private let search = Search()
+    let search = Search()
     
     var currentSort = "Name"
     

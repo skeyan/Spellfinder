@@ -31,6 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navController = tabViewControllers[2] as! UINavigationController
             let controller2 = navController.viewControllers.first as! FavoritesViewController
             controller2.managedObjectContext = managedObjectContext
+            let _ = controller2.view
         }
         listenForFatalCoreDataNotifications()
     }
