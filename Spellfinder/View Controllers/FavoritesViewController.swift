@@ -90,8 +90,6 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
     }
     
     func favoritesButtonTapped(cell: FavoritesCell) {
-        // TO-DO: Core Data favoriting logic for favorites page
-        print("-- in favorites button on Favorites screen")
         let indexPath = tableView.indexPath(for: cell)
         let favoritedSpell = fetchedResultsController.object(at: indexPath!)
         
@@ -108,7 +106,6 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
             fatalCoreDataError(error)
         }
         
-        // TO-DO: Update the UI
         if(cell.data.isFavorited) {
             let image = UIImage(systemName: "star.fill")
             cell.favoriteButton.setImage(image, for: .normal)

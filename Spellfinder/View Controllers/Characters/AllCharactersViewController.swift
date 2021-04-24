@@ -12,6 +12,13 @@ class AllCharactersViewController: UIViewController {
     @IBOutlet weak var addCharacterButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    // MARK: - Instance Variables
+    struct TableView {
+      struct CellIdentifiers {
+        static let characterCell = "CharacterCell"
+      }
+    }
+    
     // MARK: - Actions
     @IBAction func addCharacterWasPressed(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1,
@@ -20,7 +27,8 @@ class AllCharactersViewController: UIViewController {
             },
             completion: { _ in
                 UIView.animate(withDuration: 0.1) {
-                sender.transform = CGAffineTransform.identity
+                    sender.transform = CGAffineTransform.identity
+                    self.performSegue(withIdentifier: "AddCharacter", sender: self)
             }
         })
     }
@@ -29,8 +37,11 @@ class AllCharactersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        // addCharacterButton.setBackgroundImage(imageFromColor(colour: UIColor.systemGray6), for: .highlighted)
+        // Register nibs
+        let cellNib = UINib(nibName: TableView.CellIdentifiers.characterCell, bundle: nil)
+        tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.characterCell)
+
+        // UI
         addCharacterButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
     }
     
@@ -62,18 +73,24 @@ class AllCharactersViewController: UIViewController {
 // MARK: - Table View Delegate
 extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "TestCell")
-        if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "TestCell")
-        }
-        cell?.backgroundColor = UIColor(named: "AccentColor")
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell)
         
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // TO-DO: Perform segue to Character Detail
+         
+        // TO-DO: Perform segue to Add Character screen
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
+    }
 }

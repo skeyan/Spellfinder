@@ -26,6 +26,10 @@
 		B067175D2634B49400495FF8 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717592634B49400495FF8 /* Character+CoreDataProperties.swift */; };
 		B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717602634B53C00495FF8 /* AllCharactersViewController.swift */; };
 		B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717642634B6BE00495FF8 /* UIButton+Border.swift */; };
+		B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717682634C57900495FF8 /* AddCharacterViewController.swift */; };
+		B067176C2634C58E00495FF8 /* DetailCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B067176B2634C58E00495FF8 /* DetailCharacterViewController.swift */; };
+		B06717712634C85100495FF8 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06717702634C85100495FF8 /* CharacterCell.xib */; };
+		B06717782634CC2500495FF8 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717772634CC2500495FF8 /* CharacterCell.swift */; };
 		B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0845EAD261D82FD00D56FB0 /* SearchResult.swift */; };
 		B0845EB2261E203400D56FB0 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0845EB1261E203400D56FB0 /* LoadingCell.xib */; };
 		B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0851200262789DB00000D46 /* DetailSpellViewController.swift */; };
@@ -57,6 +61,10 @@
 		B06717592634B49400495FF8 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B06717602634B53C00495FF8 /* AllCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCharactersViewController.swift; sourceTree = "<group>"; };
 		B06717642634B6BE00495FF8 /* UIButton+Border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Border.swift"; sourceTree = "<group>"; };
+		B06717682634C57900495FF8 /* AddCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCharacterViewController.swift; sourceTree = "<group>"; };
+		B067176B2634C58E00495FF8 /* DetailCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCharacterViewController.swift; sourceTree = "<group>"; };
+		B06717702634C85100495FF8 /* CharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		B06717772634CC2500495FF8 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		B0845EAD261D82FD00D56FB0 /* SearchResult.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; tabWidth = 2; };
 		B0845EB1261E203400D56FB0 /* LoadingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		B0851200262789DB00000D46 /* DetailSpellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSpellViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,7 @@
 				B03838C8262A352B00316511 /* NothingFoundCell.xib */,
 				B0322D972626871A00C9FC32 /* SearchResultCell.xib */,
 				B05A329726269358002F630D /* SearchResultCell.swift */,
+				B06717732634C85600495FF8 /* Characters Screen */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -111,6 +120,35 @@
 				B06717472633BB3E00495FF8 /* NoFavoritesCell.xib */,
 			);
 			path = "Favorites Screen";
+			sourceTree = "<group>";
+		};
+		B06717732634C85600495FF8 /* Characters Screen */ = {
+			isa = PBXGroup;
+			children = (
+				B06717702634C85100495FF8 /* CharacterCell.xib */,
+				B06717772634CC2500495FF8 /* CharacterCell.swift */,
+			);
+			path = "Characters Screen";
+			sourceTree = "<group>";
+		};
+		B06717752634CBD600495FF8 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				B06717602634B53C00495FF8 /* AllCharactersViewController.swift */,
+				B06717682634C57900495FF8 /* AddCharacterViewController.swift */,
+				B067176B2634C58E00495FF8 /* DetailCharacterViewController.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		B067177A2634CE5B00495FF8 /* Spells */ = {
+			isa = PBXGroup;
+			children = (
+				B0D6513726162B3B00919473 /* AllSpellsViewController.swift */,
+				B0851200262789DB00000D46 /* DetailSpellViewController.swift */,
+				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
+			);
+			path = Spells;
 			sourceTree = "<group>";
 		};
 		B0845EA9261D45AC00D56FB0 /* Data Models */ = {
@@ -129,10 +167,8 @@
 		B0851203262789E100000D46 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B0D6513726162B3B00919473 /* AllSpellsViewController.swift */,
-				B0851200262789DB00000D46 /* DetailSpellViewController.swift */,
-				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
-				B06717602634B53C00495FF8 /* AllCharactersViewController.swift */,
+				B067177A2634CE5B00495FF8 /* Spells */,
+				B06717752634CBD600495FF8 /* Characters */,
 				B03752BE262A962B0062E281 /* FavoritesViewController.swift */,
 			);
 			path = "View Controllers";
@@ -248,6 +284,7 @@
 				B029DBBD262B822D0004D096 /* FiltersUsedCell.xib in Resources */,
 				B06717482633BB3E00495FF8 /* NoFavoritesCell.xib in Resources */,
 				B029DBBA262B82220004D096 /* SearchResultHeaderCell.xib in Resources */,
+				B06717712634C85100495FF8 /* CharacterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +296,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D6513E26162B3B00919473 /* Spellfinder.xcdatamodeld in Sources */,
+				B067176C2634C58E00495FF8 /* DetailCharacterViewController.swift in Sources */,
 				B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */,
+				B06717782634CC2500495FF8 /* CharacterCell.swift in Sources */,
 				B0D6513826162B3B00919473 /* AllSpellsViewController.swift in Sources */,
 				B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */,
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
@@ -272,6 +311,7 @@
 				B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */,
 				B067175B2634B49400495FF8 /* Spell+CoreDataProperties.swift in Sources */,
 				B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */,
+				B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
 				B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */,
 				B067175A2634B49400495FF8 /* Spell+CoreDataClass.swift in Sources */,
