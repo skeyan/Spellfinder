@@ -177,11 +177,10 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        /*
         // Perform segue to Spell Detail
-        let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
-        performSegue(withIdentifier: "ShowSpellDetail", sender: cell)
-         */
+        let cell = tableView.cellForRow(at: indexPath) as? FavoritesCell
+        performSegue(withIdentifier: "ShowFavoritesSpellDetail", sender: cell)
+         
     }
     
     // UI improvement - Prevent selection in certain cases
@@ -190,6 +189,19 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
             return nil
         } else {
             return indexPath
+        }
+    }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Detail spell view
+        if (segue.identifier == "ShowFavoritesSpellDetail" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailSpellViewController
+            if tableView.indexPath(for: sender as! FavoritesCell) != nil {
+                let cell = sender as! FavoritesCell
+                controller.searchResultToDisplay = allSpellsViewController.search.searchResultsDict[cell.data.slug!]
+            }
         }
     }
 }

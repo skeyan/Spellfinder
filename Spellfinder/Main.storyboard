@@ -432,6 +432,7 @@
                     <navigationItem key="navigationItem" title="Favorites" id="2jS-4I-dkD"/>
                     <connections>
                         <outlet property="tableView" destination="pVk-qq-NQU" id="zsK-Fg-d8c"/>
+                        <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowFavoritesSpellDetail" id="oaE-U4-jCe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKI-zf-KSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -532,6 +533,9 @@
             <point key="canvasLocation" x="925.60000000000002" y="836.13193403298362"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="oaE-U4-jCe"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="books.vertical.fill" catalog="system" width="128" height="100"/>
         <image name="person.fill" catalog="system" width="128" height="120"/>
