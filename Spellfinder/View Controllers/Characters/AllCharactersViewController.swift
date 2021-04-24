@@ -45,29 +45,13 @@ class AllCharactersViewController: UIViewController {
         addCharacterButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
     }
     
-    // UI improvement - Add character button background helper function
-    func imageFromColor(colour: UIColor) -> UIImage
-    {
-        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContext(rect.size)
-        let context = UIGraphicsGetCurrentContext()
-        context!.setFillColor(colour.cgColor)
-        context!.fill(rect)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
-    }
-    
-
-    /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        // TO-DO: Prepare segue to Detail Character
     }
-    */
 }
 
 // MARK: - Table View Delegate
@@ -86,8 +70,7 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         
         // TO-DO: Perform segue to Character Detail
-         
-        // TO-DO: Perform segue to Add Character screen
+        self.performSegue(withIdentifier: "ShowCharacterDetail", sender: self)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
