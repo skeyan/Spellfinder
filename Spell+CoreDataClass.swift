@@ -2,7 +2,7 @@
 //  Spell+CoreDataClass.swift
 //  Spellfinder
 //
-//  Created by Eva Yan on 4/22/21.
+//  Created by Eva Yan on 4/24/21.
 //
 //
 
