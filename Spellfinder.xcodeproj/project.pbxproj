@@ -39,6 +39,7 @@
 		B0D6513E26162B3B00919473 /* Spellfinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B0D6513C26162B3B00919473 /* Spellfinder.xcdatamodeld */; };
 		B0D6514026162B3C00919473 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0D6513F26162B3C00919473 /* Assets.xcassets */; };
 		B0D6514326162B3C00919473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0D6514126162B3C00919473 /* LaunchScreen.storyboard */; };
+		B0D8A0702634F3A800431513 /* Retroica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0D8A06F2634F3A800431513 /* Retroica.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		B0D6513F26162B3C00919473 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0D6514226162B3C00919473 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B0D6514426162B3C00919473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0D8A06F2634F3A800431513 /* Retroica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Retroica.ttf; path = ../../../iosDev/Retroica.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,11 +212,20 @@
 				B0851203262789E100000D46 /* View Controllers */,
 				B018E9072628128700638504 /* Main.storyboard */,
 				B0D6513F26162B3C00919473 /* Assets.xcassets */,
+				B0D8A06E2634F39100431513 /* Fonts */,
 				B087339426339F2600F2A449 /* Launch Screen */,
 				B0D6514426162B3C00919473 /* Info.plist */,
 				B0D6513C26162B3B00919473 /* Spellfinder.xcdatamodeld */,
 			);
 			path = Spellfinder;
+			sourceTree = "<group>";
+		};
+		B0D8A06E2634F39100431513 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B0D8A06F2634F3A800431513 /* Retroica.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D6514326162B3C00919473 /* LaunchScreen.storyboard in Resources */,
+				B0D8A0702634F3A800431513 /* Retroica.ttf in Resources */,
 				B018E9082628128700638504 /* Main.storyboard in Resources */,
 				B03838C9262A352B00316511 /* NothingFoundCell.xib in Resources */,
 				B0322D982626871B00C9FC32 /* SearchResultCell.xib in Resources */,

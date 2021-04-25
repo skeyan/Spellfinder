@@ -20,15 +20,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         // guard let _ = (scene as? UIWindowScene) else { return }
         print("in sceneWillConnectTo")
+        for family in UIFont.familyNames.sorted() {
+            let names = UIFont.fontNames(forFamilyName: family)
+            print("Family: \(family) Font names: \(names)")
+        }
         let tabController = window!.rootViewController as! UITabBarController
         if let tabViewControllers = tabController.viewControllers {
             // First set of screens is All Spells
             var navController = tabViewControllers[0] as! UINavigationController
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Retroica", size: 18)!]
             let controller = navController.viewControllers.first as! AllSpellsViewController
             controller.managedObjectContext = managedObjectContext
             
+            // Second set of screens is Characters
+            navController = tabViewControllers[1] as! UINavigationController
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Retroica", size: 18)!]
+            
             // Third set of screens is Favorites
             navController = tabViewControllers[2] as! UINavigationController
+            navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Retroica", size: 18)!]
             let controller2 = navController.viewControllers.first as! FavoritesViewController
             controller2.managedObjectContext = managedObjectContext
             controller2.allSpellsViewController = controller

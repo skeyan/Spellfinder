@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--All Spells View Controller-->
+        <!--Spells-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="AllSpellsViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <constraint firstItem="dar-g0-gzd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wcL-eY-Hdu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hVa-QH-Nog"/>
+                    <navigationItem key="navigationItem" title="Spells" id="hVa-QH-Nog"/>
                     <connections>
                         <outlet property="searchBar" destination="qGd-NK-q4o" id="8aR-VO-QaR"/>
                         <outlet property="segmentedControl" destination="Yh7-lv-f0j" id="5YK-Rs-zgN"/>
@@ -449,10 +449,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8iB-cU-1cp">
-                                <rect key="frame" x="16" y="58" width="157" height="43"/>
-                                <color key="backgroundColor" name="BlueLogoColor"/>
+                                <rect key="frame" x="16" y="58" width="343" height="43"/>
+                                <color key="backgroundColor" name="GreyColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="ElC-Y4-HCu"/>
+                                    <constraint firstAttribute="width" constant="343" id="ElC-Y4-HCu"/>
                                     <constraint firstAttribute="height" constant="43" id="Twi-1F-gUl"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -497,7 +497,7 @@
                             <constraint firstItem="WBW-sp-GM1" firstAttribute="trailing" secondItem="C6R-IY-N5D" secondAttribute="trailing" id="O9o-Qm-BLJ"/>
                             <constraint firstItem="WBW-sp-GM1" firstAttribute="leading" secondItem="C6R-IY-N5D" secondAttribute="leading" id="VpF-2u-5Mo"/>
                             <constraint firstItem="WBW-sp-GM1" firstAttribute="top" secondItem="8iB-cU-1cp" secondAttribute="bottom" constant="13" id="rPT-KC-dDt"/>
-                            <constraint firstItem="8iB-cU-1cp" firstAttribute="centerX" secondItem="Bap-og-hub" secondAttribute="centerX" constant="-93" id="wcS-7B-hbo"/>
+                            <constraint firstItem="8iB-cU-1cp" firstAttribute="centerX" secondItem="Bap-og-hub" secondAttribute="centerX" id="wcS-7B-hbo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Characters" id="cQc-Su-Bbl"/>
@@ -512,7 +512,7 @@
             </objects>
             <point key="canvasLocation" x="1864.8" y="836.13193403298362"/>
         </scene>
-        <!--Add Character View Controller-->
+        <!--Add New Character-->
         <scene sceneID="boP-ZB-Php">
             <objects>
                 <tableViewController id="Lua-iF-Qgt" customClass="AddCharacterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -523,27 +523,27 @@
                         <sections>
                             <tableViewSection id="tsS-3F-PYF">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="jal-Mi-ex7">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="jal-Mi-ex7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jal-Mi-ex7" id="U5o-ze-omp">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="t20-y8-gED">
-                                        <rect key="frame" x="0.0" y="71.5" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="t20-y8-gED">
+                                        <rect key="frame" x="0.0" y="96" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="t20-y8-gED" id="Aah-b1-wwy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tQm-hX-Us0">
-                                        <rect key="frame" x="0.0" y="115" width="375" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="68" id="tQm-hX-Us0">
+                                        <rect key="frame" x="0.0" y="164" width="375" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tQm-hX-Us0" id="EYC-qE-ZC0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -555,7 +555,18 @@
                             <outlet property="delegate" destination="Lua-iF-Qgt" id="8ZS-FX-vgj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Xn3-Oh-DQI"/>
+                    <navigationItem key="navigationItem" title="Add New Character" id="Xn3-Oh-DQI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tMO-bj-JHF">
+                            <connections>
+                                <action selector="cancel" destination="Lua-iF-Qgt" id="tLh-X6-JcM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="am6-UK-CXF">
+                            <connections>
+                                <action selector="done" destination="Lua-iF-Qgt" id="EQu-dH-5iL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="541-0q-bjd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -777,9 +788,6 @@
         <image name="star.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="0.68321138619999999" green="0.32186764480000002" blue="0.80003875489999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
-        <namedColor name="BlueLogoColor">
-            <color red="0.17299999296665192" green="0.81599998474121094" blue="0.86699998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

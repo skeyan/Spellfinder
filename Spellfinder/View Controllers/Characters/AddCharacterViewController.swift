@@ -8,7 +8,19 @@
 import UIKit
 
 class AddCharacterViewController: UITableViewController {
+    
+    
+    
+    // MARK: - Actions
+      @IBAction func done() {
+        navigationController?.popViewController(animated: true)
+      }
 
+      @IBAction func cancel() {
+        navigationController?.popViewController(animated: true)
+      }
+
+    // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
 
