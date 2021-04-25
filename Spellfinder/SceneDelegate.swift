@@ -35,6 +35,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             // Second set of screens is Characters
             navController = tabViewControllers[1] as! UINavigationController
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Retroica", size: 18)!]
+            let controller1 = navController.viewControllers.first as! AllCharactersViewController
+            controller1.managedObjectContext = managedObjectContext
+            let _ = controller1.view
             
             // Third set of screens is Favorites
             navController = tabViewControllers[2] as! UINavigationController

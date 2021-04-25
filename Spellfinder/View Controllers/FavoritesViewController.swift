@@ -60,9 +60,6 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         
         // Get favorited spells from Core Data
         fetchSpells()
-        
-        // Debug only
-        print(allSpellsViewController.search.hasSearched)
     }
     
     deinit {

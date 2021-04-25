@@ -29,5 +29,16 @@ class CharacterCell: UITableViewCell {
     }
 
     // MARK:- Helper Methods
-    // TO-DO: Configure function that takes in a Character Entity 
+    func configure(for character: Character) {
+        characterIcon.image = UIImage(named: character.iconName!)
+        characterNameLabel.text = character.name
+        classValueLabel.text = character.dndClass
+        levelValueLabel.text = String(character.level)
+        
+        if let spells = character.spells {
+            spellsKnownValueLabel.text = String(spells.count)
+        } else {
+            spellsKnownValueLabel.text = "0"
+        }
+    }
 }

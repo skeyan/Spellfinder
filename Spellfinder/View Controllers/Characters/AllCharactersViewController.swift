@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreData
 
-class AllCharactersViewController: UIViewController {
+class AllCharactersViewController: UIViewController, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var addCharacterButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +19,31 @@ class AllCharactersViewController: UIViewController {
         static let characterCell = "CharacterCell"
       }
     }
+    
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    lazy var fetchedResultsController: NSFetchedResultsController<Character> = {
+      let fetchRequest = NSFetchRequest<Character>()
+
+      let entity = Character.entity()
+      fetchRequest.entity = entity
+
+      let sortDescriptor = NSSortDescriptor(
+        key: "name",
+        ascending: true)
+      fetchRequest.sortDescriptors = [sortDescriptor]
+
+      fetchRequest.fetchBatchSize = 20
+
+      let fetchedResultsController = NSFetchedResultsController(
+        fetchRequest: fetchRequest,
+        managedObjectContext: self.managedObjectContext,
+        sectionNameKeyPath: nil,
+        cacheName: "Characters")
+
+      fetchedResultsController.delegate = self
+      return fetchedResultsController
+    }()
     
     // MARK: - Actions
     @IBAction func addCharacterWasPressed(_ sender: UIButton) {
@@ -43,10 +69,25 @@ class AllCharactersViewController: UIViewController {
 
         // UI
         addCharacterButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
+        
+        // Get characters from Core Data
+        fetchCharacters()
+    }
+    
+    deinit {
+      fetchedResultsController.delegate = nil
+    }
+    
+    // MARK: - Core Data
+    func fetchCharacters() {
+      do {
+        try fetchedResultsController.performFetch()
+      } catch {
+        fatalCoreDataError(error)
+      }
     }
     
     // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -57,13 +98,18 @@ class AllCharactersViewController: UIViewController {
 // MARK: - Table View Delegate
 extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell) as! CharacterCell
         
-        return cell!
+        // Get the data to display in the character cell from Core Data
+        let character = fetchedResultsController.object(at: indexPath)
+        cell.configure(for: character)
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -111,6 +157,80 @@ extension AllSpellsViewController: AddCharacterViewControllerDelegate {
         print("edited character")
         navigationController?.popViewController(animated: true)
     }
-    
-    
+}
+
+// MARK: - NSFetchedResults Controller Delegate
+extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
+    func controllerWillChangeContent(
+      _ controller: NSFetchedResultsController<NSFetchRequestResult>
+    ) {
+      print("*** controllerWillChangeContent")
+      tableView.beginUpdates()
+    }
+
+    func controller(
+      _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+      didChange anObject: Any,
+      at indexPath: IndexPath?,
+      for type: NSFetchedResultsChangeType,
+      newIndexPath: IndexPath?
+    ) {
+      switch type {
+      case .insert:
+        print("*** NSFetchedResultsChangeInsert (object)")
+        tableView.insertRows(at: [newIndexPath!], with: .fade)
+
+      case .delete:
+        print("*** NSFetchedResultsChangeDelete (object)")
+        tableView.deleteRows(at: [indexPath!], with: .fade)
+
+      case .update:
+        print("*** NSFetchedResultsChangeUpdate (object)")
+        if let cell = tableView.cellForRow(
+          at: indexPath!) as? CharacterCell {
+          let character = controller.object(
+            at: indexPath!) as! Character
+          cell.configure(for: character)
+        }
+
+      case .move:
+        print("*** NSFetchedResultsChangeMove (object)")
+        tableView.deleteRows(at: [indexPath!], with: .fade)
+        tableView.insertRows(at: [newIndexPath!], with: .fade)
+        
+      @unknown default:
+        print("*** NSFetchedResults unknown type")
+      }
+    }
+
+    func controller(
+      _ controller: NSFetchedResultsController<NSFetchRequestResult>,
+      didChange sectionInfo: NSFetchedResultsSectionInfo,
+      atSectionIndex sectionIndex: Int,
+      for type: NSFetchedResultsChangeType
+    ) {
+      switch type {
+      case .insert:
+        print("*** NSFetchedResultsChangeInsert (section)")
+        tableView.insertSections(
+          IndexSet(integer: sectionIndex), with: .fade)
+      case .delete:
+        print("*** NSFetchedResultsChangeDelete (section)")
+        tableView.deleteSections(
+          IndexSet(integer: sectionIndex), with: .fade)
+      case .update:
+        print("*** NSFetchedResultsChangeUpdate (section)")
+      case .move:
+        print("*** NSFetchedResultsChangeMove (section)")
+      @unknown default:
+        print("*** NSFetchedResults unknown type")
+      }
+    }
+
+    func controllerDidChangeContent(
+      _ controller: NSFetchedResultsController<NSFetchRequestResult>
+    ) {
+      print("*** controllerDidChangeContent")
+      tableView.endUpdates()
+    }
 }
