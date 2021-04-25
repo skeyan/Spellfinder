@@ -2,7 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Character" representedClassName="Character" syncable="YES">
         <attribute name="dndClass" optional="YES" attributeType="String"/>
-        <attribute name="iconName" optional="YES" attributeType="String"/>
+        <attribute name="iconName" optional="YES" attributeType="String" defaultValueString="SwordIcon"/>
         <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spell" inverseName="character" inverseEntity="Spell"/>
@@ -32,7 +32,7 @@
         <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Character" inverseName="spells" inverseEntity="Character"/>
     </entity>
     <elements>
-        <element name="Spell" positionX="-63" positionY="-18" width="128" height="359"/>
         <element name="Character" positionX="-63" positionY="144" width="128" height="104"/>
+        <element name="Spell" positionX="-63" positionY="-18" width="128" height="359"/>
     </elements>
 </model>

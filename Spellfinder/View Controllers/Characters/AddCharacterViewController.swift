@@ -14,6 +14,14 @@ class AddCharacterViewController: UITableViewController {
     @IBOutlet weak var nameValueTextField: UITextField!
     @IBOutlet weak var levelValueTextField: UITextField!
     @IBOutlet weak var iconTableViewCell: UITableViewCell!
+    @IBOutlet weak var iconImage: UIImageView!
+    
+    // MARK: - Instance Variables
+    // Keep track of the chosen icon name
+    var iconName = "SwordIcon"
+    
+    // For editing
+    var characterToEdit: Character?
     
     // MARK: - Actions
     @IBAction func createButtonWasTouched(_ sender: UIButton) {
@@ -24,26 +32,23 @@ class AddCharacterViewController: UITableViewController {
             completion: { _ in
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
-                    let trimmedLevel = self.levelValueTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                    let trimmedName = self.nameValueTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-                    
-                    if (trimmedLevel != "" && trimmedName != "") {
-                        // TO-DO: "Done" action - create character
+                    if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
+                        // TO-DO: "Done" action - create character with inputted info
                         self.navigationController?.popViewController(animated: true)
                     } else {
-                        let title = "Please complete the fields!"
-                        let message = "The name and level fields cannot be blank."
-                        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
+                        self.presentInvalidInputAlert()
                     }
             }
         })
     }
     
     @IBAction func done() {
-        navigationController?.popViewController(animated: true)
-        // TO-DO: Create character for Core Data
+        if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
+            // TO-DO: Create character for Core Data with inputted info
+            navigationController?.popViewController(animated: true)
+        } else {
+            presentInvalidInputAlert()
+        }
     }
 
     @IBAction func cancel() {
@@ -70,17 +75,25 @@ class AddCharacterViewController: UITableViewController {
         iconTableViewCell.layer.masksToBounds = true
         
         nameValueTextField.becomeFirstResponder()
+        
+        // Icon
+        if let character = characterToEdit {
+            // TO-DO: Editing Stuff
+            iconName = character.iconName!
+        }
+        iconImage.image = UIImage(named: iconName)
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(
+      for segue: UIStoryboardSegue,
+      sender: Any?
+    ) {
+      if segue.identifier == "PickIcon" {
+        let controller = segue.destination as! IconPickerViewController
+        controller.delegate = self
+      }
     }
-    */
     
     // MARK: - Table View
     // UI improvement - Make custom layout for section headers
@@ -127,5 +140,31 @@ class AddCharacterViewController: UITableViewController {
         } else {
             return false
         }
+    }
+    
+    // MARK: - Helper Methods
+    func validateInput(didEnterName name: String, didEnterLevel level: String) -> Bool {
+        let trimmedLevel = level.trimmingCharacters(in: .whitespacesAndNewlines)
+        let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return (trimmedLevel != "" && trimmedName != "")
+    }
+}
+
+// MARK: - Icon Picker View Controller Delegate
+extension AddCharacterViewController: IconPickerViewControllerDelegate {
+    func iconPicker(_ picker: IconPickerViewController, didPick iconName: String
+    ) {
+      self.iconName = iconName
+      iconImage.image = UIImage(named: iconName)
+      navigationController?.popViewController(animated: true)
+    }
+
+    func presentInvalidInputAlert() -> Void {
+        let title = "Please complete the fields!"
+        let message = "The name and level fields cannot be blank."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }

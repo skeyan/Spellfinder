@@ -125,25 +125,18 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (fetchedResultsController.sections![indexPath.section].numberOfObjects == 0) {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: TableView.CellIdentifiers.noFavoritesCell,
-                for: indexPath)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: TableView.CellIdentifiers.favoritesCell,
-                for: indexPath) as! FavoritesCell
-            
-            cell.delegate = self
-            
-            // Get the data to display in the favorites cell from Core Data
-            let favoritedSpell = fetchedResultsController.object(at: indexPath)
-            cell.configure(for: favoritedSpell)
-            cell.data = favoritedSpell
-            
-            return cell
-        }
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TableView.CellIdentifiers.favoritesCell,
+            for: indexPath) as! FavoritesCell
+        
+        cell.delegate = self
+        
+        // Get the data to display in the favorites cell from Core Data
+        let favoritedSpell = fetchedResultsController.object(at: indexPath)
+        cell.configure(for: favoritedSpell)
+        cell.data = favoritedSpell
+        
+        return cell
     }
 
     // Swipe to delete

@@ -2,7 +2,7 @@
 //  Character+CoreDataProperties.swift
 //  Spellfinder
 //
-//  Created by Eva Yan on 4/24/21.
+//  Created by Eva Yan on 4/25/21.
 //
 //
 
@@ -16,10 +16,10 @@ extension Character {
         return NSFetchRequest<Character>(entityName: "Character")
     }
 
-    @NSManaged public var name: String?
     @NSManaged public var dndClass: String?
-    @NSManaged public var level: Int64
     @NSManaged public var iconName: String?
+    @NSManaged public var level: Int64
+    @NSManaged public var name: String?
     @NSManaged public var spells: NSSet?
 
 }
