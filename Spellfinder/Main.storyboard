@@ -515,7 +515,7 @@
         <!--Add New Character-->
         <scene sceneID="boP-ZB-Php">
             <objects>
-                <tableViewController id="Lua-iF-Qgt" customClass="AddCharacterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddCharacterViewController" id="Lua-iF-Qgt" customClass="AddCharacterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4d4-9n-D57">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -556,20 +556,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your character's class..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-xM-8rz">
-                                                    <rect key="frame" x="20" y="24" width="354.66666666666669" height="20"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ms-Lj-qmI">
+                                                    <rect key="frame" x="20" y="24" width="71" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" systemColor="placeholderTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-xM-8rz">
+                                                    <rect key="frame" x="149" y="25" width="225" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="225" id="1XX-Nb-r4s"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" name="DarkGreyColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ruw-xM-8rz" firstAttribute="leading" secondItem="GdD-Pc-jaX" secondAttribute="leading" constant="20" id="OfM-fT-G3e"/>
-                                                <constraint firstItem="ruw-xM-8rz" firstAttribute="top" secondItem="GdD-Pc-jaX" secondAttribute="top" constant="24" id="UnF-kC-zeQ"/>
-                                                <constraint firstAttribute="bottom" secondItem="ruw-xM-8rz" secondAttribute="bottom" constant="24" id="caA-kF-oTY"/>
-                                                <constraint firstAttribute="trailing" secondItem="ruw-xM-8rz" secondAttribute="trailing" constant="8" id="feR-hR-Ouc"/>
+                                                <constraint firstAttribute="trailing" secondItem="ruw-xM-8rz" secondAttribute="trailing" constant="8.6699999999999999" id="AmO-aG-DlV"/>
+                                                <constraint firstItem="3Ms-Lj-qmI" firstAttribute="leading" secondItem="GdD-Pc-jaX" secondAttribute="leading" constant="20" id="BGr-vM-5L6"/>
+                                                <constraint firstItem="ruw-xM-8rz" firstAttribute="top" secondItem="GdD-Pc-jaX" secondAttribute="top" constant="25" id="UAU-h3-WrZ"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Ms-Lj-qmI" secondAttribute="bottom" constant="23" id="Yea-Nm-7E2"/>
+                                                <constraint firstItem="ruw-xM-8rz" firstAttribute="leading" secondItem="3Ms-Lj-qmI" secondAttribute="trailing" constant="58" id="cbp-s3-tMS"/>
+                                                <constraint firstAttribute="bottom" secondItem="ruw-xM-8rz" secondAttribute="bottom" constant="23" id="ceP-Zf-pz1"/>
+                                                <constraint firstItem="3Ms-Lj-qmI" firstAttribute="top" secondItem="GdD-Pc-jaX" secondAttribute="top" constant="24" id="px9-GY-5yj"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="6nR-1e-nco" kind="show" identifier="PickClass" id="nVa-dn-Qm1"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="68" id="sn6-AX-reN">
                                         <rect key="frame" x="0.0" y="220" width="414" height="68"/>
@@ -702,7 +717,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="541-0q-bjd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2597.5999999999999" y="834.33283358320841"/>
+            <point key="canvasLocation" x="2597.1014492753625" y="833.96739130434787"/>
         </scene>
         <!--Detail Character View Controller-->
         <scene sceneID="dkC-lT-bcg">
@@ -853,7 +868,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ipt-7j-k37">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Icon Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ipt-7j-k37">
                                             <rect key="frame" x="20" y="0.0" width="374" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -874,6 +889,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pVU-JK-m8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4091" y="834"/>
+        </scene>
+        <!--Class Picker View Controller-->
+        <scene sceneID="SnI-1m-PxY">
+            <objects>
+                <tableViewController id="6nR-1e-nco" customClass="ClassPickerViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QKv-Iy-0k3">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClassCell" textLabel="znv-oi-Hf7" rowHeight="68" style="IBUITableViewCellStyleDefault" id="bOd-yE-O0t">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bOd-yE-O0t" id="czF-W9-mf7">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Class Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="znv-oi-Hf7">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="6nR-1e-nco" id="EPk-ws-Y5C"/>
+                            <outlet property="delegate" destination="6nR-1e-nco" id="MGy-ey-Pr3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="qUY-In-Ael"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KPm-FL-abb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4793" y="834"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nhK-Ug-sYs">

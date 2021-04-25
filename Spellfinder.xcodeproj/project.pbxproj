@@ -41,6 +41,7 @@
 		B0D8A07926360B8700431513 /* Character+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07626360B8700431513 /* Character+CoreDataClass.swift */; };
 		B0D8A07A26360B8700431513 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07726360B8700431513 /* Character+CoreDataProperties.swift */; };
 		B0D8A07F26360DB300431513 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07E26360DB300431513 /* IconPickerViewController.swift */; };
+		B0D8A086263620AB00431513 /* ClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A085263620AB00431513 /* ClassPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		B0D8A07626360B8700431513 /* Character+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B0D8A07726360B8700431513 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0D8A07E26360DB300431513 /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
+		B0D8A085263620AB00431513 /* ClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +144,7 @@
 				B06717682634C57900495FF8 /* AddCharacterViewController.swift */,
 				B067176B2634C58E00495FF8 /* DetailCharacterViewController.swift */,
 				B0D8A07E26360DB300431513 /* IconPickerViewController.swift */,
+				B0D8A085263620AB00431513 /* ClassPickerViewController.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				B0D8A07826360B8700431513 /* Spell+CoreDataProperties.swift in Sources */,
 				B0D8A07F26360DB300431513 /* IconPickerViewController.swift in Sources */,
 				B0D6513826162B3B00919473 /* AllSpellsViewController.swift in Sources */,
+				B0D8A086263620AB00431513 /* ClassPickerViewController.swift in Sources */,
 				B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */,
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
 				B0D8A07926360B8700431513 /* Character+CoreDataClass.swift in Sources */,

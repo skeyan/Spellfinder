@@ -7,6 +7,21 @@
 
 import UIKit
 
+protocol AddCharacterViewControllerDelegate: class {
+    func addCharacterViewControllerDidCancel(
+        _ controller: AddCharacterViewController
+    )
+    
+    func addCharacterViewController(
+        _ controller: AddCharacterViewController,
+        didFinishAdding character: Character
+    )
+    
+    func addCharacterViewController(
+        _ controller: AddCharacterViewController,
+        didFinishEditing character: Character
+    )
+}
 class AddCharacterViewController: UITableViewController {
 
     @IBOutlet weak var createCharacterButton: UIButton!
@@ -22,6 +37,7 @@ class AddCharacterViewController: UITableViewController {
     
     // For editing
     var characterToEdit: Character?
+    weak var delegate: AddCharacterViewControllerDelegate?
     
     // MARK: - Actions
     @IBAction func createButtonWasTouched(_ sender: UIButton) {
@@ -33,8 +49,16 @@ class AddCharacterViewController: UITableViewController {
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
                     if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
-                        // TO-DO: "Done" action - create character with inputted info
-                        self.navigationController?.popViewController(animated: true)
+                        // TO-DO: "Done" action - create/edit character with inputted info
+                        if let character = self.characterToEdit {
+                            // TO-DO: Update Character
+                            self.delegate?.addCharacterViewController(self, didFinishEditing: character)
+                        } else {
+                            // TO-Do: Create Character
+                            // let character = Character()
+                            // self.delegate?.addCharacterViewController(self, didFinishAdding: character)
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     } else {
                         self.presentInvalidInputAlert()
                     }
@@ -44,8 +68,16 @@ class AddCharacterViewController: UITableViewController {
     
     @IBAction func done() {
         if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
-            // TO-DO: Create character for Core Data with inputted info
-            navigationController?.popViewController(animated: true)
+            // TO-DO: Create/edit character for Core Data with inputted info
+            if let character = self.characterToEdit {
+                // TO-DO: Update Character
+                self.delegate?.addCharacterViewController(self, didFinishEditing: character)
+            } else {
+                // TO-Do: Create Character
+                // let character: Character?
+                // self.delegate?.addCharacterViewController(self, didFinishAdding: character)
+                navigationController?.popViewController(animated: true)
+            }
         } else {
             presentInvalidInputAlert()
         }
@@ -89,10 +121,14 @@ class AddCharacterViewController: UITableViewController {
       for segue: UIStoryboardSegue,
       sender: Any?
     ) {
-      if segue.identifier == "PickIcon" {
-        let controller = segue.destination as! IconPickerViewController
-        controller.delegate = self
-      }
+        if segue.identifier == "PickIcon" {
+            let controller = segue.destination as! IconPickerViewController
+            controller.delegate = self
+        }
+        if segue.identifier == "PickClass" {
+            let controller = segue.destination as! ClassPickerViewController
+            controller.delegate = self
+        }
     }
     
     // MARK: - Table View
@@ -149,6 +185,14 @@ class AddCharacterViewController: UITableViewController {
         
         return (trimmedLevel != "" && trimmedName != "")
     }
+    
+    func presentInvalidInputAlert() -> Void {
+        let title = "Please complete the fields!"
+        let message = "The name and level fields cannot be blank."
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 // MARK: - Icon Picker View Controller Delegate
@@ -159,12 +203,12 @@ extension AddCharacterViewController: IconPickerViewControllerDelegate {
       iconImage.image = UIImage(named: iconName)
       navigationController?.popViewController(animated: true)
     }
+}
 
-    func presentInvalidInputAlert() -> Void {
-        let title = "Please complete the fields!"
-        let message = "The name and level fields cannot be blank."
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+// MARK: - Class Picker View Controller Delegate
+extension AddCharacterViewController: ClassPickerViewControllerDelegate {
+    func classPicker(_ picker: ClassPickerViewController, didPick chosenClass: String) {
+        classValueLabel.text = chosenClass
+        navigationController?.popViewController(animated: true)
     }
 }

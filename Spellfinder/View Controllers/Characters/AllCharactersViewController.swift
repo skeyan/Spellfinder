@@ -76,4 +76,41 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 88
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath
+    ) {
+        // Create the view controller object for the Add/Edit Character screen
+        // and push onto navigation stack
+        let controller = storyboard!.instantiateViewController(
+            withIdentifier: "AddCharacterViewController") as! AddCharacterViewController
+        // we added the storyboardID via the storyboard
+        // controller.delegate = self
+        
+        // TO-DO: Set characterToEdit
+        // let checklist = dataModel.lists[indexPath.row]
+        // controller.checklistToEdit = checklist
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+extension AllSpellsViewController: AddCharacterViewControllerDelegate {
+    func addCharacterViewControllerDidCancel(_ controller: AddCharacterViewController) {
+        print("cancelled character")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishAdding character: Character) {
+        print("added character")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishEditing character: Character) {
+        print("edited character")
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
