@@ -534,7 +534,7 @@
                                                     <rect key="frame" x="20" y="17" width="335" height="34"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -622,7 +622,7 @@
                                                     <rect key="frame" x="20" y="17" width="335" height="34"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -806,8 +806,8 @@
                                     <constraint firstItem="a3Z-P2-gLz" firstAttribute="leading" secondItem="FOZ-FE-YLR" secondAttribute="leading" id="OPo-hH-T3a"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="leading" secondItem="Rzu-Dw-eO0" secondAttribute="trailing" constant="10" id="Tnm-TK-3kt"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="leading" secondItem="Rzu-Dw-eO0" secondAttribute="trailing" constant="10" id="XLN-yq-vVQ"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="kKF-yH-RHR" secondAttribute="trailing" constant="33" id="ZbY-uT-PHj"/>
-                                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="vg8-XK-otQ" secondAttribute="trailing" constant="34" id="af0-2e-7h2"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kKF-yH-RHR" secondAttribute="trailing" constant="33" id="ZbY-uT-PHj"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="vg8-XK-otQ" secondAttribute="trailing" constant="34" id="af0-2e-7h2"/>
                                     <constraint firstItem="Rzu-Dw-eO0" firstAttribute="top" secondItem="NAX-W9-5Ti" secondAttribute="bottom" constant="1" id="bEx-v1-TSm"/>
                                     <constraint firstAttribute="bottom" secondItem="a3Z-P2-gLz" secondAttribute="bottom" id="bsV-w5-oTa"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="top" secondItem="kKF-yH-RHR" secondAttribute="bottom" constant="1" id="gaU-xD-bXL"/>

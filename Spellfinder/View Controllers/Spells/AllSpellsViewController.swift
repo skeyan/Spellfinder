@@ -61,9 +61,6 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         let themeColor = UIColor(named: "AccentColor")
         UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor!], for: .selected)
         
-        // Change toolbar border
-        toolBar.layer.shadowOpacity = 0
-
         // Register loading cell nibs
         var cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)

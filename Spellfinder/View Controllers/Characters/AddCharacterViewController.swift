@@ -24,8 +24,19 @@ class AddCharacterViewController: UITableViewController {
             completion: { _ in
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
-                    // TO-DO: "Done" action - create character
-                    self.navigationController?.popViewController(animated: true)
+                    let trimmedLevel = self.levelValueTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let trimmedName = self.nameValueTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    if (trimmedLevel != "" && trimmedName != "") {
+                        // TO-DO: "Done" action - create character
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        let title = "Please complete the fields!"
+                        let message = "The name and level fields cannot be blank."
+                        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
             }
         })
     }
@@ -57,6 +68,8 @@ class AddCharacterViewController: UITableViewController {
         border.borderWidth = width
         iconTableViewCell.layer.addSublayer(border)
         iconTableViewCell.layer.masksToBounds = true
+        
+        nameValueTextField.becomeFirstResponder()
     }
 
     /*
