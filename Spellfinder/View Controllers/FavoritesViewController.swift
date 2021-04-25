@@ -107,10 +107,10 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         }
         
         if(cell.data.isFavorited) {
-            let image = UIImage(systemName: "star.fill")
+            let image = UIImage(named: "star-filled")
             cell.favoriteButton.setImage(image, for: .normal)
         } else {
-            let image = UIImage(systemName: "star")
+            let image = UIImage(named: "star")
             cell.favoriteButton.setImage(image, for: .normal)
         }
     }

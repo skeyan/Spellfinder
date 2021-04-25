@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CatIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0on-pc-6C0">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SwordIcon" translatesAutoresizingMaskIntoConstraints="NO" id="0on-pc-6C0">
                         <rect key="frame" x="20" y="9" width="70" height="70"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="70" id="VSS-Cs-1ZD"/>
@@ -111,7 +111,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="CatIcon" width="256" height="256"/>
+        <image name="SwordIcon" width="256" height="256"/>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

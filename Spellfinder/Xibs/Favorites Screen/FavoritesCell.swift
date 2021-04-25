@@ -88,10 +88,10 @@ class FavoritesCell: UITableViewCell {
         }
         // Favorites
         if(favoritedSpell.isFavorited) {
-            let image = UIImage(systemName: "star.fill")
+            let image = UIImage(named: "star-filled")
             favoriteButton.setImage(image, for: .normal)
         } else {
-            let image = UIImage(systemName: "star")
+            let image = UIImage(named: "star")
             favoriteButton.setImage(image, for: .normal)
         }
     }

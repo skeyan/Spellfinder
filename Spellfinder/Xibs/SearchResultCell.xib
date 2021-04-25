@@ -24,7 +24,7 @@
                             <constraint firstAttribute="height" constant="25" id="fj4-ss-3wK"/>
                         </constraints>
                         <state key="normal">
-                            <imageReference key="image" image="star" catalog="system" symbolScale="large"/>
+                            <imageReference key="image" image="star" symbolScale="large"/>
                         </state>
                         <connections>
                             <action selector="animateButton:" destination="5aP-BE-vPA" eventType="touchUpInside" id="YUn-lv-DXN"/>
@@ -177,7 +177,7 @@
     </objects>
     <resources>
         <image name="plus.circle" catalog="system" width="128" height="121"/>
-        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star" width="208" height="198.5"/>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
