@@ -112,8 +112,6 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
         } catch {
             fatalCoreDataError(error)
         }
-        fetchCharacters()
-        tableView.reloadData()
         navigationController?.popViewController(animated: true)
     }
     
@@ -121,57 +119,8 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
         print("edited character")
         navigationController?.popViewController(animated: true)
     }
-}
-
-// MARK: - Table View Delegate
-extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell) as! CharacterCell
-        
-        // Get the data to display in the character cell from Core Data
-        let character = fetchedResultsController.object(at: indexPath)
-        cell.configure(for: character)
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        // TO-DO: Perform segue to Character Detail
-        self.performSegue(withIdentifier: "ShowCharacterDetail", sender: self)
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88
-    }
-    
-    func tableView(
-        _ tableView: UITableView,
-        accessoryButtonTappedForRowWith indexPath: IndexPath
-    ) {
-        // Create the view controller object for the Add/Edit Character screen
-        // and push onto navigation stack
-        let controller = storyboard!.instantiateViewController(
-            withIdentifier: "AddCharacterViewController") as! AddCharacterViewController
-        // we added the storyboardID via the storyboard
-        // controller.delegate = self
-        
-        // TO-DO: Set characterToEdit
-        // let checklist = dataModel.lists[indexPath.row]
-        // controller.checklistToEdit = checklist
-        
-        navigationController?.pushViewController(controller, animated: true)
-    }
-}
-
-// MARK: - NSFetchedResults Controller Delegate
-extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
+    // MARK: - NSFetchedResults Controller Delegate
     func controllerWillChangeContent(
       _ controller: NSFetchedResultsController<NSFetchRequestResult>
     ) {
@@ -245,3 +194,69 @@ extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
       tableView.endUpdates()
     }
 }
+
+// MARK: - Table View Delegate
+extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell) as! CharacterCell
+        
+        // Get the data to display in the character cell from Core Data
+        let character = fetchedResultsController.object(at: indexPath)
+        cell.configure(for: character)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // TO-DO: Perform segue to Character Detail
+        self.performSegue(withIdentifier: "ShowCharacterDetail", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 88
+    }
+    
+    func tableView(
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath
+    ) {
+        // Create the view controller object for the Add/Edit Character screen
+        // and push onto navigation stack
+        let controller = storyboard!.instantiateViewController(
+            withIdentifier: "AddCharacterViewController") as! AddCharacterViewController
+        // we added the storyboardID via the storyboard
+        // controller.delegate = self
+        
+        // TO-DO: Set characterToEdit
+        // let checklist = dataModel.lists[indexPath.row]
+        // controller.checklistToEdit = checklist
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete character from Core Data
+            let character = fetchedResultsController.object(at: indexPath)
+            
+            managedObjectContext.delete(character)
+            
+            // Save context
+            do {
+                try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+            // tableView.reloadData()
+        }
+    }
+}
+
+
