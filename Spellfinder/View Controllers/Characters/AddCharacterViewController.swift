@@ -53,8 +53,12 @@ class AddCharacterViewController: UITableViewController {
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
                     if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
-                        if let character = self.characterToEdit {
-                            // TO-DO: Update Character
+                        if let temp = self.characterToEdit {
+                            let character = temp
+                            character.name = self.nameValueTextField.text
+                            character.dndClass = self.classValueLabel.text
+                            character.level = self.levelValueTextField.text
+                            character.iconName = self.iconName
                             self.delegate?.addCharacterViewController(self, didFinishEditing: character)
                         } else {
                             let character = self.createCharacterEntity()
@@ -70,9 +74,12 @@ class AddCharacterViewController: UITableViewController {
     
     @IBAction func done() {
         if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
-            // TO-DO: Create/edit character for Core Data with inputted info
-            if let character = self.characterToEdit {
-                // TO-DO: Update Character
+            if let temp = self.characterToEdit {
+                let character = temp
+                character.name = nameValueTextField.text
+                character.dndClass = classValueLabel.text
+                character.level = levelValueTextField.text
+                character.iconName = iconName
                 self.delegate?.addCharacterViewController(self, didFinishEditing: character)
             } else {
                 let character = createCharacterEntity()
@@ -109,10 +116,17 @@ class AddCharacterViewController: UITableViewController {
         
         nameValueTextField.becomeFirstResponder()
         
-        // Icon
+        // Fill in character information if it exists
         if let character = characterToEdit {
-            // TO-DO: Editing Stuff
             iconName = character.iconName!
+            classValueLabel.text = character.dndClass!
+            nameValueTextField.text = character.name!
+            levelValueTextField.text = character.level!
+            title = "Edit Character"
+            createCharacterButton.setTitle("Edit", for: .normal)
+        } else {
+            title = "Add Character"
+            createCharacterButton.setTitle("Create", for: .normal)
         }
         iconImage.image = UIImage(named: iconName)
     }
@@ -172,11 +186,7 @@ class AddCharacterViewController: UITableViewController {
     
     // UI improvement - disable highlighting of rows
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath.section == 1) {
-            return true
-        } else {
-            return false
-        }
+        return indexPath.section == 1 ? true : false
     }
     
     // MARK: - Helper Methods

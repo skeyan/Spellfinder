@@ -40,10 +40,10 @@
                         <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaD-Vu-hA5">
-                        <rect key="frame" x="140.5" y="34" width="102" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aor-xc-Gpj">
+                        <rect key="frame" x="117.5" y="33.5" width="18" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="102" id="0Gf-dY-UKC"/>
+                            <constraint firstAttribute="width" constant="18" id="utt-5V-aOY"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="DarkGreyColor"/>
@@ -65,10 +65,10 @@
                             <constraint firstAttribute="height" constant="50" id="uoe-L6-bs9"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aor-xc-Gpj">
-                        <rect key="frame" x="117.5" y="33.5" width="22" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaD-Vu-hA5">
+                        <rect key="frame" x="136.5" y="33" width="102" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="22" id="utt-5V-aOY"/>
+                            <constraint firstAttribute="width" constant="102" id="0Gf-dY-UKC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="DarkGreyColor"/>
@@ -79,9 +79,9 @@
                     <constraint firstAttribute="bottom" secondItem="0on-pc-6C0" secondAttribute="bottom" constant="21" id="0VM-th-JMg"/>
                     <constraint firstItem="h5O-Mn-eDB" firstAttribute="leading" secondItem="0on-pc-6C0" secondAttribute="trailing" constant="14" id="1Ge-qd-JBK"/>
                     <constraint firstItem="GzY-Qj-KJN" firstAttribute="top" secondItem="h5O-Mn-eDB" secondAttribute="bottom" constant="4" id="1L0-Im-gcg"/>
-                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="5.5" id="2CH-VC-rdY"/>
+                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="4.5" id="2CH-VC-rdY"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Ta-lF-ciy" secondAttribute="trailing" constant="20" id="425-v3-Pad"/>
-                    <constraint firstItem="2Ta-lF-ciy" firstAttribute="top" secondItem="CaD-Vu-hA5" secondAttribute="bottom" constant="4" id="8X8-la-JGZ"/>
+                    <constraint firstItem="2Ta-lF-ciy" firstAttribute="top" secondItem="CaD-Vu-hA5" secondAttribute="bottom" constant="5" id="8X8-la-JGZ"/>
                     <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="1" id="Aeh-KL-ONr"/>
                     <constraint firstItem="aor-xc-Gpj" firstAttribute="leading" secondItem="h5O-Mn-eDB" secondAttribute="trailing" constant="5" id="L24-qY-DNd"/>
                     <constraint firstItem="2Ta-lF-ciy" firstAttribute="leading" secondItem="GzY-Qj-KJN" secondAttribute="trailing" constant="3" id="P9N-VG-7oj"/>

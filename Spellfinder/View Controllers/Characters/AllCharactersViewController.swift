@@ -117,6 +117,11 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
     
     func addCharacterViewController(_ controller: AddCharacterViewController, didFinishEditing character: Character) {
         print("edited character")
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -228,15 +233,16 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
         accessoryButtonTappedForRowWith indexPath: IndexPath
     ) {
         // Create the view controller object for the Add/Edit Character screen
-        // and push onto navigation stack
+        // and push onto navigation stack. We added the storyboardID (identifier)
+        // via the storyboard
         let controller = storyboard!.instantiateViewController(
             withIdentifier: "AddCharacterViewController") as! AddCharacterViewController
-        // we added the storyboardID via the storyboard
-        // controller.delegate = self
         
-        // TO-DO: Set characterToEdit
-        // let checklist = dataModel.lists[indexPath.row]
-        // controller.checklistToEdit = checklist
+        controller.delegate = self
+        
+        // Pass along the character to edit
+        let character = fetchedResultsController.object(at: indexPath)
+        controller.characterToEdit = character
         
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -254,7 +260,6 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
             } catch {
                 fatalCoreDataError(error)
             }
-            // tableView.reloadData()
         }
     }
 }

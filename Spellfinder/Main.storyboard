@@ -506,6 +506,7 @@
                         <outlet property="tableView" destination="WBW-sp-GM1" id="Bjo-BP-KYO"/>
                         <segue destination="bif-Fz-Lx1" kind="show" identifier="ShowCharacterDetail" id="MrT-3i-dX4"/>
                         <segue destination="Lua-iF-Qgt" kind="show" identifier="AddCharacter" id="QRV-Xc-b4o"/>
+                        <segue destination="Lua-iF-Qgt" kind="show" identifier="EditCharacter" id="AVN-Ws-CcR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdh-Ht-Ndk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1007,6 +1008,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="AVN-Ws-CcR"/>
         <segue reference="oaE-U4-jCe"/>
     </inferredMetricsTieBreakers>
     <resources>
