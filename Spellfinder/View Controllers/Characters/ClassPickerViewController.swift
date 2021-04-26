@@ -17,6 +17,7 @@ class ClassPickerViewController: UITableViewController {
     weak var delegate: ClassPickerViewControllerDelegate?
     
     let classes = [
+        "None",
         "Artificer", "Barbarian", "Bard", "Blood Hunter", "Cleric",
         "Druid", "Fighter", "Monk", "Paladin",
         "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"
@@ -35,7 +36,6 @@ class ClassPickerViewController: UITableViewController {
         for: indexPath)
       let chosenClass = classes[indexPath.row]
       cell.textLabel!.text = chosenClass
-      // cell.imageView!.image = UIImage(named: iconName)
       return cell
     }
     

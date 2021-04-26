@@ -97,8 +97,14 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
             controller.delegate = self
         }
         
-        // TO-DO: Prepare segue to Detail Character
-    
+        if (segue.identifier == "ShowCharacterDetail" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailCharacterViewController
+            if let indexPath = tableView.indexPath(
+                  for: sender as! CharacterCell) {
+                controller.characterToDisplay = fetchedResultsController.object(at: indexPath)
+            }
+        }
     }
     
     // MARK: - Add Character View Controller Delegate
@@ -116,7 +122,6 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
     }
     
     func addCharacterViewController(_ controller: AddCharacterViewController, didFinishEditing character: Character) {
-        print("edited character")
         do {
             try managedObjectContext.save()
         } catch {
@@ -220,8 +225,8 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // TO-DO: Perform segue to Character Detail
-        self.performSegue(withIdentifier: "ShowCharacterDetail", sender: self)
+        let cell = tableView.cellForRow(at: indexPath) as? CharacterCell
+        self.performSegue(withIdentifier: "ShowCharacterDetail", sender: cell)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

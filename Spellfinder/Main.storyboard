@@ -848,6 +848,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EmF-4X-Kzw"/>
+                    <connections>
+                        <outlet property="characterNameValueLabel" destination="gda-Wz-KwT" id="Tvl-je-NJF"/>
+                        <outlet property="classValueLabel" destination="kKF-yH-RHR" id="h0n-UG-LMi"/>
+                        <outlet property="iconImage" destination="Ocx-sR-sak" id="zUn-OW-Qmj"/>
+                        <outlet property="levelValueLabel" destination="vg8-XK-otQ" id="vRc-zm-abR"/>
+                        <outlet property="tableView" destination="a3Z-P2-gLz" id="0zU-Ui-RAU"/>
+                        <outlet property="totalNumberOfSpellsValueLabel" destination="SYx-38-CLH" id="zKV-7a-mhF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Unv-U5-cdO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

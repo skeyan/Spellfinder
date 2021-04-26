@@ -8,11 +8,27 @@
 import UIKit
 
 class DetailCharacterViewController: UIViewController {
-
+    
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var characterNameValueLabel: UILabel!
+    @IBOutlet weak var classValueLabel: UILabel!
+    @IBOutlet weak var levelValueLabel: UILabel!
+    @IBOutlet weak var totalNumberOfSpellsValueLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Instance Variables
+    // The Character entity to be displayed
+    var characterToDisplay: Character?
+    
+    // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let _ = characterToDisplay {
+            configure(for: characterToDisplay!)
+        }
     }
     
 
@@ -26,4 +42,31 @@ class DetailCharacterViewController: UIViewController {
     }
     */
 
+    // MARK: - Helper Methods
+    func configure(for character: Character) -> Void {
+        iconImage.image = UIImage(named: character.iconName!)
+        characterNameValueLabel.text = character.name
+        classValueLabel.text = character.dndClass
+        levelValueLabel.text = character.level
+        if let spells = character.spells {
+            totalNumberOfSpellsValueLabel.text = String(spells.count)
+        } else {
+            totalNumberOfSpellsValueLabel.text = "0"
+        }
+    }
+}
+
+// TO-DO: Table View load the spells for the character with nsfetchedresultscontroller
+extension DetailSpellViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        5
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "TestCell")
+        if cell == nil {
+            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TestCell")
+        }
+        return cell!
+    }
 }
