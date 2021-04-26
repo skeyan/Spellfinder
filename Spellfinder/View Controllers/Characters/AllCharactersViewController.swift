@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class AllCharactersViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class AllCharactersViewController: UIViewController, NSFetchedResultsControllerDelegate, AddCharacterViewControllerDelegate {
 
     @IBOutlet weak var addCharacterButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -87,11 +87,39 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
       }
     }
     
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if (segue.identifier == "AddCharacter" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! AddCharacterViewController
+            controller.managedObjectContext = managedObjectContext
+            controller.delegate = self
+        }
+        
         // TO-DO: Prepare segue to Detail Character
+    
+    }
+    
+    // MARK: - Add Character View Controller Delegate
+    func addCharacterViewControllerDidCancel(_ controller: AddCharacterViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishAdding character: Character) {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+        fetchCharacters()
+        tableView.reloadData()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishEditing character: Character) {
+        print("edited character")
+        navigationController?.popViewController(animated: true)
     }
 }
 
@@ -142,23 +170,6 @@ extension AllCharactersViewController: UITableViewDelegate, UITableViewDataSourc
     }
 }
 
-extension AllSpellsViewController: AddCharacterViewControllerDelegate {
-    func addCharacterViewControllerDidCancel(_ controller: AddCharacterViewController) {
-        print("cancelled character")
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishAdding character: Character) {
-        print("added character")
-        navigationController?.popViewController(animated: true)
-    }
-    
-    func addCharacterViewController(_ controller: AddCharacterViewController, didFinishEditing character: Character) {
-        print("edited character")
-        navigationController?.popViewController(animated: true)
-    }
-}
-
 // MARK: - NSFetchedResults Controller Delegate
 extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(
@@ -176,14 +187,6 @@ extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
       newIndexPath: IndexPath?
     ) {
       switch type {
-      case .insert:
-        print("*** NSFetchedResultsChangeInsert (object)")
-        tableView.insertRows(at: [newIndexPath!], with: .fade)
-
-      case .delete:
-        print("*** NSFetchedResultsChangeDelete (object)")
-        tableView.deleteRows(at: [indexPath!], with: .fade)
-
       case .update:
         print("*** NSFetchedResultsChangeUpdate (object)")
         if let cell = tableView.cellForRow(
@@ -192,7 +195,15 @@ extension AllSpellsViewController: NSFetchedResultsControllerDelegate {
             at: indexPath!) as! Character
           cell.configure(for: character)
         }
+        
+      case .insert:
+        print("*** NSFetchedResultsChangeInsert (object)")
+        tableView.insertRows(at: [newIndexPath!], with: .fade)
 
+      case .delete:
+        print("*** NSFetchedResultsChangeDelete (object)")
+        tableView.deleteRows(at: [indexPath!], with: .fade)
+        
       case .move:
         print("*** NSFetchedResultsChangeMove (object)")
         tableView.deleteRows(at: [indexPath!], with: .fade)

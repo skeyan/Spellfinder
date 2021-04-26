@@ -24,6 +24,9 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Class" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h5O-Mn-eDB">
                         <rect key="frame" x="77" y="33.5" width="35.5" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="116" id="YF5-ms-4Z6"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
@@ -37,19 +40,10 @@
                         <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aor-xc-Gpj">
-                        <rect key="frame" x="115.5" y="33.5" width="22" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="22" id="utt-5V-aOY"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" name="DarkGreyColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level Value" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaD-Vu-hA5">
-                        <rect key="frame" x="141.5" y="34" width="186" height="17"/>
+                        <rect key="frame" x="140.5" y="34" width="102" height="17"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="186" id="0Gf-dY-UKC"/>
+                            <constraint firstAttribute="width" constant="102" id="0Gf-dY-UKC"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="DarkGreyColor"/>
@@ -71,6 +65,15 @@
                             <constraint firstAttribute="height" constant="50" id="uoe-L6-bs9"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lv.  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aor-xc-Gpj">
+                        <rect key="frame" x="117.5" y="33.5" width="22" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="22" id="utt-5V-aOY"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" name="DarkGreyColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="0on-pc-6C0" secondAttribute="bottom" constant="21" id="0VM-th-JMg"/>
@@ -79,20 +82,19 @@
                     <constraint firstItem="CaD-Vu-hA5" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="5.5" id="2CH-VC-rdY"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Ta-lF-ciy" secondAttribute="trailing" constant="20" id="425-v3-Pad"/>
                     <constraint firstItem="2Ta-lF-ciy" firstAttribute="top" secondItem="CaD-Vu-hA5" secondAttribute="bottom" constant="4" id="8X8-la-JGZ"/>
-                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="4" id="Aeh-KL-ONr"/>
-                    <constraint firstItem="aor-xc-Gpj" firstAttribute="leading" secondItem="h5O-Mn-eDB" secondAttribute="trailing" constant="3" id="L24-qY-DNd"/>
-                    <constraint firstItem="aor-xc-Gpj" firstAttribute="leading" secondItem="h5O-Mn-eDB" secondAttribute="trailing" constant="3" id="NNU-an-lZH"/>
+                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="1" id="Aeh-KL-ONr"/>
+                    <constraint firstItem="aor-xc-Gpj" firstAttribute="leading" secondItem="h5O-Mn-eDB" secondAttribute="trailing" constant="5" id="L24-qY-DNd"/>
                     <constraint firstItem="2Ta-lF-ciy" firstAttribute="leading" secondItem="GzY-Qj-KJN" secondAttribute="trailing" constant="3" id="P9N-VG-7oj"/>
                     <constraint firstItem="0on-pc-6C0" firstAttribute="leading" secondItem="k6v-Om-HC6" secondAttribute="leading" constant="13" id="RcP-5o-D4a"/>
                     <constraint firstItem="aor-xc-Gpj" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="5" id="Vk8-Zz-Ueu"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="pEX-uo-ew4" secondAttribute="trailing" constant="20" symbolic="YES" id="WWf-4K-8jT"/>
                     <constraint firstAttribute="bottom" secondItem="0on-pc-6C0" secondAttribute="bottom" constant="21" id="awU-Pt-RZg"/>
-                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="4" id="be1-O7-2In"/>
+                    <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="1" id="be1-O7-2In"/>
                     <constraint firstItem="h5O-Mn-eDB" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="5" id="cBy-su-dIP"/>
                     <constraint firstItem="0on-pc-6C0" firstAttribute="top" secondItem="k6v-Om-HC6" secondAttribute="top" constant="17" id="ih6-72-YWN"/>
                     <constraint firstItem="pEX-uo-ew4" firstAttribute="leading" secondItem="0on-pc-6C0" secondAttribute="trailing" constant="14" id="lHb-P2-8j3"/>
                     <constraint firstItem="GzY-Qj-KJN" firstAttribute="top" secondItem="aor-xc-Gpj" secondAttribute="bottom" constant="4" id="qcZ-ig-qQg"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CaD-Vu-hA5" secondAttribute="trailing" constant="20" symbolic="YES" id="tek-Vc-GYB"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CaD-Vu-hA5" secondAttribute="trailing" constant="3" id="tek-Vc-GYB"/>
                     <constraint firstItem="pEX-uo-ew4" firstAttribute="top" secondItem="k6v-Om-HC6" secondAttribute="top" constant="9" id="ujs-jV-LER"/>
                     <constraint firstItem="GzY-Qj-KJN" firstAttribute="leading" secondItem="0on-pc-6C0" secondAttribute="trailing" constant="14" id="wZT-4g-b46"/>
                     <constraint firstAttribute="bottom" secondItem="2Ta-lF-ciy" secondAttribute="bottom" constant="16" id="znq-eu-ODh"/>
@@ -114,7 +116,7 @@
     <resources>
         <image name="SwordIcon" width="256" height="256"/>
         <namedColor name="AccentColor">
-            <color red="0.68321138619999999" green="0.32186764480000002" blue="0.80003875489999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.68300002813339233" green="0.32199999690055847" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

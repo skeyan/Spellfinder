@@ -38,10 +38,10 @@
 		B0D6514326162B3C00919473 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0D6514126162B3C00919473 /* LaunchScreen.storyboard */; };
 		B0D8A0702634F3A800431513 /* Retroica.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0D8A06F2634F3A800431513 /* Retroica.ttf */; };
 		B0D8A07826360B8700431513 /* Spell+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07526360B8700431513 /* Spell+CoreDataProperties.swift */; };
-		B0D8A07926360B8700431513 /* Character+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07626360B8700431513 /* Character+CoreDataClass.swift */; };
-		B0D8A07A26360B8700431513 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07726360B8700431513 /* Character+CoreDataProperties.swift */; };
 		B0D8A07F26360DB300431513 /* IconPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A07E26360DB300431513 /* IconPickerViewController.swift */; };
 		B0D8A086263620AB00431513 /* ClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A085263620AB00431513 /* ClassPickerViewController.swift */; };
+		B0D8A08A26364C9C00431513 /* Character+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A08826364C9C00431513 /* Character+CoreDataClass.swift */; };
+		B0D8A08B26364C9C00431513 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,10 +78,10 @@
 		B0D6514426162B3C00919473 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B0D8A06F2634F3A800431513 /* Retroica.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Retroica.ttf; path = ../../../iosDev/Retroica.ttf; sourceTree = "<group>"; };
 		B0D8A07526360B8700431513 /* Spell+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Spell+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		B0D8A07626360B8700431513 /* Character+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataClass.swift"; sourceTree = "<group>"; };
-		B0D8A07726360B8700431513 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0D8A07E26360DB300431513 /* IconPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerViewController.swift; sourceTree = "<group>"; };
 		B0D8A085263620AB00431513 /* ClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerViewController.swift; sourceTree = "<group>"; };
+		B0D8A08826364C9C00431513 /* Character+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,10 +162,10 @@
 		B0845EA9261D45AC00D56FB0 /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
+				B0D8A08826364C9C00431513 /* Character+CoreDataClass.swift */,
+				B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */,
 				B06717562634B49400495FF8 /* Spell+CoreDataClass.swift */,
 				B0D8A07526360B8700431513 /* Spell+CoreDataProperties.swift */,
-				B0D8A07626360B8700431513 /* Character+CoreDataClass.swift */,
-				B0D8A07726360B8700431513 /* Character+CoreDataProperties.swift */,
 				B0845EAD261D82FD00D56FB0 /* SearchResult.swift */,
 				B03752BB262A95B60062E281 /* Search.swift */,
 			);
@@ -314,6 +314,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0D6513E26162B3B00919473 /* Spellfinder.xcdatamodeld in Sources */,
+				B0D8A08A26364C9C00431513 /* Character+CoreDataClass.swift in Sources */,
 				B067176C2634C58E00495FF8 /* DetailCharacterViewController.swift in Sources */,
 				B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */,
 				B06717782634CC2500495FF8 /* CharacterCell.swift in Sources */,
@@ -321,15 +322,14 @@
 				B0D8A07F26360DB300431513 /* IconPickerViewController.swift in Sources */,
 				B0D6513826162B3B00919473 /* AllSpellsViewController.swift in Sources */,
 				B0D8A086263620AB00431513 /* ClassPickerViewController.swift in Sources */,
+				B0D8A08B26364C9C00431513 /* Character+CoreDataProperties.swift in Sources */,
 				B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */,
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
-				B0D8A07926360B8700431513 /* Character+CoreDataClass.swift in Sources */,
 				B0D6513426162B3B00919473 /* AppDelegate.swift in Sources */,
 				B06717422633B71300495FF8 /* FavoritesCell.swift in Sources */,
 				B05A329826269358002F630D /* SearchResultCell.swift in Sources */,
 				B03752BC262A95B60062E281 /* Search.swift in Sources */,
 				B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */,
-				B0D8A07A26360B8700431513 /* Character+CoreDataProperties.swift in Sources */,
 				B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */,
 				B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,

@@ -480,7 +480,7 @@
                                     <action selector="addCharacterWasPressed:" destination="AcN-5i-oFl" eventType="touchUpInside" id="o8b-mn-sch"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WBW-sp-GM1">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WBW-sp-GM1">
                                 <rect key="frame" x="0.0" y="114" width="414" height="573"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -1016,7 +1016,7 @@
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="star.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.68321138619999999" green="0.32186764480000002" blue="0.80003875489999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.68300002813339233" green="0.32199999690055847" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="DarkGreyColor">
             <color red="0.36000001430511475" green="0.36000001430511475" blue="0.36000001430511475" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

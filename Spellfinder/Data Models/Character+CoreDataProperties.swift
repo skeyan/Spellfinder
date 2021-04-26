@@ -18,7 +18,7 @@ extension Character {
 
     @NSManaged public var dndClass: String?
     @NSManaged public var iconName: String?
-    @NSManaged public var level: Int64
+    @NSManaged public var level: String?
     @NSManaged public var name: String?
     @NSManaged public var spells: NSSet?
 

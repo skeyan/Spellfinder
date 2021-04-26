@@ -3,7 +3,7 @@
     <entity name="Character" representedClassName="Character" syncable="YES">
         <attribute name="dndClass" optional="YES" attributeType="String"/>
         <attribute name="iconName" optional="YES" attributeType="String" defaultValueString="SwordIcon"/>
-        <attribute name="level" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="level" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="spells" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Spell" inverseName="character" inverseEntity="Spell"/>
     </entity>

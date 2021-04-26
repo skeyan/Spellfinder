@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol AddCharacterViewControllerDelegate: class {
     func addCharacterViewControllerDidCancel(
@@ -39,6 +40,9 @@ class AddCharacterViewController: UITableViewController {
     var characterToEdit: Character?
     weak var delegate: AddCharacterViewControllerDelegate?
     
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    
     // MARK: - Actions
     @IBAction func createButtonWasTouched(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1,
@@ -49,14 +53,12 @@ class AddCharacterViewController: UITableViewController {
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
                     if (self.validateInput(didEnterName: self.nameValueTextField.text!, didEnterLevel: self.levelValueTextField.text!)) {
-                        // TO-DO: "Done" action - create/edit character with inputted info
                         if let character = self.characterToEdit {
                             // TO-DO: Update Character
                             self.delegate?.addCharacterViewController(self, didFinishEditing: character)
                         } else {
-                            // TO-Do: Create Character
-                            // let character = Character()
-                            // self.delegate?.addCharacterViewController(self, didFinishAdding: character)
+                            let character = self.createCharacterEntity()
+                            self.delegate?.addCharacterViewController(self, didFinishAdding: character)
                             self.navigationController?.popViewController(animated: true)
                         }
                     } else {
@@ -73,9 +75,8 @@ class AddCharacterViewController: UITableViewController {
                 // TO-DO: Update Character
                 self.delegate?.addCharacterViewController(self, didFinishEditing: character)
             } else {
-                // TO-Do: Create Character
-                // let character: Character?
-                // self.delegate?.addCharacterViewController(self, didFinishAdding: character)
+                let character = createCharacterEntity()
+                self.delegate?.addCharacterViewController(self, didFinishAdding: character)
                 navigationController?.popViewController(animated: true)
             }
         } else {
@@ -84,7 +85,7 @@ class AddCharacterViewController: UITableViewController {
     }
 
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+        delegate?.addCharacterViewControllerDidCancel(self)
     }
 
     // MARK: - View
@@ -192,6 +193,18 @@ class AddCharacterViewController: UITableViewController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func createCharacterEntity() -> Character {
+        // Create the character entity
+        let character = Character(context: managedObjectContext)
+        
+        character.name = nameValueTextField.text
+        character.iconName = iconName
+        character.dndClass = classValueLabel.text
+        character.level = String(levelValueTextField.text!)
+        
+        return character
     }
 }
 

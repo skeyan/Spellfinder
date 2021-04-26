@@ -103,6 +103,7 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
             fatalCoreDataError(error)
         }
         
+        // Update the UI
         if(cell.data.isFavorited) {
             let image = UIImage(named: "star-filled")
             cell.favoriteButton.setImage(image, for: .normal)

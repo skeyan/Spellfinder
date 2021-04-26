@@ -33,7 +33,7 @@ class CharacterCell: UITableViewCell {
         characterIcon.image = UIImage(named: character.iconName!)
         characterNameLabel.text = character.name
         classValueLabel.text = character.dndClass
-        levelValueLabel.text = String(character.level)
+        levelValueLabel.text = character.level
         
         if let spells = character.spells {
             spellsKnownValueLabel.text = String(spells.count)
