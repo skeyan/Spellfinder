@@ -14,7 +14,7 @@ protocol FavoritingSpellsDelegate {
 }
 
 class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
-    
+
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -257,10 +257,28 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
                 controller.searchResultToDisplay = search.searchResultsDict[searchKey]
             }
         }
+        
+        // Select character screen
+        if (segue.identifier == "SelectCharacter" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! SelectCharacterViewController
+            controller.managedObjectContext = managedObjectContext
+            var currentCharacters: [Character] = []
+            do {
+                // Get all current Character objects in Core Data
+                currentCharacters = try managedObjectContext.fetch(Character.fetchRequest())
+            } catch {
+                fatalCoreDataError(error)
+            }
+            controller.currentCharacters = currentCharacters
+        }
     }
     
     // MARK: - Core Data
-    // TO-DO: Add favoriting functionality locally and with Core Data
+    func addButtonTapped(cell: SearchResultCell) {
+        performSegue(withIdentifier: "SelectCharacter", sender: cell)
+    }
+    
     func favoritesButtonTapped(cell: SearchResultCell) {
         // Save the spell entity if that spell doesn't already exist in Core Data
         // Otherwise, if that spell is in Core Data, delete it (unfavorite it)

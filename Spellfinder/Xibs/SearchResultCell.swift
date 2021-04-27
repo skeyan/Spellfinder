@@ -9,6 +9,7 @@ import UIKit
 
 protocol SearchResultCellDelegate: class {
     func favoritesButtonTapped(cell: SearchResultCell)
+    func addButtonTapped(cell: SearchResultCell)
 }
 class SearchResultCell: UITableViewCell {
     @IBOutlet var spellNameLabel: UILabel!
@@ -51,6 +52,10 @@ class SearchResultCell: UITableViewCell {
     
     @IBAction func favoritesButtonTapped(sender: UIButton) {
         self.delegate?.favoritesButtonTapped(cell: self)
+    }
+    
+    @IBAction func addButtonTapped(sender: UIButton) {
+        self.delegate?.addButtonTapped(cell: self)
     }
     
     // MARK: - Nib

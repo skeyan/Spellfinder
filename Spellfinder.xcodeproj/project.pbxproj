@@ -42,6 +42,8 @@
 		B0D8A086263620AB00431513 /* ClassPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A085263620AB00431513 /* ClassPickerViewController.swift */; };
 		B0D8A08A26364C9C00431513 /* Character+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A08826364C9C00431513 /* Character+CoreDataClass.swift */; };
 		B0D8A08B26364C9C00431513 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */; };
+		B0F2DC87263679C100AE818C /* SelectCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC86263679C100AE818C /* SelectCharacterViewController.swift */; };
+		B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC892638D49400AE818C /* CustomTabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,8 @@
 		B0D8A085263620AB00431513 /* ClassPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassPickerViewController.swift; sourceTree = "<group>"; };
 		B0D8A08826364C9C00431513 /* Character+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataClass.swift"; sourceTree = "<group>"; };
 		B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B0F2DC86263679C100AE818C /* SelectCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterViewController.swift; sourceTree = "<group>"; };
+		B0F2DC892638D49400AE818C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +182,8 @@
 				B067177A2634CE5B00495FF8 /* Spells */,
 				B06717752634CBD600495FF8 /* Characters */,
 				B03752BE262A962B0062E281 /* FavoritesViewController.swift */,
+				B0F2DC86263679C100AE818C /* SelectCharacterViewController.swift */,
+				B0F2DC892638D49400AE818C /* CustomTabBarViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -331,8 +337,10 @@
 				B03752BC262A95B60062E281 /* Search.swift in Sources */,
 				B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */,
 				B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */,
+				B0F2DC87263679C100AE818C /* SelectCharacterViewController.swift in Sources */,
 				B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
+				B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */,
 				B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */,
 				B067175A2634B49400495FF8 /* Spell+CoreDataClass.swift in Sources */,
 				B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */,

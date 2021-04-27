@@ -34,7 +34,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nej-K4-3a9">
                         <rect key="frame" x="94" y="49" width="54" height="15"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                        <color key="textColor" name="MediumGreyColor"/>
+                        <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMX-ew-Du9">
@@ -49,7 +49,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Components:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ac1-bX-vuP">
                         <rect key="frame" x="94" y="67" width="78" height="15"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                        <color key="textColor" name="MediumGreyColor"/>
+                        <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level and School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb2-xU-iEe">
@@ -70,7 +70,7 @@
                             <constraint firstAttribute="width" constant="41" id="jRt-wm-Jha"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                        <color key="textColor" name="MediumGreyColor"/>
+                        <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120 ft" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzH-ia-cWd">
@@ -91,6 +91,9 @@
                         <state key="normal">
                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                         </state>
+                        <connections>
+                            <action selector="addButtonTappedWithSender:" destination="5aP-BE-vPA" eventType="touchUpInside" id="ZOI-8G-QeI"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V,S,M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQA-yh-nga">
                         <rect key="frame" x="174" y="67" width="59" height="15"/>

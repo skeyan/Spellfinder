@@ -56,17 +56,22 @@ class DetailCharacterViewController: UIViewController {
     }
 }
 
-// TO-DO: Table View load the spells for the character with nsfetchedresultscontroller
-extension DetailSpellViewController: UITableViewDelegate, UITableViewDataSource {
+// TO-DO: Table View load the character's spells with nsfetchedresultscontroller
+extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "TestCell")
-        if cell == nil {
+        
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "TestCell")
+        if (cell == nil)
+        {
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TestCell")
         }
+        cell!.detailTextLabel?.text = "I will be a Spell"
+        cell!.textLabel?.text = "Spell Name"
+        
         return cell!
     }
 }
