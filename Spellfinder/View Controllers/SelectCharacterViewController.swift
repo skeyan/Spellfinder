@@ -56,15 +56,28 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
 
     // MARK: - Table View Data Source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return dataModel.count
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return dataModel.count
+        default:
+            return 1
+        }
     }
 
     // MARK: - Table View Delegate
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WhichSpellToAddCell", for: indexPath)
+            cell.textLabel!.text = "Spell: " + (spellToAdd?.name)!
+            return cell
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.characterCell, for: indexPath) as! CharacterCell
 
         // Configure the cell...
@@ -74,12 +87,18 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
         } else {
             cell.accessoryType = .none
         }
-        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 88
+        switch indexPath.section {
+        case 0:
+            return 44
+        case 1:
+            return 88
+        default:
+            return 88
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,5 +106,10 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
         
         dataModel[indexPath.row].isSelected = !dataModel[indexPath.row].isSelected
         tableView.reloadData()
+    }
+    
+    // UI improvement - Prevent selection in certain cases
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath.section == 0 ? nil : indexPath
     }
 }

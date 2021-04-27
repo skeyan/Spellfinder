@@ -262,6 +262,20 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         if (segue.identifier == "SelectCharacter" && sender != nil) {
             // Pass data to next view
             let controller = segue.destination as! SelectCharacterViewController
+            
+            // Spell to add
+            if let indexPath = tableView.indexPath(
+                  for: sender as! SearchResultCell) {
+                var searchKey:String
+                if currentSort == "Name" {
+                    searchKey = search.searchResultsKeysByName[indexPath.row]
+                } else {
+                    searchKey = search.searchResultsKeysByLevel[indexPath.row]
+                }
+                controller.spellToAdd = search.searchResultsDict[searchKey]
+            }
+                
+            // Core data and Characters
             controller.managedObjectContext = managedObjectContext
             var currentCharacters: [Character] = []
             do {
