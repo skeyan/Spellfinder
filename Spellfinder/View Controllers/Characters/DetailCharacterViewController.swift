@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import CoreData
 
-class DetailCharacterViewController: UIViewController {
+class DetailCharacterViewController: UIViewController, NSFetchedResultsControllerDelegate, FavoritesCellDelegate {
     
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var characterNameValueLabel: UILabel!
@@ -18,20 +19,81 @@ class DetailCharacterViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Instance Variables
+    
+    struct TableView {
+      struct CellIdentifiers {
+        static let favoritesCell = "FavoritesCell"
+      }
+    }
+    
     // The Character entity to be displayed
-    var characterToDisplay: Character?
+    var characterToDisplay: Character!
+    
+    // The Character's spells
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    // Get the spells that belong to the character
+    lazy var fetchedResultsController: NSFetchedResultsController<Spell> = {
+        let fetchRequest = NSFetchRequest<Spell>()
+        
+        let entity = Spell.entity()
+        fetchRequest.entity = entity
+        
+        let sortDescriptor = NSSortDescriptor(
+            key: "name",
+            ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        let predicate = NSPredicate(format: "%@ IN character", characterToDisplay)
+        // let predicate = NSPredicate(format: "ANY character == %@", characterToDisplay.objectID)
+        fetchRequest.predicate = predicate
+        print("PREDICATE: ", predicate)
+        
+        fetchRequest.fetchBatchSize = 20
+        
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: "SpellsForCharacter"
+        )
+
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
+    }()
     
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         if let _ = characterToDisplay {
             configure(for: characterToDisplay!)
         }
+        
+        // Register nibs
+        let cellNib = UINib(nibName: TableView.CellIdentifiers.favoritesCell, bundle: nil)
+        tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.favoritesCell)
+        
+        // Get character's spells from Core Data
+        fetchSpells()
     }
     
-
+    deinit {
+        fetchedResultsController.delegate = nil
+        NSFetchedResultsController<Spell>.deleteCache(withName: "SpellsForCharacter")
+    }
+    
+    // MARK: - Core Data
+    // Get spells from CoreData
+    func fetchSpells() {
+      do {
+        try fetchedResultsController.performFetch()
+      } catch {
+        fatalCoreDataError(error)
+      }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -41,6 +103,11 @@ class DetailCharacterViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // MARK: - Favorites Cell Delegate
+    func favoritesButtonTapped(cell: FavoritesCell) {
+        print("Favorites button tapped in DetailCharacterViewController")
+    }
 
     // MARK: - Helper Methods
     func configure(for character: Character) -> Void {
@@ -57,21 +124,25 @@ class DetailCharacterViewController: UIViewController {
 }
 
 // TO-DO: Table View load the character's spells with nsfetchedresultscontroller
+// MARK: - Table View Delegates
 extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        let sectionInfo = fetchedResultsController.sections![section]
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TableView.CellIdentifiers.favoritesCell,
+            for: indexPath) as! FavoritesCell
         
-        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "TestCell")
-        if (cell == nil)
-        {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "TestCell")
-        }
-        cell!.detailTextLabel?.text = "I will be a Spell"
-        cell!.textLabel?.text = "Spell Name"
+        cell.delegate = self
         
-        return cell!
+        // Get the data to display in the cell from Core Data
+        let favoritedSpell = fetchedResultsController.object(at: indexPath)
+        cell.configure(for: favoritedSpell)
+        cell.data = favoritedSpell
+        
+        return cell
     }
 }

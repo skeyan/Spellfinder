@@ -869,7 +869,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total # of Spells" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-38-CLH">
-                                        <rect key="frame" x="149" y="117" width="139" height="19.333333333333343"/>
+                                        <rect key="frame" x="149" y="116" width="139" height="19.333333333333343"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="139" id="npL-Sh-FVu"/>
                                         </constraints>
@@ -883,7 +883,7 @@
                                     <constraint firstItem="Ocx-sR-sak" firstAttribute="top" secondItem="FOZ-FE-YLR" secondAttribute="top" constant="34" id="21V-NN-Hhw"/>
                                     <constraint firstItem="NAX-W9-5Ti" firstAttribute="leading" secondItem="Ocx-sR-sak" secondAttribute="trailing" constant="8" id="3FX-bw-F7o"/>
                                     <constraint firstItem="gda-Wz-KwT" firstAttribute="leading" secondItem="Ocx-sR-sak" secondAttribute="trailing" constant="8" id="4ov-KM-ub9"/>
-                                    <constraint firstItem="SYx-38-CLH" firstAttribute="top" secondItem="Ocx-sR-sak" secondAttribute="bottom" constant="18" id="5Xe-hx-YJz"/>
+                                    <constraint firstItem="SYx-38-CLH" firstAttribute="top" secondItem="Ocx-sR-sak" secondAttribute="bottom" constant="17" id="5Xe-hx-YJz"/>
                                     <constraint firstItem="NAX-W9-5Ti" firstAttribute="top" secondItem="gda-Wz-KwT" secondAttribute="bottom" constant="1.5" id="9FP-Hl-IoS"/>
                                     <constraint firstItem="swh-p5-qtW" firstAttribute="top" secondItem="Ocx-sR-sak" secondAttribute="bottom" constant="16" id="9wV-V4-Ha4"/>
                                     <constraint firstItem="a3Z-P2-gLz" firstAttribute="top" secondItem="swh-p5-qtW" secondAttribute="bottom" constant="8" id="DCs-FC-CZd"/>

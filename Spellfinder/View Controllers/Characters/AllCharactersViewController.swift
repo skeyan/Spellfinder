@@ -100,6 +100,7 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
         if (segue.identifier == "ShowCharacterDetail" && sender != nil) {
             // Pass data to next view
             let controller = segue.destination as! DetailCharacterViewController
+            controller.managedObjectContext = managedObjectContext
             if let indexPath = tableView.indexPath(
                   for: sender as! CharacterCell) {
                 controller.characterToDisplay = fetchedResultsController.object(at: indexPath)
