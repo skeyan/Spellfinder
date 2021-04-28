@@ -91,6 +91,9 @@
                         <state key="normal">
                             <imageReference key="image" image="plus.circle" catalog="system" symbolScale="large"/>
                         </state>
+                        <connections>
+                            <action selector="addButtonTappedWithSender:" destination="qBY-xa-8vl" eventType="touchUpInside" id="Oas-6d-zvJ"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V,S,M" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ap-U7-a8c">
                         <rect key="frame" x="174" y="67" width="59" height="15"/>

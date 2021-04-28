@@ -502,6 +502,7 @@
                     <connections>
                         <outlet property="tableView" destination="pVk-qq-NQU" id="zsK-Fg-d8c"/>
                         <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowFavoritesSpellDetail" id="oaE-U4-jCe"/>
+                        <segue destination="TDf-cu-psS" kind="show" identifier="FavoritesToAddToCharacter" id="pnz-EK-Y93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aKI-zf-KSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1089,7 +1090,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
-        <segue reference="9eP-Od-IHh"/>
+        <segue reference="pnz-EK-Y93"/>
+        <segue reference="oaE-U4-jCe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="SwordIcon" width="170.66667175292969" height="170.66667175292969"/>

@@ -9,6 +9,7 @@ import UIKit
 
 protocol FavoritesCellDelegate: class {
     func favoritesButtonTapped(cell: FavoritesCell)
+    func addButtonTapped(cell: FavoritesCell)
 }
 class FavoritesCell: UITableViewCell {
 
@@ -48,6 +49,10 @@ class FavoritesCell: UITableViewCell {
     
     @IBAction func favoritesButtonTapped(sender: UIButton) {
         self.delegate?.favoritesButtonTapped(cell: self)
+    }
+    
+    @IBAction func addButtonTapped(sender: UIButton) {
+        self.delegate?.addButtonTapped(cell: self)
     }
     
     // MARK: - Nib

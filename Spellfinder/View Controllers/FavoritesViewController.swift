@@ -80,6 +80,11 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
       }
     }
     
+    // MARK: - Favorites Cell Delegate
+    func addButtonTapped(cell: FavoritesCell) {
+        performSegue(withIdentifier: "FavoritesToAddToCharacter", sender: cell)
+    }
+    
     func favoritesButtonTapped(cell: FavoritesCell) {
         let indexPath = tableView.indexPath(for: cell)
         let favoritedSpell = fetchedResultsController.object(at: indexPath!)
@@ -88,6 +93,7 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
         allSpellsViewController.tableView.reloadData()
         
+        // Update in Core Data
         if let character = favoritedSpell.character {
             if (character.count == 0) {
                 managedObjectContext.delete(favoritedSpell)
@@ -201,9 +207,30 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
                 controller.searchResultToDisplay = allSpellsViewController.search.searchResultsDict[cell.data.slug!]
             }
         }
+        // Select character screen
+        if (segue.identifier == "FavoritesToAddToCharacter" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! SelectCharacterViewController
+            
+            // Spell to add
+            if tableView.indexPath(for: sender as! FavoritesCell) != nil {
+                let cell = sender as! FavoritesCell
+                controller.spellToAdd = allSpellsViewController.search.searchResultsDict[cell.data.slug!]
+            }
+            
+            // Core data and Characters
+            controller.managedObjectContext = managedObjectContext
+            var currentCharacters: [Character] = []
+            do {
+                // Get all current Character objects in Core Data
+                currentCharacters = try managedObjectContext.fetch(Character.fetchRequest())
+            } catch {
+                fatalCoreDataError(error)
+            }
+            controller.currentCharacters = currentCharacters
+        }
     }
 }
-
 
 // MARK: - NSFetchedResultsController Delegate Extension
 extension FavoritesViewController: NSFetchedResultsControllerDelegate {
@@ -272,7 +299,7 @@ extension FavoritesViewController: NSFetchedResultsControllerDelegate {
       print("*** NSFetchedResults unknown type")
     }
   }
-
+    
   func controllerDidChangeContent(
     _ controller: NSFetchedResultsController<NSFetchRequestResult>
   ) {

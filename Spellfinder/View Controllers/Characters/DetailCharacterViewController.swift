@@ -20,6 +20,7 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     
     // MARK: - Instance Variables
     
+    // TO-DO: Make custom cell for a spell that's shown in a character's detail screen
     struct TableView {
       struct CellIdentifiers {
         static let favoritesCell = "FavoritesCell"
@@ -45,9 +46,7 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         let predicate = NSPredicate(format: "%@ IN character", characterToDisplay)
-        // let predicate = NSPredicate(format: "ANY character == %@", characterToDisplay.objectID)
         fetchRequest.predicate = predicate
-        print("PREDICATE: ", predicate)
         
         fetchRequest.fetchBatchSize = 20
         
@@ -105,6 +104,10 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     */
     
     // MARK: - Favorites Cell Delegate
+    func addButtonTapped(cell: FavoritesCell) {
+        print("Add button tapped in DetailCharacterViewController")
+    }
+    
     func favoritesButtonTapped(cell: FavoritesCell) {
         print("Favorites button tapped in DetailCharacterViewController")
     }
