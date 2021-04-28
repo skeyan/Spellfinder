@@ -70,7 +70,6 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
                     spellToSave = retrieveSpell(slug: spellToAdd!.slug!)!
                 }
                 
-                // TO-DO: Check for duplicates?
                 // Add the spell to the selected character
                  entity.myCharacter.addToSpells(spellToSave)
             }
@@ -95,7 +94,15 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
         tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.characterCell)
         
         for character in currentCharacters! {
-            let entity = Entity(myCharacter: character, isSelected: false)
+            var shouldBeSelected = false
+            let spellInCharacter = character.spells?.filter { ($0 as! Spell).slug! == spellToAdd!.slug! }
+            if let spell = spellInCharacter {
+                if (spell.count > 0) {
+                    shouldBeSelected = true
+                }
+            }
+            
+            let entity = Entity(myCharacter: character, isSelected: shouldBeSelected)
             dataModel.append(entity)
         }
     }
