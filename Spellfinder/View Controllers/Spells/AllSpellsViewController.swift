@@ -295,7 +295,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func favoritesButtonTapped(cell: SearchResultCell) {
         // Save the spell entity if that spell doesn't already exist in Core Data
-        // Otherwise, if that spell is in Core Data, delete it (unfavorite it)
+        // Otherwise, if that spell is in Core Data, unfavorite it
         if !(someEntityExists(slug: cell.data.slug!)) {
             // Create the spell entity
             let spellToSave = Spell(context: managedObjectContext)
@@ -337,8 +337,17 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
             
             // Update core data
-            let spellToDelete = retrieveSpell(slug: cell.data.slug!)
-            self.managedObjectContext.delete(spellToDelete!)
+            let spellToUpdate = retrieveSpell(slug: cell.data.slug!)
+            
+            if let character = spellToUpdate!.character {
+                if (character.count == 0) {
+                    managedObjectContext.delete(spellToUpdate!)
+                } else {
+                    spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+                }
+            } else {
+                spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+            }
             
             do {
                try managedObjectContext.save()

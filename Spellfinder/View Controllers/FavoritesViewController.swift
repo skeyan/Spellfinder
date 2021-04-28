@@ -16,26 +16,30 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
     lazy var fetchedResultsController: NSFetchedResultsController<Spell> = {
-      let fetchRequest = NSFetchRequest<Spell>()
+        let fetchRequest = NSFetchRequest<Spell>()
 
-      let entity = Spell.entity()
-      fetchRequest.entity = entity
+        let entity = Spell.entity()
+        fetchRequest.entity = entity
 
-      let sortDescriptor = NSSortDescriptor(
-        key: "name",
-        ascending: true)
-      fetchRequest.sortDescriptors = [sortDescriptor]
+        let sortDescriptor = NSSortDescriptor(
+            key: "name",
+            ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
 
-      fetchRequest.fetchBatchSize = 20
+        let predicate = NSPredicate(format: "isFavorited == %@", NSNumber(value: true))
+        fetchRequest.predicate = predicate
 
-      let fetchedResultsController = NSFetchedResultsController(
-        fetchRequest: fetchRequest,
-        managedObjectContext: self.managedObjectContext,
-        sectionNameKeyPath: nil,
-        cacheName: "Spells")
+        fetchRequest.fetchBatchSize = 20
 
-      fetchedResultsController.delegate = self
-      return fetchedResultsController
+        let fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: "Spells"
+        )
+
+        fetchedResultsController.delegate = self
+        return fetchedResultsController
     }()
     
     var allSpellsViewController = AllSpellsViewController()
@@ -94,7 +98,15 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
         allSpellsViewController.tableView.reloadData()
         
-        managedObjectContext.delete(favoritedSpell)
+        if let character = favoritedSpell.character {
+            if (character.count == 0) {
+                managedObjectContext.delete(favoritedSpell)
+            } else {
+                favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+            }
+        } else {
+            favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+        }
         
         // Save context
         do {
@@ -151,7 +163,15 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
         allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
         allSpellsViewController.tableView.reloadData()
         
-        managedObjectContext.delete(favoritedSpell)
+        if let character = favoritedSpell.character {
+            if (character.count == 0) {
+                managedObjectContext.delete(favoritedSpell)
+            } else {
+                favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+            }
+        } else {
+            favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+        }
         
         // Save context
         do {

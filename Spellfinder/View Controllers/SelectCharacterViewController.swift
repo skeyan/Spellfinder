@@ -37,6 +37,52 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
     
     @IBAction func done(_ sender: Any) {
         // TO-DO: Add spell to character(s) in CoreData
+        for entity in dataModel {
+            if (entity.isSelected) {
+                // Create or update spell depending if it exists or not, to be saved
+                var spellToSave: Spell
+                if !(someEntityExists(slug: spellToAdd!.slug!)) {
+                    // Create the spell entity
+                    spellToSave = Spell(context: managedObjectContext)
+                    spellToSave.archetype = spellToAdd!.archetype
+                    spellToSave.castingTime = spellToAdd!.castingTime
+                    spellToSave.circles = spellToAdd!.circles
+                    spellToSave.components = spellToAdd!.components
+                    spellToSave.concentration = spellToAdd!.concentration
+                    spellToSave.desc = spellToAdd!.desc
+                    spellToSave.dndClass = spellToAdd!.dndClass
+                    spellToSave.duration = spellToAdd!.duration
+                    spellToSave.higherLevelDesc = spellToAdd!.higherLevelDesc
+                    spellToSave.isConcentration = spellToAdd!.isConcentration
+                    spellToSave.isRitual = spellToAdd!.isRitual
+                    spellToSave.level = spellToAdd!.level
+                    spellToSave.levelNum = spellToAdd!.levelNum!
+                    spellToSave.material = spellToAdd!.material
+                    spellToSave.name = spellToAdd!.name
+                    spellToSave.page = spellToAdd!.page
+                    spellToSave.range = spellToAdd!.range
+                    spellToSave.ritual = spellToAdd!.ritual
+                    spellToSave.school = spellToAdd!.school
+                    spellToSave.slug = spellToAdd!.slug
+                    spellToSave.isFavorited = spellToAdd!.isFavorited
+                } else {
+                    // Retrieve existing spell
+                    spellToSave = retrieveSpell(slug: spellToAdd!.slug!)!
+                }
+                
+                // TO-DO: Check for duplicates?
+                // Add the spell to the selected character
+                 entity.myCharacter.addToSpells(spellToSave)
+            }
+        }
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     
@@ -111,5 +157,42 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
     // UI improvement - Prevent selection in certain cases
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         return indexPath.section == 0 ? nil : indexPath
+    }
+    
+    // MARK: - Core Data Helpers
+    func retrieveSpell(slug: String) -> Spell? {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Spell")
+        fetchRequest.predicate = NSPredicate(format: "slug = %@", slug)
+        
+        var results: [NSManagedObject] = []
+
+        do {
+            results = try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            fatalCoreDataError(error)
+        }
+
+        if results.count != 0 {
+            return results[0] as? Spell
+        } else {
+            return nil
+        }
+    }
+    
+    func someEntityExists(slug: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Spell")
+        fetchRequest.predicate = NSPredicate(format: "slug = %@", slug)
+        
+        var results: [NSManagedObject] = []
+
+        do {
+            results = try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            fatalCoreDataError(error)
+        }
+
+        return results.count > 0
     }
 }
