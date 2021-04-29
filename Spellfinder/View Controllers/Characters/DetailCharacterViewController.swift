@@ -183,7 +183,7 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
       case .update:
         print("*** NSFetchedResultsChangeUpdate (object)")
         if let cell = tableView.cellForRow(
-          at: indexPath!) as? FavoritesCell {
+          at: indexPath!) as? SpellForCharacterCell {
           let characterSpell = controller.object(
             at: indexPath!) as! Spell
           cell.configure(for: characterSpell)
