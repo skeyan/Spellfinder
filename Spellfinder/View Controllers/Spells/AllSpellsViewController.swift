@@ -61,6 +61,14 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         let themeColor = UIColor(named: "AccentColor")
         UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor!], for: .selected)
         
+        // Gesture recognizer to dismiss keyboard on tap
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false // allow row selection
+        self.view.addGestureRecognizer(tapGesture)
+        
+        // Dismiss keyboard when dragging/scrolling through spells' table view
+        tableView.keyboardDismissMode = .onDrag
+        
         // Register loading cell nibs
         var cellNib = UINib(nibName: TableView.CellIdentifiers.loadingCell, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: TableView.CellIdentifiers.loadingCell)
@@ -104,6 +112,15 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+    
+    // UI improvement - dismiss the keyboard when tapping out of a text field
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(false)
+    }
+    
+//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//    }
     
     // MARK: - User Defaults
     func registerDefaults() {
