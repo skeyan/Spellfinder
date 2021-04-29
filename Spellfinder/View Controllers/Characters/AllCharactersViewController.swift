@@ -20,6 +20,8 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
       }
     }
     
+    var allSpellsViewController = AllSpellsViewController()
+    
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
     lazy var fetchedResultsController: NSFetchedResultsController<Character> = {
@@ -101,6 +103,7 @@ class AllCharactersViewController: UIViewController, NSFetchedResultsControllerD
             // Pass data to next view
             let controller = segue.destination as! DetailCharacterViewController
             controller.managedObjectContext = managedObjectContext
+            controller.allSpellsViewController = allSpellsViewController
             if let indexPath = tableView.indexPath(
                   for: sender as! CharacterCell) {
                 controller.characterToDisplay = fetchedResultsController.object(at: indexPath)

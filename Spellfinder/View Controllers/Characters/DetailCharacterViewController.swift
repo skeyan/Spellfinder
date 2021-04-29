@@ -19,8 +19,6 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: - Instance Variables
-    
-    // TO-DO: Make custom cell for a spell that's shown in a character's detail screen
     struct TableView {
       struct CellIdentifiers {
         static let spellForCharacterCell = "SpellForCharacterCell"
@@ -29,6 +27,8 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     
     // The Character entity to be displayed
     var characterToDisplay: Character!
+    
+    var allSpellsViewController = AllSpellsViewController()
     
     // The Character's spells
     // CoreData
@@ -93,19 +93,54 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
       }
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Detail spell view
+        if (segue.identifier == "ShowCharacterDetailSpellDetail" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailSpellViewController
+            if tableView.indexPath(for: sender as! SpellForCharacterCell) != nil {
+                let cell = sender as! SpellForCharacterCell
+                controller.searchResultToDisplay = allSpellsViewController.search.searchResultsDict[cell.data.slug!]
+            }
+        }
     }
-    */
     
     // MARK: - Favorites Cell Delegate
     func favoritesButtonTapped(cell: SpellForCharacterCell) {
-        print("Favorites button tapped in DetailCharacterViewController")
+        let indexPath = tableView.indexPath(for: cell)
+        let favoritedSpell = fetchedResultsController.object(at: indexPath!)
+        
+        // Update instance spells array
+        allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
+        allSpellsViewController.tableView.reloadData()
+        
+        // Update in Core Data
+        if let character = favoritedSpell.character {
+            if (character.count == 0) {
+                managedObjectContext.delete(favoritedSpell)
+            } else {
+                favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+            }
+        } else {
+            favoritedSpell.isFavorited = !favoritedSpell.isFavorited
+        }
+        
+        // Save context
+        do {
+            try managedObjectContext.save()
+        } catch {
+            fatalCoreDataError(error)
+        }
+        
+        // Update the UI
+        if(cell.data.isFavorited) {
+            let image = UIImage(named: "star-filled")
+            cell.favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "star")
+            cell.favoriteButton.setImage(image, for: .normal)
+        }
     }
 
     // MARK: - Helper Methods
@@ -223,7 +258,9 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
         tableView.deselectRow(at: indexPath, animated: true)
         
         // Perform segue to Spell Detail
-        // let cell = tableView.cellForRow(at: indexPath) as? FavoritesCell
-        // performSegue(withIdentifier: "ShowFavoritesSpellDetail", sender: cell)
+        let cell = tableView.cellForRow(at: indexPath) as? SpellForCharacterCell
+        performSegue(withIdentifier: "ShowCharacterDetailSpellDetail", sender: cell)
     }
+    
+    // TO-DO: Delete style, delete spell from character's spells
 }

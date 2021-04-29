@@ -37,6 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Retroica", size: 18)!]
             let controller1 = navController.viewControllers.first as! AllCharactersViewController
             controller1.managedObjectContext = managedObjectContext
+            controller1.allSpellsViewController = controller
             let _ = controller1.view
             
             // Third set of screens is Favorites
