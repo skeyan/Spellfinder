@@ -263,4 +263,25 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     // TO-DO: Delete style, delete spell from character's spells
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let spell = fetchedResultsController.object(at: indexPath)
+
+            // Update in Core Data
+            if let character = spell.character {
+                spell.removeFromCharacter(character)
+                // Delete from Core Data if there's no reason to keep it there
+                if (!spell.isFavorited && character.count == 0) {
+                    managedObjectContext.delete(spell)
+                }
+            }
+            
+            // Save context
+            do {
+              try managedObjectContext.save()
+            } catch {
+              fatalCoreDataError(error)
+            }
+        }
+    }
 }
