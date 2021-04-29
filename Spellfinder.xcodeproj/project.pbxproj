@@ -44,6 +44,8 @@
 		B0D8A08B26364C9C00431513 /* Character+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */; };
 		B0F2DC87263679C100AE818C /* SelectCharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC86263679C100AE818C /* SelectCharacterViewController.swift */; };
 		B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC892638D49400AE818C /* CustomTabBarViewController.swift */; };
+		B0F2DC8D263A120B00AE818C /* SpellForCharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F2DC8C263A120B00AE818C /* SpellForCharacterCell.xib */; };
+		B0F2DC90263A127300AE818C /* SpellForCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC8F263A127300AE818C /* SpellForCharacterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +88,8 @@
 		B0D8A08926364C9C00431513 /* Character+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		B0F2DC86263679C100AE818C /* SelectCharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCharacterViewController.swift; sourceTree = "<group>"; };
 		B0F2DC892638D49400AE818C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		B0F2DC8C263A120B00AE818C /* SpellForCharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellForCharacterCell.xib; sourceTree = "<group>"; };
+		B0F2DC8F263A127300AE818C /* SpellForCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellForCharacterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,8 @@
 			children = (
 				B06717702634C85100495FF8 /* CharacterCell.xib */,
 				B06717772634CC2500495FF8 /* CharacterCell.swift */,
+				B0F2DC8C263A120B00AE818C /* SpellForCharacterCell.xib */,
+				B0F2DC8F263A127300AE818C /* SpellForCharacterCell.swift */,
 			);
 			path = "Characters Screen";
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 				B029DBBD262B822D0004D096 /* FiltersUsedCell.xib in Resources */,
 				B06717482633BB3E00495FF8 /* NoFavoritesCell.xib in Resources */,
 				B029DBBA262B82220004D096 /* SearchResultHeaderCell.xib in Resources */,
+				B0F2DC8D263A120B00AE818C /* SpellForCharacterCell.xib in Resources */,
 				B06717712634C85100495FF8 /* CharacterCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -343,6 +350,7 @@
 				B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */,
 				B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */,
 				B067175A2634B49400495FF8 /* Spell+CoreDataClass.swift in Sources */,
+				B0F2DC90263A127300AE818C /* SpellForCharacterCell.swift in Sources */,
 				B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

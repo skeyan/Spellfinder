@@ -129,6 +129,15 @@ class AddCharacterViewController: UITableViewController {
             createCharacterButton.setTitle("Create", for: .normal)
         }
         iconImage.image = UIImage(named: iconName)
+        
+        // Gesture recognizer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(false)
     }
 
     // MARK: - Navigation

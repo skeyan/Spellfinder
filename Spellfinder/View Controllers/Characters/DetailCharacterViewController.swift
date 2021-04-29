@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class DetailCharacterViewController: UIViewController, NSFetchedResultsControllerDelegate, FavoritesCellDelegate {
+class DetailCharacterViewController: UIViewController, NSFetchedResultsControllerDelegate, SpellForCharacterCellDelegate {
     
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var characterNameValueLabel: UILabel!
@@ -23,7 +23,7 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     // TO-DO: Make custom cell for a spell that's shown in a character's detail screen
     struct TableView {
       struct CellIdentifiers {
-        static let favoritesCell = "FavoritesCell"
+        static let spellForCharacterCell = "SpellForCharacterCell"
       }
     }
     
@@ -71,8 +71,8 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
         }
         
         // Register nibs
-        let cellNib = UINib(nibName: TableView.CellIdentifiers.favoritesCell, bundle: nil)
-        tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.favoritesCell)
+        let cellNib = UINib(nibName: TableView.CellIdentifiers.spellForCharacterCell, bundle: nil)
+        tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.spellForCharacterCell)
         
         // Get character's spells from Core Data
         fetchSpells()
@@ -104,11 +104,7 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     */
     
     // MARK: - Favorites Cell Delegate
-    func addButtonTapped(cell: FavoritesCell) {
-        print("Add button tapped in DetailCharacterViewController")
-    }
-    
-    func favoritesButtonTapped(cell: FavoritesCell) {
+    func favoritesButtonTapped(cell: SpellForCharacterCell) {
         print("Favorites button tapped in DetailCharacterViewController")
     }
 
@@ -209,8 +205,8 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: TableView.CellIdentifiers.favoritesCell,
-            for: indexPath) as! FavoritesCell
+            withIdentifier: TableView.CellIdentifiers.spellForCharacterCell,
+            for: indexPath) as! SpellForCharacterCell
         
         cell.delegate = self
         
