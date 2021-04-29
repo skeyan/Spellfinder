@@ -94,7 +94,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- CONTACT -->
 ## Contact
 
-Your Name - Eva Yan @ [LinkedIn](https://www.linkedin.com/in/sk-evayan/)
+Eva Yan @ [LinkedIn](https://www.linkedin.com/in/sk-evayan/)
 
 Project Link: [Spellfinder](https://github.com/skeyan/Spellfinder)
 
