@@ -132,12 +132,62 @@ class AddCharacterViewController: UITableViewController {
         
         // Gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
-        tapGesture.cancelsTouchesInView = false
+        tapGesture.cancelsTouchesInView = false // allow row selection
         self.view.addGestureRecognizer(tapGesture)
+        
+        // Keyboard push
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        // Done button and toolbar to keyboard
+        addDoneButtonOnKeyboard()
     }
     
+    // UI improvement - dismiss the keyboard when tapping out of a text field
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(false)
+    }
+    
+    // UI improvement - keyboard push
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        tableView.contentInset = .zero
+    }
+    
+    // Add done button to keybaord
+    func addDoneButtonOnKeyboard()
+    {
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
+        doneToolbar.barStyle = .default
+        doneToolbar.isTranslucent = true
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(self.doneButtonAction))
+
+        let items = NSMutableArray()
+        items.add(flexSpace)
+        items.add(done)
+
+        doneToolbar.items = items as? [UIBarButtonItem]
+        doneToolbar.sizeToFit()
+
+        self.levelValueTextField.inputAccessoryView = doneToolbar
+
+    }
+
+    @objc func doneButtonAction()
+    {
+        self.levelValueTextField.resignFirstResponder()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 
     // MARK: - Navigation
