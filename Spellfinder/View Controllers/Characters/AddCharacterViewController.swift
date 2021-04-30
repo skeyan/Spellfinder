@@ -102,6 +102,7 @@ class AddCharacterViewController: UITableViewController {
         // UI
         createCharacterButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
         
+        // Border between Class section rows
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor.systemGray6.cgColor

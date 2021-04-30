@@ -53,10 +53,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Prevent search bar from overlapping the table view
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 94
- 
+  
         // Change color of segmented control text
         let themeColor = UIColor(named: "AccentColor")
         UISegmentedControl.appearance().setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: themeColor!], for: .selected)
@@ -78,6 +75,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         
         cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
+        
+        // Remove 1px bottom border from search bar
+        searchBar.backgroundImage = UIImage()
         
         // Register UserDefaults defaults
         registerDefaults()
@@ -160,7 +160,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
     // TO-DO: Put the results, filtered, into a new screen with a separate table view
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         performSegue(withIdentifier: "ShowSearchResults", sender: nil)
-        // performSearch(firstLoad: false)
+        // performSearch(firstLoad: false, coreDataSpells: self.coreDataSpells)
     }
     
     func performSearch(firstLoad: Bool, coreDataSpells: [Spell]) {
