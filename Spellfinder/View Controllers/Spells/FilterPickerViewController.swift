@@ -6,16 +6,21 @@
 //
 
 import UIKit
+import CoreData
 
 class FilterPickerViewController: UITableViewController {
     
     // MARK: - Instance Variables
-    
-    
+    var allSpellsViewController = AllSpellsViewController()
+    var managedObjectContext: NSManagedObjectContext!
     
     // MARK: - Actions
     @IBAction func done(_ sender: Any) {
         
+    }
+    
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - View

@@ -161,7 +161,7 @@ extension AllSpellsViewController: UISearchBarDelegate {
     
     func performSearch(firstLoad: Bool, coreDataSpells: [Spell]) {
       search.performSearch(
-        for: searchBar.text!,
+        for: "",
         firstLoad: firstLoad,
         coreDataSpells: coreDataSpells) { success in
           if !success {
@@ -247,7 +247,6 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // TO-DO: Search results view
         if (segue.identifier == "ShowSearchResults" && sender != nil) {
             // Pass data to next view
             let controller = segue.destination as! SearchResultsViewController
@@ -257,6 +256,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         // TO-DO: Search filter view
+        
         
         // Detail spell view
         if (segue.identifier == "ShowSpellDetail" && sender != nil) {

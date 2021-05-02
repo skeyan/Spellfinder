@@ -49,9 +49,6 @@ class SearchFilterViewController: UITableViewController {
         
         // Remove 1px bottom border from search bar
         searchBar.backgroundImage = UIImage()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
     }
 
     // MARK: - Table view data source
