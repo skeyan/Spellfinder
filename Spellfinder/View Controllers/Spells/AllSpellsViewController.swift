@@ -76,8 +76,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         cellNib = UINib(nibName: TableView.CellIdentifiers.nothingFoundCell, bundle: nil)
         tableView.register(cellNib,forCellReuseIdentifier: TableView.CellIdentifiers.nothingFoundCell)
         
-        // Remove 1px bottom border from search bar
+        // Remove 1px bottom/top border from search bar and toolbar
         searchBar.backgroundImage = UIImage()
+        toolBar.clipsToBounds = true
         
         // Register UserDefaults defaults
         registerDefaults()
@@ -103,7 +104,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     func showNetworkError() {
         let alert = UIAlertController(
             title: "Whoops...",
-            message: "There was an error accessing the Open5e API. " +
+            message: "There was an network error. " +
             "Please try again.",
             preferredStyle: .alert
         )
@@ -117,10 +118,6 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(false)
     }
-    
-//    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        searchBar.resignFirstResponder()
-//    }
     
     // MARK: - User Defaults
     func registerDefaults() {
@@ -157,10 +154,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
 
 // MARK: - Search Bar Delegate
 extension AllSpellsViewController: UISearchBarDelegate {
-    // TO-DO: Put the results, filtered, into a new screen with a separate table view
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        performSegue(withIdentifier: "ShowSearchResults", sender: nil)
-        // performSearch(firstLoad: false, coreDataSpells: self.coreDataSpells)
+        self.view.endEditing(true)
+        performSegue(withIdentifier: "ShowSearchResults", sender: self)
     }
     
     func performSearch(firstLoad: Bool, coreDataSpells: [Spell]) {
@@ -176,14 +172,6 @@ extension AllSpellsViewController: UISearchBarDelegate {
       
       tableView.reloadData()
       searchBar.resignFirstResponder()
-    }
-    
-    // Testing advanced search button - using bookmarks button
-    func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar)
-    {
-        // TO-DO: Figure out a way to make a button display on search bar that
-        // is not covered by the cancel button like the bookmarks button is.
-        print("The button on the right side of my search bar was pressed")
     }
 }
 
@@ -259,6 +247,16 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TO-DO: Search results view
+        if (segue.identifier == "ShowSearchResults" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! SearchResultsViewController
+            controller.searchedText = searchBar.text!
+            controller.managedObjectContext = managedObjectContext
+        }
+        
+        // TO-DO: Search filter view
+        
         // Detail spell view
         if (segue.identifier == "ShowSpellDetail" && sender != nil) {
             // Pass data to next view
