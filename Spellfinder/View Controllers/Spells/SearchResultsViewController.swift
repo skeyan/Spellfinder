@@ -15,6 +15,9 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     
     // MARK: - Instance Variables
     var searchedText: String = ""
+    var usedFilters: String = "None"
+    
+    var allSpellsViewController = AllSpellsViewController()
     
     struct TableView {
       struct CellIdentifiers {
@@ -158,6 +161,7 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
                 for: indexPath)
             let filterDescription = cell.viewWithTag(101) as! UILabel
             filterDescription.sizeToFit()
+            filterDescription.text = usedFilters
             return cell
         case 1:
             // Search Results
@@ -202,8 +206,8 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         
         // TO-DO: Perform segue to Spell Detail for spell search results, if any
-        // let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
-        // performSegue(withIdentifier: "ShowSpellDetail", sender: cell)
+        let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
+        performSegue(withIdentifier: "ShowSpellFromSearchResults", sender: cell)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -227,6 +231,17 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     // MARK: - Navigation
-    // TO-DO: Segue to Detail spell view
-    // TO-DO: Segue to Search filter view
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Detail spell view
+        if (segue.identifier == "ShowSpellFromSearchResults" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! DetailSpellViewController
+            if tableView.indexPath(for: sender as! SearchResultCell) != nil {
+                let cell = sender as! SearchResultCell
+                controller.searchResultToDisplay = allSpellsViewController.search.searchResultsDict[cell.data.slug!]
+            }
+        }
+        
+        // TO-DO: Segue to Search filter view [take stack into account?]**
+    }
 }

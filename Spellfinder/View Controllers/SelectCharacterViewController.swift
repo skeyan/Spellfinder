@@ -36,7 +36,6 @@ class SelectCharacterViewController: UITableViewController, NSFetchedResultsCont
     }
     
     @IBAction func done(_ sender: Any) {
-        // TO-DO: Add spell to character(s) in CoreData
         for entity in dataModel {
             if (entity.isSelected) {
                 // Create or update spell depending if it exists or not, to be saved

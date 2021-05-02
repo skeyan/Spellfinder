@@ -253,6 +253,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             let controller = segue.destination as! SearchResultsViewController
             controller.searchedText = searchBar.text!
             controller.managedObjectContext = managedObjectContext
+            controller.allSpellsViewController = self
         }
         
         // TO-DO: Search filter view
