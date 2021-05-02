@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 // Contains the search logic within a class
 // Provides centralized access to the search state and results
@@ -16,6 +17,7 @@ class Search {
     var searchResultsDict = Dictionary<String, SearchResult>()
     var searchResultsKeysByName = [String]()
     var searchResultsKeysByLevel = [String]()
+    var slugs: [String]?
     
     // Keep the state - have we finished searching?
     var hasSearched = false
@@ -30,15 +32,11 @@ class Search {
     func performSearch(
         for text: String,
         firstLoad: Bool,
-        coreDataSpells: [Spell],
+        coreDataSpells: [Spell]?,
         completion: @escaping SearchComplete
     ) {
         // Perform search
         if firstLoad || !text.isEmpty {
-            // Debug only
-            // print("-- Printing Core Data Spells that were passed through")
-            // print(coreDataSpells)
-            
             // Indicate we are getting data from API
             dataTask?.cancel()
             isLoading = true
@@ -51,6 +49,7 @@ class Search {
             dataTask = session.dataTask(with: url) {data, response, error in
                 var success = false
                 if let error = error as NSError?, error.code == -999 {
+                    // TO-DO: More user-friendly error alerting
                     print("Failure! \(error.localizedDescription)")
                 } else if let httpResponse = response as? HTTPURLResponse,
                           httpResponse.statusCode == 200 {
@@ -58,8 +57,10 @@ class Search {
                     if let data = data {
                         // Parse JSON on a background thread
                         self.searchResults = self.parse(data: data)
+  
+                        self.slugs = self.spellsArrayToSlugs(self.searchResults)
                         self.spellsArrayToDict(self.searchResults)
-                        self.coreDataOverwrite(coreDataSpells)
+                        self.coreDataOverwrite(coreDataSpells!)
 
                         DispatchQueue.main.async {
                             self.isLoading = false
@@ -68,6 +69,7 @@ class Search {
                     }
                 }
                 else {
+                    // TO-DO: More user-friendly error alerting
                     print("Failure! \(response!)")
                 }
                 
@@ -86,20 +88,10 @@ class Search {
         }
     }
     
-    // Parse the JSON data
-    func parse(data: Data) -> [SearchResult] {
-        do {
-            let decoder = JSONDecoder()
-            let result = try decoder.decode(ResultArray.self, from: data)
-            return result.results
-        } catch {
-            print("JSON Decoding Error: \(error)")
-            return []
-        }
-    }
-    
     // Creates the properly encoded API URL to gather spells
-    private func spellsURL(searchText: String) -> URL {
+    private func spellsURL(
+        searchText: String // TO-DO: Add filtering
+    ) -> URL {
         let encodedText = searchText.addingPercentEncoding(
               withAllowedCharacters: CharacterSet.urlQueryAllowed)!
           let urlString = String(
@@ -109,6 +101,30 @@ class Search {
         return url!
     }
     
+    // Parse the JSON data into SearchResults
+    func parse(data: Data) -> [SearchResult] {
+        do {
+            let decoder = JSONDecoder()
+            let result = try decoder.decode(ResultArray.self, from: data)
+            return result.results
+        } catch {
+            // TO-DO: Better error alerting
+            print("JSON Decoding Error: \(error)")
+            return []
+        }
+    }
+    
+    // MARK: - Methods for Filtered Spells
+    // Convert array of spells to array of slugs as strings only
+    private func spellsArrayToSlugs(_ arr: [SearchResult]) -> [String] {
+        var slugs = [String]()
+        for spell in arr {
+            slugs.append(spell.slug!)
+        }
+        return slugs
+    }
+ 
+    // MARK: - Methods for All Spells
     // Convert array of spells to dictionary of spells and populate instance variables
     private func spellsArrayToDict(_ arr: [SearchResult]) -> Void {
         var newSearchResultsDict = Dictionary<String, SearchResult>()

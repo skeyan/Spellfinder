@@ -588,14 +588,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Search for spells..." translatesAutoresizingMaskIntoConstraints="NO" id="H3B-eS-uJ3">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="44" width="368" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
                                     <string>Title</string>
                                 </scopeButtonTitles>
                                 <connections>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cS5-Uz-oHH"/>
+                                    <outlet property="delegate" destination="6PI-43-Llt" id="3Lc-Dc-Bnv"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6i7-Gz-Bo2">
@@ -607,13 +607,23 @@
                                     <outlet property="delegate" destination="6PI-43-Llt" id="pXI-Uj-Q5b"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qox-Qd-Alk">
+                                <rect key="frame" x="368" y="52" width="36" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="4si-3b-P3y"/>
+                                    <constraint firstAttribute="height" constant="40" id="TdU-z3-8ty"/>
+                                </constraints>
+                                <state key="normal" image="ellipsis" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nhz-hY-RUE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="bottom" secondItem="nhz-hY-RUE" secondAttribute="bottom" id="BF1-e1-t8z"/>
-                            <constraint firstItem="H3B-eS-uJ3" firstAttribute="trailing" secondItem="nhz-hY-RUE" secondAttribute="trailing" id="DJY-nd-UQ2"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="leading" secondItem="nhz-hY-RUE" secondAttribute="leading" id="Jjc-QJ-GfY"/>
+                            <constraint firstItem="nhz-hY-RUE" firstAttribute="trailing" secondItem="qox-Qd-Alk" secondAttribute="trailing" constant="10" id="NCp-r3-Zai"/>
+                            <constraint firstItem="qox-Qd-Alk" firstAttribute="top" secondItem="nhz-hY-RUE" secondAttribute="top" constant="8" id="Q7E-qy-Lo0"/>
+                            <constraint firstItem="qox-Qd-Alk" firstAttribute="leading" secondItem="H3B-eS-uJ3" secondAttribute="trailing" id="fAb-aq-tmg"/>
                             <constraint firstItem="H3B-eS-uJ3" firstAttribute="leading" secondItem="nhz-hY-RUE" secondAttribute="leading" id="hX9-q1-JUw"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="trailing" secondItem="nhz-hY-RUE" secondAttribute="trailing" id="oHo-ZB-SzH"/>
                             <constraint firstItem="6i7-Gz-Bo2" firstAttribute="top" secondItem="H3B-eS-uJ3" secondAttribute="bottom" id="uEK-qb-qFg"/>
@@ -622,6 +632,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search Results" id="PXl-r0-HqV"/>
                     <connections>
+                        <outlet property="searchBar" destination="H3B-eS-uJ3" id="ax2-6T-8co"/>
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
                     </connections>
                 </viewController>

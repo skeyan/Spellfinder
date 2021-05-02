@@ -166,8 +166,8 @@
 			children = (
 				B0D6513726162B3B00919473 /* AllSpellsViewController.swift */,
 				B0851200262789DB00000D46 /* DetailSpellViewController.swift */,
-				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 				B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */,
+				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 			);
 			path = Spells;
 			sourceTree = "<group>";
