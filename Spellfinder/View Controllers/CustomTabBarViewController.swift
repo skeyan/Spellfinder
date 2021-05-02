@@ -14,8 +14,12 @@ class CustomTabBarViewController: UITabBarController {
     }
     
     // Return to root of nav controller stack for All Spells when tab bar item is selected
+    // unless we're in search results view controller
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let navController1 =  self.viewControllers![0] as? UINavigationController
-        navController1?.popToRootViewController(animated: false)
+        let vc = navController1?.visibleViewController
+        if !(vc is SearchResultsViewController) {
+            navController1?.popToRootViewController(animated: false)
+        }
     }
 }

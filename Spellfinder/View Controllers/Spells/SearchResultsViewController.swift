@@ -11,7 +11,6 @@ import CoreData
 class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
-    // TO-DO: Add outlet to the filtering button
     
     // MARK: - Instance Variables
     var searchedText: String = ""
@@ -33,7 +32,22 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
     var coreDataSpells = [Spell]()
-
+    
+    // MARK: - Actions
+    @IBAction func didPressFilterButton(_ sender: Any) {
+        print("Pressed filter button in search results screen")
+    }
+    
+    // MARK: - Search Result Delegate
+    func favoritesButtonTapped(cell: SearchResultCell) {
+        // performSegue(withIdentifier: "SelectCharacterFromResults", sender: cell)
+        print("Favorites button tapped in Search Results view")
+    }
+    
+    func addButtonTapped(cell: SearchResultCell) {
+        performSegue(withIdentifier: "SelectCharacterFromResults", sender: cell)
+    }
+    
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +119,8 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
 extension SearchResultsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.view.endEditing(true)
-        // TO-DO: Perform the new search
+        fetchSpells()
+        performSearch(firstLoad: false, coreDataSpells: self.coreDataSpells)
     }
     
     func performSearch(firstLoad: Bool, coreDataSpells: [Spell]?) {
@@ -205,7 +220,6 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // TO-DO: Perform segue to Spell Detail for spell search results, if any
         let cell = tableView.cellForRow(at: indexPath) as? SearchResultCell
         performSegue(withIdentifier: "ShowSpellFromSearchResults", sender: cell)
     }
@@ -220,18 +234,33 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
             return 88
         }
     }
-    
-    // MARK: - Search Result Delegate
-    func favoritesButtonTapped(cell: SearchResultCell) {
-        print("Favorites button was tapped in Search Results screen")
-    }
-    
-    func addButtonTapped(cell: SearchResultCell) {
-        print("Add button was tapped in Search Results screen")
-    }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "SelectCharacterFromResults" && sender != nil) {
+            // Pass data to next view
+            let controller = segue.destination as! SelectCharacterViewController
+            
+            // Spell to add
+            if let indexPath = tableView.indexPath(
+                  for: sender as! SearchResultCell) {
+                let searchKey = search.searchResultsKeysByName[indexPath.row]
+                controller.spellToAdd = search.searchResultsDict[searchKey]
+            }
+                
+            // Core data and Characters
+            controller.managedObjectContext = managedObjectContext
+            var currentCharacters: [Character] = []
+            do {
+                // Get all current Character objects in Core Data
+                currentCharacters = try managedObjectContext.fetch(Character.fetchRequest())
+            } catch {
+                fatalCoreDataError(error)
+            }
+            controller.currentCharacters = currentCharacters
+        }
+        
         // Detail spell view
         if (segue.identifier == "ShowSpellFromSearchResults" && sender != nil) {
             // Pass data to next view
@@ -245,3 +274,4 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         // TO-DO: Segue to Search filter view [take stack into account?]**
     }
 }
+

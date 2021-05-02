@@ -563,7 +563,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Filter Search" id="gM0-qK-d9z">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="search" id="lZD-Pi-BCy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Search" style="done" id="lZD-Pi-BCy"/>
                     </navigationItem>
                     <connections>
                         <outlet property="classFilterValueLabel" destination="TLU-l5-T5y" id="vSP-VQ-VrL"/>
@@ -613,7 +613,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Filters" id="5aK-dV-2ct">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eC7-LX-XcN"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eC7-LX-XcN">
+                            <connections>
+                                <action selector="cancel:" destination="bcj-nl-1ke" id="Zh8-Cw-8gi"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="FC3-Ee-06g">
                             <connections>
                                 <action selector="done:" destination="bcj-nl-1ke" id="xMU-xd-KQh"/>
@@ -660,6 +664,9 @@
                                     <constraint firstAttribute="height" constant="40" id="TdU-z3-8ty"/>
                                 </constraints>
                                 <state key="normal" image="ellipsis" catalog="system"/>
+                                <connections>
+                                    <action selector="didPressFilterButton:" destination="6PI-43-Llt" eventType="touchUpInside" id="BXG-er-Xhl"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nhz-hY-RUE"/>
@@ -681,6 +688,7 @@
                         <outlet property="searchBar" destination="H3B-eS-uJ3" id="ax2-6T-8co"/>
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
                         <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowSpellFromSearchResults" id="dwP-6n-fgo"/>
+                        <segue destination="TDf-cu-psS" kind="show" identifier="SelectCharacterFromResults" id="P2c-WV-GnT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-0U-Fjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1374,7 +1382,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
-        <segue reference="8Jl-7o-PD4"/>
+        <segue reference="P2c-WV-GnT"/>
         <segue reference="dwP-6n-fgo"/>
     </inferredMetricsTieBreakers>
     <resources>
