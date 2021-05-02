@@ -313,7 +313,7 @@
                                     <constraint firstAttribute="trailing" secondItem="UwH-HQ-V08" secondAttribute="trailing" id="585-p8-Nl9"/>
                                     <constraint firstItem="UwH-HQ-V08" firstAttribute="width" secondItem="bNb-dM-Ali" secondAttribute="width" multiplier="0.517333" constant="199.82413799999998" id="GYt-Sx-eDX"/>
                                     <constraint firstItem="UwH-HQ-V08" firstAttribute="leading" secondItem="bNb-dM-Ali" secondAttribute="leading" id="X6O-JJ-nDU"/>
-                                    <constraint firstAttribute="bottom" secondItem="UwH-HQ-V08" secondAttribute="bottom" constant="303" id="i61-Ik-Abg"/>
+                                    <constraint firstAttribute="bottom" secondItem="UwH-HQ-V08" secondAttribute="bottom" constant="60" id="i61-Ik-Abg"/>
                                     <constraint firstItem="UwH-HQ-V08" firstAttribute="top" secondItem="bNb-dM-Ali" secondAttribute="top" id="uVI-TG-fd8"/>
                                 </constraints>
                             </scrollView>
@@ -573,11 +573,57 @@
                         <outlet property="schoolFilterValueLabel" destination="5ql-14-5Kq" id="DUa-C8-bMA"/>
                         <outlet property="searchBar" destination="c3D-yr-ULC" id="Brz-O9-gRE"/>
                         <outlet property="searchButton" destination="f8f-1J-MFm" id="fu8-3z-W96"/>
+                        <segue destination="bcj-nl-1ke" kind="show" identifier="ChooseFilters" id="jE2-Kb-P7G"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-oz-bWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3424.6376811594205" y="77.445652173913047"/>
+        </scene>
+        <!--Select Filters-->
+        <scene sceneID="d6I-oa-DxU">
+            <objects>
+                <tableViewController id="bcj-nl-1ke" customClass="FilterPickerViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K9p-sh-r6L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterOptionCell" textLabel="8G5-Jk-rc6" rowHeight="68" style="IBUITableViewCellStyleDefault" id="6Gr-Ik-Hmf">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Gr-Ik-Hmf" id="xxG-9N-eD3">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8G5-Jk-rc6">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" name="DarkGreyColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bcj-nl-1ke" id="Aed-zn-1k8"/>
+                            <outlet property="delegate" destination="bcj-nl-1ke" id="oYe-bS-Cg0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Filters" id="5aK-dV-2ct">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eC7-LX-XcN"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="FC3-Ee-06g">
+                            <connections>
+                                <action selector="done:" destination="bcj-nl-1ke" id="xMU-xd-KQh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zZI-52-rnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4299" y="-580"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="uf6-oI-yh8">
@@ -634,6 +680,7 @@
                     <connections>
                         <outlet property="searchBar" destination="H3B-eS-uJ3" id="ax2-6T-8co"/>
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
+                        <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowSpellFromSearchResults" id="dwP-6n-fgo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-0U-Fjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1328,7 +1375,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
         <segue reference="8Jl-7o-PD4"/>
-        <segue reference="9eP-Od-IHh"/>
+        <segue reference="dwP-6n-fgo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="SwordIcon" width="170.66667175292969" height="170.66667175292969"/>
