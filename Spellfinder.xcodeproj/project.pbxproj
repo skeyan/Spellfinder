@@ -47,7 +47,7 @@
 		B0F2DC8D263A120B00AE818C /* SpellForCharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F2DC8C263A120B00AE818C /* SpellForCharacterCell.xib */; };
 		B0F2DC90263A127300AE818C /* SpellForCharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC8F263A127300AE818C /* SpellForCharacterCell.swift */; };
 		B0F2DC95263B5C4B00AE818C /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */; };
-		B0F2DC9D263F3B8400AE818C /* FilterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC9C263F3B8400AE818C /* FilterPickerViewController.swift */; };
+		B0F2DCA2263FA99700AE818C /* LevelPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,7 +93,7 @@
 		B0F2DC8C263A120B00AE818C /* SpellForCharacterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpellForCharacterCell.xib; sourceTree = "<group>"; };
 		B0F2DC8F263A127300AE818C /* SpellForCharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellForCharacterCell.swift; sourceTree = "<group>"; };
 		B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
-		B0F2DC9C263F3B8400AE818C /* FilterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPickerViewController.swift; sourceTree = "<group>"; };
+		B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 				B0D6513726162B3B00919473 /* AllSpellsViewController.swift */,
 				B0851200262789DB00000D46 /* DetailSpellViewController.swift */,
 				B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */,
-				B0F2DC9C263F3B8400AE818C /* FilterPickerViewController.swift */,
+				B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */,
 				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 			);
 			path = Spells;
@@ -335,6 +335,7 @@
 				B0D6513E26162B3B00919473 /* Spellfinder.xcdatamodeld in Sources */,
 				B0D8A08A26364C9C00431513 /* Character+CoreDataClass.swift in Sources */,
 				B067176C2634C58E00495FF8 /* DetailCharacterViewController.swift in Sources */,
+				B0F2DCA2263FA99700AE818C /* LevelPickerViewController.swift in Sources */,
 				B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */,
 				B06717782634CC2500495FF8 /* CharacterCell.swift in Sources */,
 				B0D8A07826360B8700431513 /* Spell+CoreDataProperties.swift in Sources */,
@@ -352,7 +353,6 @@
 				B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */,
 				B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */,
 				B0F2DC87263679C100AE818C /* SelectCharacterViewController.swift in Sources */,
-				B0F2DC9D263F3B8400AE818C /* FilterPickerViewController.swift in Sources */,
 				B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
 				B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */,

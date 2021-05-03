@@ -18,8 +18,8 @@ class SearchFilterViewController: UITableViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     // MARK: - Instance Variables
-    
 
+    
     
     // MARK: - Actions
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -30,6 +30,8 @@ class SearchFilterViewController: UITableViewController {
             completion: { _ in
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
+                    
+                    // TO-DO: Segue to search results and give proper filters
             }
         })
     }
@@ -114,15 +116,27 @@ class SearchFilterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        // Level
+        if (segue.identifier == "ChooseLevelFilter" && sender != nil) {
+            let controller = segue.destination as! LevelPickerViewController
+            controller.delegate = self
+            if levelFilterValueLabel.text == "All Levels" {
+                controller.selectedLevel = 0
+            } else {
+                controller.selectedLevel = Int(levelFilterValueLabel.text!)! + 1
+            }
+        }
     }
-    */
-
 }
+
+// MARK: - Filter Delegates
+extension SearchFilterViewController: LevelPickerViewControllerDelegate {
+    // Level
+    func levelPicker(_ picker: LevelPickerViewController, didPickLevel level: String) {
+        levelFilterValueLabel.text = level
+    }
+}
+

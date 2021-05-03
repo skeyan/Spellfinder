@@ -100,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1863.7681159420292" y="77.445652173913047"/>
+            <point key="canvasLocation" x="1752" y="77"/>
         </scene>
         <!--Detail Spell View Controller-->
         <scene sceneID="bDi-Hp-NFQ">
@@ -361,7 +361,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xGJ-pJ-STi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="" id="i9z-j5-84C">
                                 <cells>
@@ -373,7 +372,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for spells..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c3D-yr-ULC">
-                                                    <rect key="frame" x="0.0" y="0.0" width="408" height="56"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="56" id="pG7-rf-cv5"/>
                                                     </constraints>
@@ -388,7 +387,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="c3D-yr-ULC" secondAttribute="bottom" id="QfU-PF-k5G"/>
                                                 <constraint firstItem="c3D-yr-ULC" firstAttribute="top" secondItem="Rrw-xP-ULs" secondAttribute="top" id="hON-vi-tvd"/>
-                                                <constraint firstAttribute="trailing" secondItem="c3D-yr-ULC" secondAttribute="trailing" constant="6" id="rDO-1P-qhX"/>
+                                                <constraint firstAttribute="trailing" secondItem="c3D-yr-ULC" secondAttribute="trailing" id="rDO-1P-qhX"/>
                                                 <constraint firstItem="c3D-yr-ULC" firstAttribute="leading" secondItem="Rrw-xP-ULs" secondAttribute="leading" symbolic="YES" id="xOW-iO-qEv"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -404,7 +403,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Levels (0 - 9)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnT-sS-bye">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Levels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnT-sS-bye">
                                                     <rect key="frame" x="20" y="24" width="342.66666666666669" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
@@ -418,6 +417,9 @@
                                                 <constraint firstItem="NnT-sS-bye" firstAttribute="top" secondItem="vcy-fG-YP0" secondAttribute="top" constant="24" id="yvi-nc-7KZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="bcj-nl-1ke" kind="show" identifier="ChooseLevelFilter" id="2yC-xb-5v7"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -573,7 +575,6 @@
                         <outlet property="schoolFilterValueLabel" destination="5ql-14-5Kq" id="DUa-C8-bMA"/>
                         <outlet property="searchBar" destination="c3D-yr-ULC" id="Brz-O9-gRE"/>
                         <outlet property="searchButton" destination="f8f-1J-MFm" id="fu8-3z-W96"/>
-                        <segue destination="bcj-nl-1ke" kind="show" identifier="ChooseFilters" id="jE2-Kb-P7G"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-oz-bWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -583,13 +584,13 @@
         <!--Select Filters-->
         <scene sceneID="d6I-oa-DxU">
             <objects>
-                <tableViewController id="bcj-nl-1ke" customClass="FilterPickerViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bcj-nl-1ke" customClass="LevelPickerViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="K9p-sh-r6L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FilterOptionCell" textLabel="8G5-Jk-rc6" rowHeight="68" style="IBUITableViewCellStyleDefault" id="6Gr-Ik-Hmf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LevelFilterOptionCell" textLabel="8G5-Jk-rc6" rowHeight="68" style="IBUITableViewCellStyleDefault" id="6Gr-Ik-Hmf">
                                 <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Gr-Ik-Hmf" id="xxG-9N-eD3">
@@ -615,12 +616,12 @@
                     <navigationItem key="navigationItem" title="Select Filters" id="5aK-dV-2ct">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eC7-LX-XcN">
                             <connections>
-                                <action selector="cancel:" destination="bcj-nl-1ke" id="Zh8-Cw-8gi"/>
+                                <action selector="cancel:" destination="bcj-nl-1ke" id="pMf-3X-IbM"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="FC3-Ee-06g">
                             <connections>
-                                <action selector="done:" destination="bcj-nl-1ke" id="xMU-xd-KQh"/>
+                                <action selector="done:" destination="bcj-nl-1ke" id="5HN-M8-VpV"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1369,8 +1370,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
-        <segue reference="P2c-WV-GnT"/>
-        <segue reference="YcY-tT-Rt8"/>
+        <segue reference="8Jl-7o-PD4"/>
+        <segue reference="dwP-6n-fgo"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="SwordIcon" width="170.66667175292969" height="170.66667175292969"/>
