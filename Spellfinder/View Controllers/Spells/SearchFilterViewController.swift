@@ -21,6 +21,7 @@ class SearchFilterViewController: UITableViewController {
     var levelFilters: Int?
     var classFilters: Set<Int>?
     var componentsFilters: Set<Int>?
+    var schoolFilters: Int?
     
     // MARK: - Actions
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -167,13 +168,29 @@ class SearchFilterViewController: UITableViewController {
                 }
             }
         }
+        
+        // School
+        if (segue.identifier == "ChooseSchoolFilter" && sender != nil) {
+            let controller = segue.destination as! SchoolFilterViewController
+            controller.delegate = self
+            if schoolFilterValueLabel.text == "Any" {
+                controller.selectedSchool = 0
+            } else {
+                if let filter = schoolFilters {
+                    controller.selectedSchool = filter
+                }
+            }
+        }
+        
+        // Concentration
     }
 }
 
 // MARK: - Filter Delegates
 extension SearchFilterViewController: LevelPickerViewControllerDelegate,
                                       ClassFilterViewControllerDelegate,
-                                      ComponentsFilterViewControllerDelegate {
+                                      ComponentsFilterViewControllerDelegate,
+                                      SchoolFilterViewControllerDelegate {
     
     // Level
     func levelPicker(
@@ -206,7 +223,10 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
     }
     
     // School of Magic
-    
+    func schoolPicker(_ picker: SchoolFilterViewController, didPickIndex index: Int, didPickSchool school: String) {
+        schoolFilters = index
+        schoolFilterValueLabel.text = school
+    }
     
     // Concentration
     

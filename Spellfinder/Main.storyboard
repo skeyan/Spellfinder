@@ -504,6 +504,9 @@
                                                 <constraint firstItem="5ql-14-5Kq" firstAttribute="top" secondItem="Nsa-RB-oYP" secondAttribute="top" constant="24" id="mfH-Hi-JXz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="YZr-Iw-b4k" kind="show" identifier="ChooseSchoolFilter" id="4Fv-Wm-Lfp"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -741,6 +744,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="88C-Bn-O9S" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3207" y="-620"/>
+        </scene>
+        <!--Select School Filters-->
+        <scene sceneID="mWf-bn-Scy">
+            <objects>
+                <tableViewController id="YZr-Iw-b4k" customClass="SchoolFilterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vIj-t6-wjL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="SchoolFilterOptionCell" textLabel="QMP-V2-iSR" rowHeight="68" style="IBUITableViewCellStyleDefault" id="gP2-1b-htt">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gP2-1b-htt" id="zLb-wN-4wS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="School filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QMP-V2-iSR">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" name="DarkGreyColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="YZr-Iw-b4k" id="Atk-az-QN0"/>
+                            <outlet property="delegate" destination="YZr-Iw-b4k" id="ATB-ac-IF0"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select School Filters" id="lOY-L8-t5C">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="jkd-HS-MAe">
+                            <connections>
+                                <action selector="cancel:" destination="YZr-Iw-b4k" id="GsN-bW-BTS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Rlp-ss-QOR">
+                            <connections>
+                                <action selector="done:" destination="YZr-Iw-b4k" id="IDi-gK-18P"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BEX-KS-zqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3922" y="-620"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="uf6-oI-yh8">
