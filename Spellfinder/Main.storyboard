@@ -490,7 +490,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ql-14-5Kq">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ql-14-5Kq">
                                                     <rect key="frame" x="20" y="24" width="342.66666666666669" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
@@ -561,13 +561,23 @@
                                                         <action selector="searchButtonWasTapped:" destination="jTR-S1-imX" eventType="touchUpInside" id="lpy-bC-WZ7"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfY-ft-usf">
-                                                    <rect key="frame" x="169" y="84" width="77" height="29"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfY-ft-usf">
+                                                    <rect key="frame" x="169" y="86" width="82" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="tintColor" red="0.61282850150000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Reset filters">
                                                         <color key="titleColor" systemColor="systemRedColor"/>
                                                     </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.61282850150000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" red="0.61282850145460011" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="resetAllFilters:" destination="jTR-S1-imX" eventType="touchUpInside" id="mqM-in-I5k"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -596,6 +606,7 @@
                         <outlet property="componentsFilterValueLabel" destination="WCp-fG-tLN" id="jJb-rZ-Lik"/>
                         <outlet property="concentrationFilterValueLabel" destination="WiV-r1-tQa" id="UF8-id-Ieb"/>
                         <outlet property="levelFilterValueLabel" destination="NnT-sS-bye" id="A4n-7G-S87"/>
+                        <outlet property="resetButton" destination="SfY-ft-usf" id="yt2-GI-cMn"/>
                         <outlet property="schoolFilterValueLabel" destination="5ql-14-5Kq" id="DUa-C8-bMA"/>
                         <outlet property="searchBar" destination="c3D-yr-ULC" id="Brz-O9-gRE"/>
                         <outlet property="searchButton" destination="f8f-1J-MFm" id="fu8-3z-W96"/>

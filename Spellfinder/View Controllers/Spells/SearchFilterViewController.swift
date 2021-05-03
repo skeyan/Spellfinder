@@ -16,6 +16,7 @@ class SearchFilterViewController: UITableViewController {
     @IBOutlet weak var schoolFilterValueLabel: UILabel!
     @IBOutlet weak var concentrationFilterValueLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     
     // MARK: - Instance Variables
     var levelFilters: Int?
@@ -26,7 +27,7 @@ class SearchFilterViewController: UITableViewController {
     
     // MARK: - Actions
     @IBAction func search(_ sender: Any) {
-        
+        // TO-DO: Segue to search results and give proper filters
     }
     
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -43,13 +44,30 @@ class SearchFilterViewController: UITableViewController {
         })
     }
     
+    @IBAction func resetAllFilters(_ sender: Any) {
+        // Reset stored filtered indexes
+        levelFilters = 0
+        classFilters = [0]
+        componentsFilters = [0]
+        schoolFilters = 0
+        concentrationFilters = 0
+        
+        // Reset labels for table view
+        levelFilterValueLabel.text = "Any"
+        classFilterValueLabel.text = "Any"
+        componentsFilterValueLabel.text = "Any"
+        schoolFilterValueLabel.text = "Any"
+        concentrationFilterValueLabel.text = "Any"
+    }
+    
+    
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // UI
         searchButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
-        
+                
         // Gesture recognizer to dismiss keyboard on tap
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
         tapGesture.cancelsTouchesInView = false // allow row selection
@@ -259,10 +277,5 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         concentrationFilters = index
         concentrationFilterValueLabel.text = concentration
     }
-    
-    // Reset all filters
-    
-    
-    // Create the Filter class
 }
 
