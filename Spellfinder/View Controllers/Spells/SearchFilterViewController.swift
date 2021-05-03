@@ -22,8 +22,13 @@ class SearchFilterViewController: UITableViewController {
     var classFilters: Set<Int>?
     var componentsFilters: Set<Int>?
     var schoolFilters: Int?
+    var concentrationFilters: Int?
     
     // MARK: - Actions
+    @IBAction func search(_ sender: Any) {
+        
+    }
+    
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1,
             animations: {
@@ -183,6 +188,19 @@ class SearchFilterViewController: UITableViewController {
         }
         
         // Concentration
+        if (segue.identifier == "ChooseConcentrationFilter" && sender != nil) {
+            let controller = segue.destination as! ConcentrationFilterViewController
+            controller.delegate = self
+            if concentrationFilterValueLabel.text == "Any" {
+                controller.selectedConcentration = 0
+            } else {
+                if let filter = concentrationFilters {
+                    controller.selectedConcentration = filter
+                }
+            }
+        }
+        
+        // Search results
     }
 }
 
@@ -190,8 +208,8 @@ class SearchFilterViewController: UITableViewController {
 extension SearchFilterViewController: LevelPickerViewControllerDelegate,
                                       ClassFilterViewControllerDelegate,
                                       ComponentsFilterViewControllerDelegate,
-                                      SchoolFilterViewControllerDelegate {
-    
+                                      SchoolFilterViewControllerDelegate,
+                                      ConcentrationFilterViewControllerDelegate {
     // Level
     func levelPicker(
         _ picker: LevelPickerViewController,
@@ -223,14 +241,28 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
     }
     
     // School of Magic
-    func schoolPicker(_ picker: SchoolFilterViewController, didPickIndex index: Int, didPickSchool school: String) {
+    func schoolPicker(
+        _ picker: SchoolFilterViewController,
+        didPickIndex index: Int,
+        didPickSchool school: String)
+    {
         schoolFilters = index
         schoolFilterValueLabel.text = school
     }
     
     // Concentration
-    
+    func concentrationPicker(
+        _ picker: ConcentrationFilterViewController,
+        didPickIndex index: Int,
+        didPickConcentration concentration: String)
+    {
+        concentrationFilters = index
+        concentrationFilterValueLabel.text = concentration
+    }
     
     // Reset all filters
+    
+    
+    // Create the Filter class
 }
 
