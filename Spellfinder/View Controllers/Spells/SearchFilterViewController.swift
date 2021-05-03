@@ -20,6 +20,7 @@ class SearchFilterViewController: UITableViewController {
     // MARK: - Instance Variables
     var levelFilters: Int?
     var classFilters: Set<Int>?
+    var componentsFilters: Set<Int>?
     
     // MARK: - Actions
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -153,11 +154,27 @@ class SearchFilterViewController: UITableViewController {
                 }
             }
         }
+        
+        // Components
+        if (segue.identifier == "ChooseComponentsFilter" && sender != nil) {
+            let controller = segue.destination as! ComponentsFilterViewController
+            controller.delegate = self
+            if componentsFilterValueLabel.text == "Any" {
+                controller.selectedComponents = [0]
+            } else {
+                if let filter = componentsFilters {
+                    controller.selectedComponents = filter
+                }
+            }
+        }
     }
 }
 
 // MARK: - Filter Delegates
-extension SearchFilterViewController: LevelPickerViewControllerDelegate, ClassFilterViewControllerDelegate {
+extension SearchFilterViewController: LevelPickerViewControllerDelegate,
+                                      ClassFilterViewControllerDelegate,
+                                      ComponentsFilterViewControllerDelegate {
+    
     // Level
     func levelPicker(
         _ picker: LevelPickerViewController,
@@ -176,7 +193,24 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate, ClassFi
     {
         classFilters = indexes
         classFilterValueLabel.text = dndClasses.joined(separator: ", ")
-        print("-- NEW CLASS FILTER LABEL TEXT: ", dndClasses.joined(separator: ", "))
     }
+    
+    // Components
+    func componentsFilterPicker(
+        _ picker: ComponentsFilterViewController,
+        didPickIndexes indexes: Set<Int>,
+        didPickComponents components: [String])
+    {
+        componentsFilters = indexes
+        componentsFilterValueLabel.text = components.joined(separator: ", ")
+    }
+    
+    // School of Magic
+    
+    
+    // Concentration
+    
+    
+    // Reset all filters
 }
 
