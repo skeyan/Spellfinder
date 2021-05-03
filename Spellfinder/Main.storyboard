@@ -533,6 +533,9 @@
                                                 <constraint firstItem="WiV-r1-tQa" firstAttribute="leading" secondItem="qV9-f2-RUE" secondAttribute="leading" constant="20" id="ijy-TX-vbc"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BRs-I6-8qI" kind="show" identifier="ChooseConcentrationFilter" id="Epa-yy-Cbq"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="136" id="O6D-4J-e1K">
                                         <rect key="frame" x="0.0" y="704" width="414" height="136"/>
@@ -582,7 +585,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Filter Search" id="gM0-qK-d9z">
-                        <barButtonItem key="rightBarButtonItem" title="Search" style="done" id="lZD-Pi-BCy"/>
+                        <barButtonItem key="rightBarButtonItem" title="Search" style="done" id="lZD-Pi-BCy">
+                            <connections>
+                                <action selector="search:" destination="jTR-S1-imX" id="Dc3-c1-eaz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="classFilterValueLabel" destination="TLU-l5-T5y" id="vSP-VQ-VrL"/>
@@ -793,6 +800,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEX-KS-zqG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3922" y="-620"/>
+        </scene>
+        <!--Concentration Filter View Controller-->
+        <scene sceneID="b1R-Zw-8ip">
+            <objects>
+                <tableViewController id="BRs-I6-8qI" customClass="ConcentrationFilterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zvK-Iz-aQd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ConcentrationFilterOptionCell" textLabel="bJo-O6-0jT" rowHeight="68" style="IBUITableViewCellStyleDefault" id="HPq-Ka-XfP">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HPq-Ka-XfP" id="om8-q6-N1u">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Concentration filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bJo-O6-0jT">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" name="DarkGreyColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BRs-I6-8qI" id="z7W-uI-jq7"/>
+                            <outlet property="delegate" destination="BRs-I6-8qI" id="zql-Zg-oxw"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems>
+                        <barButtonItem style="done" systemItem="done" id="4BO-f1-Ijz"/>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" id="VAt-ct-DNV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vn2-Qc-NkT">
+                            <connections>
+                                <action selector="cancel:" destination="BRs-I6-8qI" id="rCq-2g-46t"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="uF9-85-Ncy">
+                            <connections>
+                                <action selector="done:" destination="BRs-I6-8qI" id="8ZT-je-c6C"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6R-Il-Nku" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4651" y="-620"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="uf6-oI-yh8">

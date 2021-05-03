@@ -51,6 +51,7 @@
 		B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */; };
 		B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */; };
 		B0F2DCB42640A07700AE818C /* SchoolFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */; };
+		B0F2DCB82640A5D600AE818C /* ConcentrationFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCB72640A5D600AE818C /* ConcentrationFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterViewController.swift; sourceTree = "<group>"; };
+		B0F2DCB72640A5D600AE818C /* ConcentrationFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */,
 				B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */,
 				B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */,
+				B0F2DCB72640A5D600AE818C /* ConcentrationFilterViewController.swift */,
 				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 			);
 			path = Spells;
@@ -371,6 +374,7 @@
 				B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */,
 				B067175A2634B49400495FF8 /* Spell+CoreDataClass.swift in Sources */,
 				B0F2DC90263A127300AE818C /* SpellForCharacterCell.swift in Sources */,
+				B0F2DCB82640A5D600AE818C /* ConcentrationFilterViewController.swift in Sources */,
 				B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
