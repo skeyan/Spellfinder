@@ -49,6 +49,7 @@
 		B0F2DC95263B5C4B00AE818C /* SearchFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */; };
 		B0F2DCA2263FA99700AE818C /* LevelPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */; };
 		B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */; };
+		B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerViewController.swift; sourceTree = "<group>"; };
 		B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFilterViewController.swift; sourceTree = "<group>"; };
+		B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +175,7 @@
 				B0F2DC94263B5C4B00AE818C /* SearchFilterViewController.swift */,
 				B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */,
 				B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */,
+				B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */,
 				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 			);
 			path = Spells;
@@ -361,6 +364,7 @@
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
 				B0F2DC8A2638D49400AE818C /* CustomTabBarViewController.swift in Sources */,
 				B0851201262789DB00000D46 /* DetailSpellViewController.swift in Sources */,
+				B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */,
 				B067175A2634B49400495FF8 /* Spell+CoreDataClass.swift in Sources */,
 				B0F2DC90263A127300AE818C /* SpellForCharacterCell.swift in Sources */,
 				B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */,
