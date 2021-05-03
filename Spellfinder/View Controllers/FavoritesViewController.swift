@@ -93,6 +93,22 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
         allSpellsViewController.tableView.reloadData()
         
+        // Update search results array, if necessary
+        let navController1 = (tabBarController?.viewControllers![0]) as! UINavigationController
+        var vc: SearchResultsViewController?
+        for controller in navController1.viewControllers {
+            if controller is SearchResultsViewController {
+                vc = (controller as! SearchResultsViewController)
+            }
+        }
+        if let searchResultsViewController = vc {
+            if (searchResultsViewController.search.searchResultsDict[cell.data.slug!] != nil) {
+                searchResultsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited = !searchResultsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited
+                
+                searchResultsViewController.tableView.reloadData()
+            }
+        }
+        
         // Update in Core Data
         if let character = favoritedSpell.character {
             if (character.count == 0) {

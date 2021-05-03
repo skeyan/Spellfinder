@@ -35,13 +35,91 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     
     // MARK: - Actions
     @IBAction func didPressFilterButton(_ sender: Any) {
+        // TO-DO: Segue to filter, taking care of navigation stack
         print("Pressed filter button in search results screen")
     }
     
     // MARK: - Search Result Delegate
     func favoritesButtonTapped(cell: SearchResultCell) {
-        // performSegue(withIdentifier: "SelectCharacterFromResults", sender: cell)
-        print("Favorites button tapped in Search Results view")
+        // Save the spell entity if that spell doesn't already exist in Core Data
+        // Otherwise, if that spell is in Core Data, unfavorite it
+        if !(someEntityExists(slug: cell.data.slug!)) {
+            // Create the spell entity
+            let spellToSave = Spell(context: managedObjectContext)
+            spellToSave.archetype = cell.data.archetype
+            spellToSave.castingTime = cell.data.castingTime
+            spellToSave.circles = cell.data.circles
+            spellToSave.components = cell.data.components
+            spellToSave.concentration = cell.data.concentration
+            spellToSave.desc = cell.data.desc
+            spellToSave.dndClass = cell.data.dndClass
+            spellToSave.duration = cell.data.duration
+            spellToSave.higherLevelDesc = cell.data.higherLevelDesc
+            spellToSave.isConcentration = cell.data.isConcentration
+            spellToSave.isRitual = cell.data.isRitual
+            spellToSave.level = cell.data.level
+            spellToSave.levelNum = cell.data.levelNum!
+            spellToSave.material = cell.data.material
+            spellToSave.name = cell.data.name
+            spellToSave.page = cell.data.page
+            spellToSave.range = cell.data.range
+            spellToSave.ritual = cell.data.ritual
+            spellToSave.school = cell.data.school
+            spellToSave.slug = cell.data.slug
+            
+            // Update local instance array for table
+            search.searchResultsDict[cell.data.slug!]!.isFavorited = !search.searchResultsDict[cell.data.slug!]!.isFavorited
+            cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
+            
+            // Update all spells instance array for table
+            allSpellsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited
+            allSpellsViewController.tableView.reloadData()
+            
+            // Update core data
+            spellToSave.isFavorited = cell.data.isFavorited
+            
+            do {
+               try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        } else {
+            // Update local instance array for table
+            search.searchResultsDict[cell.data.slug!]!.isFavorited = !search.searchResultsDict[cell.data.slug!]!.isFavorited
+            cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
+            
+            // Update all spells instance array for table
+            allSpellsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited
+            allSpellsViewController.tableView.reloadData()
+            
+            // Update core data
+            let spellToUpdate = retrieveSpell(slug: cell.data.slug!)
+            
+            if let character = spellToUpdate!.character {
+                if (character.count == 0) {
+                    managedObjectContext.delete(spellToUpdate!)
+                } else {
+                    spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+                }
+            } else {
+                spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+            }
+            
+            do {
+               try managedObjectContext.save()
+            } catch {
+                fatalCoreDataError(error)
+            }
+        }
+        
+        // Update cell UI
+        if(cell.data.isFavorited) {
+            let image = UIImage(named: "star-filled")
+            cell.favoriteButton.setImage(image, for: .normal)
+        } else {
+            let image = UIImage(named: "star")
+            cell.favoriteButton.setImage(image, for: .normal)
+        }
     }
     
     func addButtonTapped(cell: SearchResultCell) {
@@ -272,6 +350,43 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         // TO-DO: Segue to Search filter view [take stack into account?]**
+    }
+    
+    // MARK: - Core Data Helpers
+    func retrieveSpell(slug: String) -> Spell? {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Spell")
+        fetchRequest.predicate = NSPredicate(format: "slug = %@", slug)
+        
+        var results: [NSManagedObject] = []
+
+        do {
+            results = try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            fatalCoreDataError(error)
+        }
+
+        if results.count != 0 {
+            return results[0] as? Spell
+        } else {
+            return nil
+        }
+    }
+    
+    func someEntityExists(slug: String) -> Bool {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Spell")
+        fetchRequest.predicate = NSPredicate(format: "slug = %@", slug)
+        
+        var results: [NSManagedObject] = []
+
+        do {
+            results = try managedObjectContext.fetch(fetchRequest)
+        }
+        catch {
+            fatalCoreDataError(error)
+        }
+
+        return results.count > 0
     }
 }
 

@@ -1091,8 +1091,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOZ-FE-YLR" userLabel="Content View">
                                 <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spells Known:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swh-p5-qtW">
-                                        <rect key="frame" x="20.000000000000007" y="115" width="109.66666666666669" height="19.333333333333343"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spellbook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swh-p5-qtW">
+                                        <rect key="frame" x="20" y="115" width="77.333333333333329" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="127" id="oa0-D4-4Jq"/>
                                         </constraints>
@@ -1101,7 +1101,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a3Z-P2-gLz">
-                                        <rect key="frame" x="0.0" y="142.33333333333334" width="414" height="500.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="143" width="414" height="500"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="bif-Fz-Lx1" id="uJZ-yX-onM"/>
@@ -1160,22 +1160,12 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84705882349999995" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total # of Spells" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYx-38-CLH">
-                                        <rect key="frame" x="133.66666666666666" y="115" width="138.99999999999997" height="19.333333333333343"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="139" id="npL-Sh-FVu"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <color key="textColor" name="DarkGreyColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Ocx-sR-sak" firstAttribute="top" secondItem="FOZ-FE-YLR" secondAttribute="top" constant="34" id="21V-NN-Hhw"/>
                                     <constraint firstItem="NAX-W9-5Ti" firstAttribute="leading" secondItem="Ocx-sR-sak" secondAttribute="trailing" constant="8" id="3FX-bw-F7o"/>
                                     <constraint firstItem="gda-Wz-KwT" firstAttribute="leading" secondItem="Ocx-sR-sak" secondAttribute="trailing" constant="8" id="4ov-KM-ub9"/>
-                                    <constraint firstItem="SYx-38-CLH" firstAttribute="top" secondItem="Ocx-sR-sak" secondAttribute="bottom" constant="16" id="5Xe-hx-YJz"/>
                                     <constraint firstItem="NAX-W9-5Ti" firstAttribute="top" secondItem="gda-Wz-KwT" secondAttribute="bottom" constant="1" id="9FP-Hl-IoS"/>
                                     <constraint firstItem="swh-p5-qtW" firstAttribute="top" secondItem="Ocx-sR-sak" secondAttribute="bottom" constant="16" id="9wV-V4-Ha4"/>
                                     <constraint firstItem="a3Z-P2-gLz" firstAttribute="top" secondItem="swh-p5-qtW" secondAttribute="bottom" constant="8" id="DCs-FC-CZd"/>
@@ -1184,6 +1174,7 @@
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="gda-Wz-KwT" secondAttribute="trailing" id="J1T-1l-Cic"/>
                                     <constraint firstItem="Ocx-sR-sak" firstAttribute="leading" secondItem="FOZ-FE-YLR" secondAttribute="leading" constant="20" id="OAe-Iz-Pzt"/>
                                     <constraint firstItem="a3Z-P2-gLz" firstAttribute="leading" secondItem="FOZ-FE-YLR" secondAttribute="leading" id="OPo-hH-T3a"/>
+                                    <constraint firstAttribute="trailing" secondItem="swh-p5-qtW" secondAttribute="trailing" constant="316.67000000000002" id="Rjr-hq-Gqd"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="leading" secondItem="Rzu-Dw-eO0" secondAttribute="trailing" constant="3" id="Tnm-TK-3kt"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="leading" secondItem="Rzu-Dw-eO0" secondAttribute="trailing" constant="3" id="XLN-yq-vVQ"/>
                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kKF-yH-RHR" secondAttribute="trailing" constant="33" id="ZbY-uT-PHj"/>
@@ -1191,13 +1182,10 @@
                                     <constraint firstItem="Rzu-Dw-eO0" firstAttribute="top" secondItem="kKF-yH-RHR" secondAttribute="bottom" constant="1" id="bEx-v1-TSm"/>
                                     <constraint firstAttribute="bottom" secondItem="a3Z-P2-gLz" secondAttribute="bottom" id="bsV-w5-oTa"/>
                                     <constraint firstItem="vg8-XK-otQ" firstAttribute="top" secondItem="kKF-yH-RHR" secondAttribute="bottom" constant="1" id="gaU-xD-bXL"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SYx-38-CLH" secondAttribute="trailing" constant="126" id="ijf-5x-70i"/>
                                     <constraint firstItem="kKF-yH-RHR" firstAttribute="leading" secondItem="NAX-W9-5Ti" secondAttribute="trailing" constant="3" id="iso-vI-DPm"/>
                                     <constraint firstItem="swh-p5-qtW" firstAttribute="leading" secondItem="FOZ-FE-YLR" secondAttribute="leading" constant="20" id="jk4-Mb-Tjl"/>
-                                    <constraint firstItem="SYx-38-CLH" firstAttribute="leading" secondItem="swh-p5-qtW" secondAttribute="trailing" constant="4" id="mu9-MU-Qdi"/>
                                     <constraint firstItem="kKF-yH-RHR" firstAttribute="top" secondItem="gda-Wz-KwT" secondAttribute="bottom" constant="1" id="sRD-aP-8Ur"/>
                                     <constraint firstItem="Rzu-Dw-eO0" firstAttribute="leading" secondItem="Ocx-sR-sak" secondAttribute="trailing" constant="8" id="sau-nG-ofm"/>
-                                    <constraint firstItem="SYx-38-CLH" firstAttribute="leading" secondItem="swh-p5-qtW" secondAttribute="trailing" constant="4" id="xeE-X1-rPl"/>
                                     <constraint firstItem="kKF-yH-RHR" firstAttribute="leading" secondItem="NAX-W9-5Ti" secondAttribute="trailing" constant="3" id="zRa-ey-1Zl"/>
                                 </constraints>
                             </view>
@@ -1218,7 +1206,6 @@
                         <outlet property="iconImage" destination="Ocx-sR-sak" id="zUn-OW-Qmj"/>
                         <outlet property="levelValueLabel" destination="vg8-XK-otQ" id="vRc-zm-abR"/>
                         <outlet property="tableView" destination="a3Z-P2-gLz" id="0zU-Ui-RAU"/>
-                        <outlet property="totalNumberOfSpellsValueLabel" destination="SYx-38-CLH" id="zKV-7a-mhF"/>
                         <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowCharacterDetailSpellDetail" id="YcY-tT-Rt8"/>
                     </connections>
                 </viewController>
@@ -1383,7 +1370,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
         <segue reference="P2c-WV-GnT"/>
-        <segue reference="dwP-6n-fgo"/>
+        <segue reference="YcY-tT-Rt8"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="SwordIcon" width="170.66667175292969" height="170.66667175292969"/>
