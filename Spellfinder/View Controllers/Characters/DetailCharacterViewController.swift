@@ -14,7 +14,6 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
     @IBOutlet weak var characterNameValueLabel: UILabel!
     @IBOutlet weak var classValueLabel: UILabel!
     @IBOutlet weak var levelValueLabel: UILabel!
-    @IBOutlet weak var totalNumberOfSpellsValueLabel: UILabel!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -115,6 +114,22 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
         allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited = !allSpellsViewController.search.searchResultsDict[favoritedSpell.slug!]!.isFavorited
         allSpellsViewController.tableView.reloadData()
         
+        // Update search results array, if necessary
+        let navController1 = (tabBarController?.viewControllers![0]) as! UINavigationController
+        var vc: SearchResultsViewController?
+        for controller in navController1.viewControllers {
+            if controller is SearchResultsViewController {
+                vc = (controller as! SearchResultsViewController)
+            }
+        }
+        if let searchResultsViewController = vc {
+            if (searchResultsViewController.search.searchResultsDict[cell.data.slug!] != nil) {
+                searchResultsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited = !searchResultsViewController.search.searchResultsDict[cell.data.slug!]!.isFavorited
+                
+                searchResultsViewController.tableView.reloadData()
+            }
+        }
+                
         // Update in Core Data
         if let character = favoritedSpell.character {
             if (character.count == 0) {
@@ -149,11 +164,6 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
         characterNameValueLabel.text = character.name
         classValueLabel.text = character.dndClass
         levelValueLabel.text = character.level
-        if let spells = character.spells {
-            totalNumberOfSpellsValueLabel.text = String(spells.count)
-        } else {
-            totalNumberOfSpellsValueLabel.text = "0"
-        }
     }
     
     // MARK: - NSFetchedResultsController Delegate
@@ -262,7 +272,6 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
         performSegue(withIdentifier: "ShowCharacterDetailSpellDetail", sender: cell)
     }
     
-    // TO-DO: Delete style, delete spell from character's spells
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let spell = fetchedResultsController.object(at: indexPath)
