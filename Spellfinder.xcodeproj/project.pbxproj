@@ -50,6 +50,7 @@
 		B0F2DCA2263FA99700AE818C /* LevelPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */; };
 		B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */; };
 		B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */; };
+		B0F2DCB42640A07700AE818C /* SchoolFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +99,7 @@
 		B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerViewController.swift; sourceTree = "<group>"; };
 		B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsFilterViewController.swift; sourceTree = "<group>"; };
+		B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 				B0F2DCA1263FA99700AE818C /* LevelPickerViewController.swift */,
 				B0F2DCAA263FBC6200AE818C /* ClassFilterViewController.swift */,
 				B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */,
+				B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */,
 				B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */,
 			);
 			path = Spells;
@@ -359,6 +362,7 @@
 				B03752BC262A95B60062E281 /* Search.swift in Sources */,
 				B06717652634B6BE00495FF8 /* UIButton+Border.swift in Sources */,
 				B06717612634B53C00495FF8 /* AllCharactersViewController.swift in Sources */,
+				B0F2DCB42640A07700AE818C /* SchoolFilterViewController.swift in Sources */,
 				B0F2DC87263679C100AE818C /* SelectCharacterViewController.swift in Sources */,
 				B06717692634C57900495FF8 /* AddCharacterViewController.swift in Sources */,
 				B0D6513626162B3B00919473 /* SceneDelegate.swift in Sources */,
