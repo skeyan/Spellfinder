@@ -19,9 +19,10 @@ class ClassFilterViewController: UITableViewController {
     // MARK: - Instance Variables
     let classes = [
         "Any",
-        "Artificer", "Barbarian", "Bard", "Blood Hunter", "Cleric",
-        "Druid", "Fighter", "Monk", "Paladin",
-        "Ranger", "Rogue", "Sorcerer", "Warlock", "Wizard"
+        "Bard", "Cleric",
+        "Druid", "Paladin",
+        "Ranger", "Sorcerer",
+        "Warlock", "Wizard"
     ]
 
     /*
