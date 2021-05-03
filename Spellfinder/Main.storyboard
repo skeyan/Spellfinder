@@ -358,7 +358,7 @@
         <scene sceneID="BUk-JX-LQd">
             <objects>
                 <tableViewController id="jTR-S1-imX" customClass="SearchFilterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xGJ-pJ-STi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="xGJ-pJ-STi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <sections>
@@ -403,7 +403,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Levels" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnT-sS-bye">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NnT-sS-bye">
                                                     <rect key="frame" x="20" y="24" width="342.66666666666669" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
@@ -432,7 +432,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="382.66666666666669" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Classes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLU-l5-T5y">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Any" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLU-l5-T5y">
                                                     <rect key="frame" x="20" y="24" width="342.66666666666669" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" name="DarkGreyColor"/>
@@ -446,6 +446,9 @@
                                                 <constraint firstItem="TLU-l5-T5y" firstAttribute="leading" secondItem="XEf-ig-vdI" secondAttribute="leading" constant="20" id="xzW-Sp-UiA"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Sgv-ck-jwT" kind="show" identifier="ChooseClassFilter" id="Yri-f7-B8o"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -549,6 +552,14 @@
                                                         <action selector="searchButtonWasTapped:" destination="jTR-S1-imX" eventType="touchUpInside" id="lpy-bC-WZ7"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfY-ft-usf">
+                                                    <rect key="frame" x="169" y="84" width="77" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <state key="normal" title="Reset filters">
+                                                        <color key="titleColor" systemColor="systemRedColor"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="f8f-1J-MFm" firstAttribute="centerY" secondItem="tDS-m7-WAd" secondAttribute="centerY" constant="-25.5" id="LLi-Ix-plg"/>
@@ -581,7 +592,7 @@
             </objects>
             <point key="canvasLocation" x="3424.6376811594205" y="77.445652173913047"/>
         </scene>
-        <!--Select Filters-->
+        <!--Select Level Filters-->
         <scene sceneID="d6I-oa-DxU">
             <objects>
                 <tableViewController id="bcj-nl-1ke" customClass="LevelPickerViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -590,14 +601,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LevelFilterOptionCell" textLabel="8G5-Jk-rc6" rowHeight="68" style="IBUITableViewCellStyleDefault" id="6Gr-Ik-Hmf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LevelFilterOptionCell" textLabel="8G5-Jk-rc6" rowHeight="68" style="IBUITableViewCellStyleDefault" id="6Gr-Ik-Hmf">
                                 <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6Gr-Ik-Hmf" id="xxG-9N-eD3">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8G5-Jk-rc6">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Level filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8G5-Jk-rc6">
                                             <rect key="frame" x="20" y="0.0" width="374" height="68"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -613,7 +624,7 @@
                             <outlet property="delegate" destination="bcj-nl-1ke" id="oYe-bS-Cg0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select Filters" id="5aK-dV-2ct">
+                    <navigationItem key="navigationItem" title="Select Level Filters" id="5aK-dV-2ct">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eC7-LX-XcN">
                             <connections>
                                 <action selector="cancel:" destination="bcj-nl-1ke" id="pMf-3X-IbM"/>
@@ -628,7 +639,56 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zZI-52-rnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4299" y="-580"/>
+            <point key="canvasLocation" x="1751" y="-619"/>
+        </scene>
+        <!--Select Class Filters-->
+        <scene sceneID="Q6o-mS-I1o">
+            <objects>
+                <tableViewController id="Sgv-ck-jwT" customClass="ClassFilterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="rYv-hn-G9m">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ClassFilterOptionCell" textLabel="Af2-I5-Gq8" rowHeight="68" style="IBUITableViewCellStyleDefault" id="YFr-1d-9cl">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YFr-1d-9cl" id="oLZ-jK-EEb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Class filter option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Af2-I5-Gq8">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" name="DarkGreyColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Sgv-ck-jwT" id="h7A-BZ-PLZ"/>
+                            <outlet property="delegate" destination="Sgv-ck-jwT" id="Zgq-J6-lU9"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Class Filters" id="APw-y8-UJo">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bHg-vf-XXl">
+                            <connections>
+                                <action selector="cancel:" destination="Sgv-ck-jwT" id="w1j-oL-rTg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Ou2-74-0Up">
+                            <connections>
+                                <action selector="done:" destination="Sgv-ck-jwT" id="ryv-gd-knd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zcr-HD-HQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2583" y="-620"/>
         </scene>
         <!--Search Results-->
         <scene sceneID="uf6-oI-yh8">
@@ -1394,6 +1454,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

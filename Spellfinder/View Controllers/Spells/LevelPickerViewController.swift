@@ -6,18 +6,18 @@
 //
 
 import UIKit
-import CoreData
 
 protocol LevelPickerViewControllerDelegate: class {
   func levelPicker(
     _ picker: LevelPickerViewController,
+    didPickIndex index: Int,
     didPickLevel level: String
   )
 }
 class LevelPickerViewController: UITableViewController {
     // MARK: - Instance Variables
     let levels = [
-      "All Levels", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
+      "Any", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
     ]
     var selectedLevel: Int = 0 // index of dataModel
     var dataModel: [Level] = []
@@ -36,7 +36,7 @@ class LevelPickerViewController: UITableViewController {
     
     @IBAction func done(_ sender: Any) {
         if let delegate = delegate {
-            delegate.levelPicker(self, didPickLevel: dataModel[selectedLevel].level)
+            delegate.levelPicker(self, didPickIndex: selectedLevel, didPickLevel: dataModel[selectedLevel].level)
             navigationController?.popViewController(animated: true)
         }
     }

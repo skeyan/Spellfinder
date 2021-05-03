@@ -18,8 +18,8 @@ class SearchFilterViewController: UITableViewController {
     @IBOutlet weak var searchButton: UIButton!
     
     // MARK: - Instance Variables
-
-    
+    var levelFilters: Int?
+    var classFilters: Set<Int>?
     
     // MARK: - Actions
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -36,13 +36,17 @@ class SearchFilterViewController: UITableViewController {
         })
     }
     
-    
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // UI
         searchButton.applyGradient(colors: [Helper.UIColorFromRGB(0x2CD0DD).cgColor, Helper.UIColorFromRGB(0xBB4BD2).cgColor])
+        
+        // Gesture recognizer to dismiss keyboard on tap
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false // allow row selection
+        self.view.addGestureRecognizer(tapGesture)
         
         // Scroll table section headers like a regular cell
         let dummyViewHeight = CGFloat(50)
@@ -51,6 +55,11 @@ class SearchFilterViewController: UITableViewController {
         
         // Remove 1px bottom border from search bar
         searchBar.backgroundImage = UIImage()
+    }
+    
+    // UI improvement - dismiss the keyboard when tapping out of a text field
+    @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        self.view.endEditing(false)
     }
 
     // MARK: - Table view data source
@@ -123,20 +132,51 @@ class SearchFilterViewController: UITableViewController {
         if (segue.identifier == "ChooseLevelFilter" && sender != nil) {
             let controller = segue.destination as! LevelPickerViewController
             controller.delegate = self
-            if levelFilterValueLabel.text == "All Levels" {
+            if levelFilterValueLabel.text == "Any" {
                 controller.selectedLevel = 0
             } else {
-                controller.selectedLevel = Int(levelFilterValueLabel.text!)! + 1
+                if let filter = levelFilters {
+                    controller.selectedLevel = filter
+                }
+            }
+        }
+        
+        // Class
+        if (segue.identifier == "ChooseClassFilter" && sender != nil) {
+            let controller = segue.destination as! ClassFilterViewController
+            controller.delegate = self
+            if classFilterValueLabel.text == "Any" {
+                controller.selectedClasses = [0]
+            } else {
+                if let filter = classFilters {
+                    controller.selectedClasses = filter
+                }
             }
         }
     }
 }
 
 // MARK: - Filter Delegates
-extension SearchFilterViewController: LevelPickerViewControllerDelegate {
+extension SearchFilterViewController: LevelPickerViewControllerDelegate, ClassFilterViewControllerDelegate {
     // Level
-    func levelPicker(_ picker: LevelPickerViewController, didPickLevel level: String) {
+    func levelPicker(
+        _ picker: LevelPickerViewController,
+        didPickIndex index: Int,
+        didPickLevel level: String)
+    {
+        levelFilters = index
         levelFilterValueLabel.text = level
+    }
+    
+    // Class
+    func classFilterPicker(
+        _ picker: ClassFilterViewController,
+        didPickIndexes indexes: Set<Int>,
+        didPickClass dndClasses: [String])
+    {
+        classFilters = indexes
+        classFilterValueLabel.text = dndClasses.joined(separator: ", ")
+        print("-- NEW CLASS FILTER LABEL TEXT: ", dndClasses.joined(separator: ", "))
     }
 }
 
