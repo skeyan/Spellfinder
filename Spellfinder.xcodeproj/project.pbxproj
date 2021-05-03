@@ -52,6 +52,7 @@
 		B0F2DCB026408DE300AE818C /* ComponentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */; };
 		B0F2DCB42640A07700AE818C /* SchoolFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */; };
 		B0F2DCB82640A5D600AE818C /* ConcentrationFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCB72640A5D600AE818C /* ConcentrationFilterViewController.swift */; };
+		B0F2DCBC2640AA8C00AE818C /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F2DCBB2640AA8C00AE818C /* Filter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		B0F2DCAF26408DE300AE818C /* ComponentsFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCB32640A07700AE818C /* SchoolFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolFilterViewController.swift; sourceTree = "<group>"; };
 		B0F2DCB72640A5D600AE818C /* ConcentrationFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConcentrationFilterViewController.swift; sourceTree = "<group>"; };
+		B0F2DCBB2640AA8C00AE818C /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				B0D8A07526360B8700431513 /* Spell+CoreDataProperties.swift */,
 				B0845EAD261D82FD00D56FB0 /* SearchResult.swift */,
 				B03752BB262A95B60062E281 /* Search.swift */,
+				B0F2DCBB2640AA8C00AE818C /* Filter.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				B0D8A08B26364C9C00431513 /* Character+CoreDataProperties.swift in Sources */,
 				B0845EAE261D82FD00D56FB0 /* SearchResult.swift in Sources */,
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
+				B0F2DCBC2640AA8C00AE818C /* Filter.swift in Sources */,
 				B0D6513426162B3B00919473 /* AppDelegate.swift in Sources */,
 				B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */,
 				B0F2DC95263B5C4B00AE818C /* SearchFilterViewController.swift in Sources */,
