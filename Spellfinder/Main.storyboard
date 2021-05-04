@@ -813,7 +813,7 @@
             </objects>
             <point key="canvasLocation" x="3922" y="-620"/>
         </scene>
-        <!--Concentration Filter View Controller-->
+        <!--Select Concentration Filters-->
         <scene sceneID="b1R-Zw-8ip">
             <objects>
                 <tableViewController id="BRs-I6-8qI" customClass="ConcentrationFilterViewController" customModule="Spellfinder" customModuleProvider="target" sceneMemberID="viewController">
@@ -848,7 +848,7 @@
                     <toolbarItems>
                         <barButtonItem style="done" systemItem="done" id="4BO-f1-Ijz"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="VAt-ct-DNV">
+                    <navigationItem key="navigationItem" title="Select Concentration Filters" id="VAt-ct-DNV">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Vn2-Qc-NkT">
                             <connections>
                                 <action selector="cancel:" destination="BRs-I6-8qI" id="rCq-2g-46t"/>
