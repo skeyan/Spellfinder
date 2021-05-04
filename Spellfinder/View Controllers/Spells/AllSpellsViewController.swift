@@ -60,7 +60,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         super.viewDidLoad()
         
         // Load in audio file
-        loadSoundEffect("marimba.caf")
+        loadSoundEffect("marimba_lowered.caf")
   
         // Change color of segmented control text
         let themeColor = UIColor(named: "AccentColor")

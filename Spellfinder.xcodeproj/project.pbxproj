@@ -17,7 +17,7 @@
 		B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */; };
 		B03838C9262A352B00316511 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03838C8262A352B00316511 /* NothingFoundCell.xib */; };
 		B05A329826269358002F630D /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A329726269358002F630D /* SearchResultCell.swift */; };
-		B05FAF7326411BFF00C9E173 /* marimba.caf in Resources */ = {isa = PBXBuildFile; fileRef = B05FAF7226411BFF00C9E173 /* marimba.caf */; };
+		B05FAF7C2641E6C800C9E173 /* marimba_lowered.caf in Resources */ = {isa = PBXBuildFile; fileRef = B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */; };
 		B067173F2633B6F900495FF8 /* FavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B067173E2633B6F900495FF8 /* FavoritesCell.xib */; };
 		B06717422633B71300495FF8 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717412633B71300495FF8 /* FavoritesCell.swift */; };
 		B06717482633BB3E00495FF8 /* NoFavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06717472633BB3E00495FF8 /* NoFavoritesCell.xib */; };
@@ -67,7 +67,7 @@
 		B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		B03838C8262A352B00316511 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		B05A329726269358002F630D /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
-		B05FAF7226411BFF00C9E173 /* marimba.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = marimba.caf; sourceTree = "<group>"; };
+		B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = marimba_lowered.caf; sourceTree = "<group>"; };
 		B067173E2633B6F900495FF8 /* FavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCell.xib; sourceTree = "<group>"; };
 		B06717412633B71300495FF8 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		B06717472633BB3E00495FF8 /* NoFavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoFavoritesCell.xib; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		B05FAF6E264119AC00C9E173 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
-				B05FAF7226411BFF00C9E173 /* marimba.caf */,
+				B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */,
 			);
 			path = Sound;
 			sourceTree = "<group>";
@@ -346,6 +346,7 @@
 				B0D6514326162B3C00919473 /* LaunchScreen.storyboard in Resources */,
 				B0D8A0702634F3A800431513 /* Retroica.ttf in Resources */,
 				B018E9082628128700638504 /* Main.storyboard in Resources */,
+				B05FAF7C2641E6C800C9E173 /* marimba_lowered.caf in Resources */,
 				B03838C9262A352B00316511 /* NothingFoundCell.xib in Resources */,
 				B0322D982626871B00C9FC32 /* SearchResultCell.xib in Resources */,
 				B0D6514026162B3C00919473 /* Assets.xcassets in Resources */,
@@ -356,7 +357,6 @@
 				B029DBBA262B82220004D096 /* SearchResultHeaderCell.xib in Resources */,
 				B0F2DC8D263A120B00AE818C /* SpellForCharacterCell.xib in Resources */,
 				B06717712634C85100495FF8 /* CharacterCell.xib in Resources */,
-				B05FAF7326411BFF00C9E173 /* marimba.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
