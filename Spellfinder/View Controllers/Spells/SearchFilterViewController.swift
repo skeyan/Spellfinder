@@ -26,6 +26,8 @@ class SearchFilterViewController: UITableViewController {
     var schoolFilters: Int?
     var concentrationFilters: Int?
     
+    var searchText: String?
+    
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
     var allSpellsViewController = AllSpellsViewController()
@@ -85,6 +87,9 @@ class SearchFilterViewController: UITableViewController {
         
         // Remove 1px bottom border from search bar
         searchBar.backgroundImage = UIImage()
+        
+        // Search text
+        searchBar.text = searchText
     }
     
     // UI improvement - dismiss the keyboard when tapping out of a text field
@@ -230,7 +235,9 @@ class SearchFilterViewController: UITableViewController {
             controller.usedFilters = filtersToText()
             controller.managedObjectContext = managedObjectContext
             controller.allSpellsViewController = allSpellsViewController
-            controller.searchedText = searchBar.text!
+            if let searchText = searchBar.text {
+                controller.searchedText = searchText
+            }
         }
     }
 }

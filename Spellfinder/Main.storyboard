@@ -926,6 +926,7 @@
                         <outlet property="tableView" destination="6i7-Gz-Bo2" id="QwF-Ge-850"/>
                         <segue destination="Hz5-9p-8rV" kind="show" identifier="ShowSpellFromSearchResults" id="dwP-6n-fgo"/>
                         <segue destination="TDf-cu-psS" kind="show" identifier="SelectCharacterFromResults" id="P2c-WV-GnT"/>
+                        <segue destination="jTR-S1-imX" kind="show" identifier="GoToFilters" id="3eH-sD-uOx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXw-0U-Fjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1606,8 +1607,9 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
-        <segue reference="8Jl-7o-PD4"/>
+        <segue reference="P2c-WV-GnT"/>
         <segue reference="ZTV-zr-VPq"/>
+        <segue reference="3eH-sD-uOx"/>
         <segue reference="dwP-6n-fgo"/>
     </inferredMetricsTieBreakers>
     <resources>
