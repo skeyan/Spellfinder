@@ -247,6 +247,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Search results view
         if (segue.identifier == "ShowSearchResults" && sender != nil) {
             // Pass data to next view
             let controller = segue.destination as! SearchResultsViewController
@@ -255,8 +256,12 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             controller.allSpellsViewController = self
         }
         
-        // TO-DO: Search filter view
-        
+        // Search filter view
+        if (segue.identifier == "ShowFilterSearch" && sender != nil) {
+            let controller = segue.destination as! SearchFilterViewController
+            controller.managedObjectContext = managedObjectContext
+            controller.allSpellsViewController = self
+        }
         
         // Detail spell view
         if (segue.identifier == "ShowSpellDetail" && sender != nil) {

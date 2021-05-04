@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchFilterViewController: UITableViewController {
     
@@ -25,9 +26,13 @@ class SearchFilterViewController: UITableViewController {
     var schoolFilters: Int?
     var concentrationFilters: Int?
     
+    // CoreData
+    var managedObjectContext: NSManagedObjectContext!
+    var allSpellsViewController = AllSpellsViewController()
+    
     // MARK: - Actions
     @IBAction func search(_ sender: Any) {
-        // TO-DO: Segue to search results and give proper filters
+        performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
     }
     
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -39,7 +44,7 @@ class SearchFilterViewController: UITableViewController {
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
                     
-                    // TO-DO: Segue to search results and give proper filters
+                    self.performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
             }
         })
     }
@@ -219,6 +224,14 @@ class SearchFilterViewController: UITableViewController {
         }
         
         // Search results
+        if (segue.identifier == "ShowSearchResultsFromFilter" && sender != nil) {
+            let controller = segue.destination as! SearchResultsViewController
+            controller.search.filters = createFilter()
+            controller.usedFilters = filtersToText()
+            controller.managedObjectContext = managedObjectContext
+            controller.allSpellsViewController = allSpellsViewController
+            controller.searchedText = searchBar.text!
+        }
     }
 }
 
@@ -276,6 +289,77 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
     {
         concentrationFilters = index
         concentrationFilterValueLabel.text = concentration
+    }
+    
+    // Make a filter using current filter values
+    func createFilter() -> Filter {
+        let filter = Filter()
+        
+        // Level
+        if (levelFilterValueLabel.text == "Any") {
+            filter.levelFilter = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+        } else {
+            filter.levelFilter = [Double(levelFilterValueLabel.text!)!]
+        }
+        
+        // Class
+        if (classFilterValueLabel.text == "Any") {
+            filter.classFilter = []
+        } else {
+            filter.classFilter = Set(classFilterValueLabel.text!.components(separatedBy: ", "))
+        }
+        
+        // Components
+        if (componentsFilterValueLabel.text == "Any") {
+            filter.componentsFilter = []
+        } else {
+            filter.componentsFilter = Set(componentsFilterValueLabel.text!.components(separatedBy: ", "))
+        }
+        
+        // School
+        if (schoolFilterValueLabel.text == "Any") {
+            filter.schoolFilter = ["Abjuration",
+                                   "Conjuration",
+                                   "Divination",
+                                   "Enchantment",
+                                   "Evocation",
+                                   "Illusion",
+                                   "Necromancy",
+                                   "Transmutation"]
+        } else {
+            filter.schoolFilter = [schoolFilterValueLabel.text!]
+        }
+        
+        // Concentration
+        if (concentrationFilterValueLabel.text == "Any") {
+            filter.concentrationFilter = ["yes", "no"]
+        } else {
+            filter.concentrationFilter = [concentrationFilterValueLabel.text!.lowercased()]
+        }
+        
+        return filter
+    }
+    
+    // Make a string using current filter values
+    func filtersToText() -> String {
+        var filterString = ""
+        
+        // Level
+        filterString += "Level: " + levelFilterValueLabel.text! + ", "
+        
+        // Class
+        filterString += "Classes: " + classFilterValueLabel.text! + ", "
+        
+        // Components
+        filterString += "Components: " + componentsFilterValueLabel.text! + ", "
+        
+        // School
+        filterString += "School: " + schoolFilterValueLabel.text! + ", "
+        
+        // Concentration
+        filterString += "Concentration: " + concentrationFilterValueLabel.text!
+        
+        return filterString
     }
 }
 

@@ -14,7 +14,7 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     
     // MARK: - Instance Variables
     var searchedText: String = ""
-    var usedFilters: String = "None"
+    var usedFilters: String = "Level: Any, Classes: Any, Components: Any, School: Any, Concentration: Any"
     
     var allSpellsViewController = AllSpellsViewController()
     
@@ -129,6 +129,9 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Debug
+        print("-- FILTERS: ", search.filters?.description ?? "None")
 
         // Register nibs
         var cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)
@@ -311,6 +314,10 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         default:
             return 88
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath.section == 0 ? nil : indexPath
     }
 
     

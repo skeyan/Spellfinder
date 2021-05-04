@@ -27,6 +27,9 @@ class Search {
     
     // Keep track of our data task so it may be cancelled
     private var dataTask: URLSessionDataTask?
+    
+    // Filters for search results
+    var filters: Filter?
 
     // MARK: - Search Methods
     func performSearch(
@@ -45,6 +48,7 @@ class Search {
             hasSearched = true
            
             let url = spellsURL(searchText: text)
+            print("--URL: ", url)
             let session = URLSession.shared
             dataTask = session.dataTask(with: url) {data, response, error in
                 var success = false
