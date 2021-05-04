@@ -39,6 +39,8 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
         if let navController = self.navigationController, navController.viewControllers.count >= 2 {
             let viewController = navController.viewControllers[navController.viewControllers.count - 2]
             if viewController is SearchFilterViewController {
+                let tmp = viewController as! SearchFilterViewController
+                tmp.searchBar.text = searchBar.text
                 navigationController?.popViewController(animated: true)
             } else if viewController is AllSpellsViewController {
                 performSegue(withIdentifier: "GoToFilters", sender: self)
@@ -199,6 +201,23 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
             
         } catch {
             fatalCoreDataError(error)
+        }
+    }
+    
+    // 'Sync' search bar text when changed
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if (parent == nil) {
+            if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+                let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+                if viewController is AllSpellsViewController {
+                    let tmp = viewController as! AllSpellsViewController
+                    tmp.searchBar.text = searchBar.text
+                } else if viewController is SearchFilterViewController {
+                    let tmp = viewController as! SearchFilterViewController
+                    tmp.searchBar.text = searchBar.text
+                }
+            }
         }
     }
 }
@@ -363,7 +382,6 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
         
-        // TO-DO: Segue to Search filter view [take stack into account?]**
         if (segue.identifier == "GoToFilters" && sender != nil) {
             let controller = segue.destination as! SearchFilterViewController
             controller.allSpellsViewController = allSpellsViewController
@@ -373,6 +391,23 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
                 if !(searchText.isEmpty) {
                     controller.searchText = searchText
                 }
+            }
+            
+            // Restore filters if they exist
+            if let filters = search.filters {
+                // Data
+                controller.levelFilters = filters.levelIndex
+                controller.classFilters = filters.classIndexes
+                controller.componentsFilters = filters.componentsIndexes
+                controller.schoolFilters = filters.schoolIndex
+                controller.concentrationFilters = filters.concentrationIndex
+                
+                // Labels
+                controller.levelText = filters.levelString
+                controller.classText = filters.classString
+                controller.componentsText = filters.componentsString
+                controller.schoolText = filters.schoolString
+                controller.concentrationText = filters.concentrationString
             }
         }
     }

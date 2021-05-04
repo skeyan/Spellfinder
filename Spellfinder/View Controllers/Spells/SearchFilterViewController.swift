@@ -20,13 +20,18 @@ class SearchFilterViewController: UITableViewController {
     @IBOutlet weak var resetButton: UIButton!
     
     // MARK: - Instance Variables
-    var levelFilters: Int?
-    var classFilters: Set<Int>?
-    var componentsFilters: Set<Int>?
-    var schoolFilters: Int?
-    var concentrationFilters: Int?
+    var levelFilters: Int = 0
+    var classFilters: Set<Int> = []
+    var componentsFilters: Set<Int> = []
+    var schoolFilters: Int = 0
+    var concentrationFilters: Int = 0
     
     var searchText: String?
+    var levelText: String = "Any"
+    var classText: String = "Any"
+    var componentsText: String = "Any"
+    var schoolText: String = "Any"
+    var concentrationText: String = "Any"
     
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
@@ -34,7 +39,20 @@ class SearchFilterViewController: UITableViewController {
     
     // MARK: - Actions
     @IBAction func search(_ sender: Any) {
-        performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
+        if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+            let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+            if viewController is SearchResultsViewController {
+                let tmp = viewController as! SearchResultsViewController
+                tmp.searchBar.text = searchBar.text
+                tmp.search.filters = createFilter()
+                tmp.usedFilters = filtersToText()
+                tmp.fetchSpells()
+                tmp.performSearch(firstLoad: false, coreDataSpells: tmp.coreDataSpells)
+                navigationController?.popViewController(animated: true)
+            } else if viewController is AllSpellsViewController {
+                performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
+            }
+        }
     }
     
     @IBAction func searchButtonWasTapped(_ sender: UIButton) {
@@ -46,7 +64,20 @@ class SearchFilterViewController: UITableViewController {
                 UIView.animate(withDuration: 0.1) {
                     sender.transform = CGAffineTransform.identity
                     
-                    self.performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
+                    if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+                        let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+                        if viewController is SearchResultsViewController {
+                            let tmp = viewController as! SearchResultsViewController
+                            tmp.searchBar.text = self.searchBar.text
+                            tmp.search.filters = self.createFilter()
+                            tmp.usedFilters = self.filtersToText()
+                            tmp.fetchSpells()
+                            tmp.performSearch(firstLoad: false, coreDataSpells: tmp.coreDataSpells)
+                            self.navigationController?.popViewController(animated: true)
+                        } else if viewController is AllSpellsViewController {
+                            self.performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
+                        }
+                    }
             }
         })
     }
@@ -90,11 +121,35 @@ class SearchFilterViewController: UITableViewController {
         
         // Search text
         searchBar.text = searchText
+        
+        // Label text
+        levelFilterValueLabel.text = levelText
+        classFilterValueLabel.text = classText
+        componentsFilterValueLabel.text = componentsText
+        schoolFilterValueLabel.text = schoolText
+        concentrationFilterValueLabel.text = concentrationText
     }
     
     // UI improvement - dismiss the keyboard when tapping out of a text field
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
         self.view.endEditing(false)
+    }
+    
+    // 'Sync' search bar text when changed
+    override func willMove(toParent parent: UIViewController?) {
+        super.willMove(toParent: parent)
+        if (parent == nil) {
+            if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+                let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+                if viewController is AllSpellsViewController {
+                    let tmp = viewController as! AllSpellsViewController
+                    tmp.searchBar.text = searchBar.text
+                } else if viewController is SearchResultsViewController {
+                    let tmp = viewController as! SearchResultsViewController
+                    tmp.searchBar.text = searchBar.text
+                }
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -160,6 +215,7 @@ class SearchFilterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -167,65 +223,35 @@ class SearchFilterViewController: UITableViewController {
         if (segue.identifier == "ChooseLevelFilter" && sender != nil) {
             let controller = segue.destination as! LevelPickerViewController
             controller.delegate = self
-            if levelFilterValueLabel.text == "Any" {
-                controller.selectedLevel = 0
-            } else {
-                if let filter = levelFilters {
-                    controller.selectedLevel = filter
-                }
-            }
+            controller.selectedLevel = levelFilters
         }
         
         // Class
         if (segue.identifier == "ChooseClassFilter" && sender != nil) {
             let controller = segue.destination as! ClassFilterViewController
             controller.delegate = self
-            if classFilterValueLabel.text == "Any" {
-                controller.selectedClasses = [0]
-            } else {
-                if let filter = classFilters {
-                    controller.selectedClasses = filter
-                }
-            }
+            controller.selectedClasses = classFilters
         }
         
         // Components
         if (segue.identifier == "ChooseComponentsFilter" && sender != nil) {
             let controller = segue.destination as! ComponentsFilterViewController
             controller.delegate = self
-            if componentsFilterValueLabel.text == "Any" {
-                controller.selectedComponents = [0]
-            } else {
-                if let filter = componentsFilters {
-                    controller.selectedComponents = filter
-                }
-            }
+            controller.selectedComponents = componentsFilters
         }
         
         // School
         if (segue.identifier == "ChooseSchoolFilter" && sender != nil) {
             let controller = segue.destination as! SchoolFilterViewController
             controller.delegate = self
-            if schoolFilterValueLabel.text == "Any" {
-                controller.selectedSchool = 0
-            } else {
-                if let filter = schoolFilters {
-                    controller.selectedSchool = filter
-                }
-            }
+            controller.selectedSchool = schoolFilters
         }
         
         // Concentration
         if (segue.identifier == "ChooseConcentrationFilter" && sender != nil) {
             let controller = segue.destination as! ConcentrationFilterViewController
             controller.delegate = self
-            if concentrationFilterValueLabel.text == "Any" {
-                controller.selectedConcentration = 0
-            } else {
-                if let filter = concentrationFilters {
-                    controller.selectedConcentration = filter
-                }
-            }
+            controller.selectedConcentration = concentrationFilters
         }
         
         // Search results
@@ -308,6 +334,8 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         } else {
             filter.levelFilter = [Double(levelFilterValueLabel.text!)!]
         }
+        filter.levelIndex = levelFilters
+        filter.levelString = levelFilterValueLabel.text!
         
         // Class
         if (classFilterValueLabel.text == "Any") {
@@ -315,6 +343,8 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         } else {
             filter.classFilter = Set(classFilterValueLabel.text!.components(separatedBy: ", "))
         }
+        filter.classIndexes = classFilters
+        filter.classString = classFilterValueLabel.text!
         
         // Components
         if (componentsFilterValueLabel.text == "Any") {
@@ -322,6 +352,8 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         } else {
             filter.componentsFilter = Set(componentsFilterValueLabel.text!.components(separatedBy: ", "))
         }
+        filter.componentsIndexes = componentsFilters
+        filter.componentsString = componentsFilterValueLabel.text!
         
         // School
         if (schoolFilterValueLabel.text == "Any") {
@@ -336,6 +368,8 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         } else {
             filter.schoolFilter = [schoolFilterValueLabel.text!]
         }
+        filter.schoolIndex = schoolFilters
+        filter.schoolString = schoolFilterValueLabel.text!
         
         // Concentration
         if (concentrationFilterValueLabel.text == "Any") {
@@ -343,6 +377,8 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
         } else {
             filter.concentrationFilter = [concentrationFilterValueLabel.text!.lowercased()]
         }
+        filter.concentrationIndex = concentrationFilters
+        filter.concentrationString = concentrationFilterValueLabel.text!
         
         return filter
     }
@@ -370,3 +406,23 @@ extension SearchFilterViewController: LevelPickerViewControllerDelegate,
     }
 }
 
+// MARK: - Search Bar Delegate
+extension SearchFilterViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+        if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+            let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+            if viewController is SearchResultsViewController {
+                let tmp = viewController as! SearchResultsViewController
+                tmp.searchBar.text = self.searchBar.text
+                tmp.search.filters = self.createFilter()
+                tmp.usedFilters = self.filtersToText()
+                tmp.fetchSpells()
+                tmp.performSearch(firstLoad: false, coreDataSpells: tmp.coreDataSpells)
+                self.navigationController?.popViewController(animated: true)
+            } else if viewController is AllSpellsViewController {
+                self.performSegue(withIdentifier: "ShowSearchResultsFromFilter", sender: self)
+            }
+        }
+    }
+}

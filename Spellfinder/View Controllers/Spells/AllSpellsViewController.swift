@@ -51,6 +51,7 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     }
     
     // MARK: - View
+    
     override func viewDidLoad() {
         super.viewDidLoad()
   
@@ -313,6 +314,8 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             controller.currentCharacters = currentCharacters
         }
     }
+
+
     
     // MARK: - Core Data
     func addButtonTapped(cell: SearchResultCell) {
