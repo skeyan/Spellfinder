@@ -293,4 +293,9 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
             }
         }
     }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
+    {
+         return "Remove from spellbook"
+    }
 }

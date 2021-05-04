@@ -7,7 +7,6 @@
 
 import Foundation
 
-// TO-DO: Integrate this with Core Data AND the API
 class ResultArray: Codable {
     var count = 0
     var next: String?

@@ -18,6 +18,7 @@
 		B03838C9262A352B00316511 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03838C8262A352B00316511 /* NothingFoundCell.xib */; };
 		B05A329826269358002F630D /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A329726269358002F630D /* SearchResultCell.swift */; };
 		B05FAF7C2641E6C800C9E173 /* marimba_lowered.caf in Resources */ = {isa = PBXBuildFile; fileRef = B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */; };
+		B05FAF802641FA8300C9E173 /* UIAlertController+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FAF7F2641FA8300C9E173 /* UIAlertController+Show.swift */; };
 		B067173F2633B6F900495FF8 /* FavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B067173E2633B6F900495FF8 /* FavoritesCell.xib */; };
 		B06717422633B71300495FF8 /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06717412633B71300495FF8 /* FavoritesCell.swift */; };
 		B06717482633BB3E00495FF8 /* NoFavoritesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06717472633BB3E00495FF8 /* NoFavoritesCell.xib */; };
@@ -68,6 +69,7 @@
 		B03838C8262A352B00316511 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
 		B05A329726269358002F630D /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = marimba_lowered.caf; sourceTree = "<group>"; };
+		B05FAF7F2641FA8300C9E173 /* UIAlertController+Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Show.swift"; sourceTree = "<group>"; };
 		B067173E2633B6F900495FF8 /* FavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritesCell.xib; sourceTree = "<group>"; };
 		B06717412633B71300495FF8 /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		B06717472633BB3E00495FF8 /* NoFavoritesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoFavoritesCell.xib; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				B0D6513526162B3B00919473 /* SceneDelegate.swift */,
 				B029DBC5263272340004D096 /* Functions.swift */,
 				B06717642634B6BE00495FF8 /* UIButton+Border.swift */,
+				B05FAF7F2641FA8300C9E173 /* UIAlertController+Show.swift */,
 				B0322D9A2626872300C9FC32 /* Xibs */,
 				B0845EA9261D45AC00D56FB0 /* Data Models */,
 				B0851203262789E100000D46 /* View Controllers */,
@@ -382,6 +385,7 @@
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
 				B0F2DCBC2640AA8C00AE818C /* Filter.swift in Sources */,
 				B0D6513426162B3B00919473 /* AppDelegate.swift in Sources */,
+				B05FAF802641FA8300C9E173 /* UIAlertController+Show.swift in Sources */,
 				B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */,
 				B0F2DC95263B5C4B00AE818C /* SearchFilterViewController.swift in Sources */,
 				B06717422633B71300495FF8 /* FavoritesCell.swift in Sources */,

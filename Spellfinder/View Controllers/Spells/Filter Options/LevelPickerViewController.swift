@@ -84,7 +84,6 @@ class LevelPickerViewController: UITableViewController {
         dataModel[selectedLevel].isSelected = true
         
         tableView.reloadData()
-        print("SELECTED INDEX: ", selectedLevel)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

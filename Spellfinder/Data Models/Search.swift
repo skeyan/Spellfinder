@@ -12,6 +12,7 @@ import UIKit
 // Provides centralized access to the search state and results
 typealias SearchComplete = (Bool) -> Void
 class Search {
+    
     // MARK: - Search Variables
     var searchResults: [SearchResult] = []
     var searchResultsDict = Dictionary<String, SearchResult>()
@@ -44,12 +45,13 @@ class Search {
         hasSearched = true
        
         let url = spellsURL(searchText: text)
-        print("--URL: ", url)
         let session = URLSession.shared
         dataTask = session.dataTask(with: url) {data, response, error in
             var success = false
             if let error = error as NSError?, error.code == -999 {
-                // TO-DO: More user-friendly error alerting
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
                 print("Failure! \(error.localizedDescription)")
             } else if let httpResponse = response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 {
@@ -68,7 +70,9 @@ class Search {
                     }
                 }
             } else {
-                // TO-DO: More user-friendly error alerting
+                DispatchQueue.main.async {
+                    self.showAlert()
+                }
                 print("Failure! \(response!)")
             }
             
@@ -88,7 +92,7 @@ class Search {
     
     // Creates the properly encoded API URL to gather spells
     private func spellsURL(
-        searchText: String // TO-DO: Add filtering
+        searchText: String 
     ) -> URL {
         let encodedText = searchText.addingPercentEncoding(
               withAllowedCharacters: CharacterSet.urlQueryAllowed)!
@@ -104,10 +108,19 @@ class Search {
             let result = try decoder.decode(ResultArray.self, from: data)
             return result.results
         } catch {
-            // TO-DO: Better error alerting
+            DispatchQueue.main.async {
+                self.showAlert()
+            }
             print("JSON Decoding Error: \(error)")
             return []
         }
+    }
+    
+    // Show alert on error
+    func showAlert() -> Void {
+        let alertController = UIAlertController(title: "Error with data", message: "The data could not be retrieved and parsed successfully from the API.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alertController.show()
     }
     
     // MARK: - Methods for Filtered Spells

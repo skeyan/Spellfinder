@@ -138,9 +138,6 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     // MARK: - View
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Debug
-        print("-- FILTERS: ", search.filters?.description ?? "None")
 
         // Register nibs
         var cellNib = UINib(nibName: TableView.CellIdentifiers.searchResultCell, bundle: nil)

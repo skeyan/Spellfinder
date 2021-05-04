@@ -165,7 +165,10 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         let fileURL = URL(fileURLWithPath: path, isDirectory: false)
         let error = AudioServicesCreateSystemSoundID(fileURL as CFURL, &soundID)
         if error != kAudioServicesNoError {
-          print("Error code \(error) loading sound: \(path)")
+            let alertController = UIAlertController(title: "Error loading audio", message: "The audio file(s) could not be loaded.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            alertController.show()
+            print("Error code \(error) loading sound: \(path)")
         }
       }
     }
