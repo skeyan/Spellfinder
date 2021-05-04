@@ -18,7 +18,12 @@ class CustomTabBarViewController: UITabBarController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let navController1 =  self.viewControllers![0] as? UINavigationController
         let vc = navController1?.visibleViewController
-        if !(vc is SearchResultsViewController || vc is SearchFilterViewController) {
+        
+        if (vc is SearchFilterViewController) {
+            navController1?.popViewController(animated: false)
+        } else if (vc is SelectCharacterViewController || vc is DetailSpellViewController) {
+            navController1?.popViewController(animated: false)
+        } else if !(vc is SearchResultsViewController) {
             navController1?.popToRootViewController(animated: false)
         }
     }
