@@ -21,8 +21,8 @@ class SearchFilterViewController: UITableViewController {
     
     // MARK: - Instance Variables
     var levelFilters: Int = 0
-    var classFilters: Set<Int> = []
-    var componentsFilters: Set<Int> = []
+    var classFilters: Set<Int> = [0]
+    var componentsFilters: Set<Int> = [0]
     var schoolFilters: Int = 0
     var concentrationFilters: Int = 0
     

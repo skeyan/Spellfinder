@@ -54,8 +54,13 @@ class ClassFilterViewController: UITableViewController {
         for c in selectedClasses {
             pickedClasses.append(dataModel[c].myClass)
         }
+        
+        if pickedClasses.count != 0 {
+            delegate?.classFilterPicker(self, didPickIndexes: selectedClasses, didPickClass: pickedClasses)
+        } else {
+            delegate?.classFilterPicker(self, didPickIndexes: [0], didPickClass: ["Any"])
+        }
                 
-        delegate?.classFilterPicker(self, didPickIndexes: selectedClasses, didPickClass: pickedClasses)
         navigationController?.popViewController(animated: true)
     }
 

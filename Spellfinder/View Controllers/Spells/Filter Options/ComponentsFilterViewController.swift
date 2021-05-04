@@ -50,8 +50,13 @@ class ComponentsFilterViewController: UITableViewController {
         for c in selectedComponents {
             pickedComponents.append(dataModel[c].component)
         }
-                
-        delegate?.componentsFilterPicker(self, didPickIndexes: selectedComponents, didPickComponents: pickedComponents)
+               
+        if pickedComponents.count != 0 {
+            delegate?.componentsFilterPicker(self, didPickIndexes: selectedComponents, didPickComponents: pickedComponents)
+        } else {
+            delegate?.componentsFilterPicker(self, didPickIndexes: [0], didPickComponents: ["Any"])
+        }
+        
         navigationController?.popViewController(animated: true)
     }
     
