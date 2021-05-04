@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import AudioToolbox
 
 // Favoriting protocol
 protocol FavoritingSpellsDelegate {
@@ -36,6 +37,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     // CoreData
     var managedObjectContext: NSManagedObjectContext!
     var coreDataSpells = [Spell]()
+    
+    // Audio
+    var soundID: SystemSoundID = 0
 
     // MARK: - Actions
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
@@ -54,6 +58,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Load in audio file
+        loadSoundEffect("marimba.caf")
   
         // Change color of segmented control text
         let themeColor = UIColor(named: "AccentColor")
@@ -151,6 +158,26 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
         }
       }
     }
+    
+    // MARK: - Sound Effects
+    func loadSoundEffect(_ name: String) {
+      if let path = Bundle.main.path(forResource: name, ofType: nil) {
+        let fileURL = URL(fileURLWithPath: path, isDirectory: false)
+        let error = AudioServicesCreateSystemSoundID(fileURL as CFURL, &soundID)
+        if error != kAudioServicesNoError {
+          print("Error code \(error) loading sound: \(path)")
+        }
+      }
+    }
+
+    func unloadSoundEffect() {
+      AudioServicesDisposeSystemSoundID(soundID)
+      soundID = 0
+    }
+
+    func playSoundEffect() {
+      AudioServicesPlaySystemSound(soundID)
+    }
 }
 
 // MARK: - Search Bar Delegate
@@ -168,7 +195,8 @@ extension AllSpellsViewController: UISearchBarDelegate {
           if !success {
             self.showNetworkError()
           }
-          self.tableView.reloadData()
+            self.tableView.reloadData()
+            self.playSoundEffect()
       }
       
       tableView.reloadData()
