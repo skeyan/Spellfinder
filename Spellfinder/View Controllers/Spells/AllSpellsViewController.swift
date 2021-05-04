@@ -261,6 +261,11 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             let controller = segue.destination as! SearchFilterViewController
             controller.managedObjectContext = managedObjectContext
             controller.allSpellsViewController = self
+            if let searchText = searchBar.text {
+                if !searchText.isEmpty {
+                    controller.searchText = searchBar.text
+                }
+            }
         }
         
         // Detail spell view

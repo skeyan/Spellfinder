@@ -12,6 +12,7 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
     // MARK: - Instance Variables
     var searchedText: String = ""
     var usedFilters: String = "Level: Any, Classes: Any, Components: Any, School: Any, Concentration: Any"
@@ -35,8 +36,14 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     
     // MARK: - Actions
     @IBAction func didPressFilterButton(_ sender: Any) {
-        // TO-DO: Segue to filter, taking care of navigation stack
-        print("Pressed filter button in search results screen")
+        if let navController = self.navigationController, navController.viewControllers.count >= 2 {
+            let viewController = navController.viewControllers[navController.viewControllers.count - 2]
+            if viewController is SearchFilterViewController {
+                navigationController?.popViewController(animated: true)
+            } else if viewController is AllSpellsViewController {
+                performSegue(withIdentifier: "GoToFilters", sender: self)
+            }
+        }
     }
     
     // MARK: - Search Result Delegate
@@ -357,6 +364,17 @@ extension SearchResultsViewController: UITableViewDelegate, UITableViewDataSourc
         }
         
         // TO-DO: Segue to Search filter view [take stack into account?]**
+        if (segue.identifier == "GoToFilters" && sender != nil) {
+            let controller = segue.destination as! SearchFilterViewController
+            controller.allSpellsViewController = allSpellsViewController
+            controller.managedObjectContext = managedObjectContext
+            
+            if let searchText = searchBar.text {
+                if !(searchText.isEmpty) {
+                    controller.searchText = searchText
+                }
+            }
+        }
     }
     
     // MARK: - Core Data Helpers
