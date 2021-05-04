@@ -66,7 +66,7 @@
                                 </constraints>
                                 <state key="normal" image="ellipsis" catalog="system"/>
                                 <connections>
-                                    <segue destination="jTR-S1-imX" kind="show" id="H6S-sY-7Zu"/>
+                                    <segue destination="jTR-S1-imX" kind="show" identifier="ShowFilterSearch" id="H6S-sY-7Zu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -610,6 +610,7 @@
                         <outlet property="schoolFilterValueLabel" destination="5ql-14-5Kq" id="DUa-C8-bMA"/>
                         <outlet property="searchBar" destination="c3D-yr-ULC" id="Brz-O9-gRE"/>
                         <outlet property="searchButton" destination="f8f-1J-MFm" id="fu8-3z-W96"/>
+                        <segue destination="6PI-43-Llt" kind="show" identifier="ShowSearchResultsFromFilter" id="DGM-td-MjV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bZg-oz-bWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1606,6 +1607,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="AVN-Ws-CcR"/>
         <segue reference="8Jl-7o-PD4"/>
+        <segue reference="ZTV-zr-VPq"/>
         <segue reference="dwP-6n-fgo"/>
     </inferredMetricsTieBreakers>
     <resources>
