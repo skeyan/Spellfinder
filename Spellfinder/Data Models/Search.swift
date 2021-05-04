@@ -38,58 +38,52 @@ class Search {
         coreDataSpells: [Spell]?,
         completion: @escaping SearchComplete
     ) {
-        // Perform search
-        if firstLoad || !text.isEmpty {
-            // Indicate we are getting data from API
-            dataTask?.cancel()
-            isLoading = true
-            
-            // Get all spells from the API
-            hasSearched = true
-           
-            let url = spellsURL(searchText: text)
-            print("--URL: ", url)
-            let session = URLSession.shared
-            dataTask = session.dataTask(with: url) {data, response, error in
-                var success = false
-                if let error = error as NSError?, error.code == -999 {
-                    // TO-DO: More user-friendly error alerting
-                    print("Failure! \(error.localizedDescription)")
-                } else if let httpResponse = response as? HTTPURLResponse,
-                          httpResponse.statusCode == 200 {
-                    print("Success!")
-                    if let data = data {
-                        // Parse JSON on a background thread
-                        self.searchResults = self.parse(data: data)
-  
-                        self.slugs = self.spellsArrayToSlugs(self.searchResults)
-                        self.spellsArrayToDict(self.searchResults)
-                        self.coreDataOverwrite(coreDataSpells!)
+        // Indicate we are getting data from API
+        dataTask?.cancel()
+        isLoading = true
+        hasSearched = true
+       
+        let url = spellsURL(searchText: text)
+        print("--URL: ", url)
+        let session = URLSession.shared
+        dataTask = session.dataTask(with: url) {data, response, error in
+            var success = false
+            if let error = error as NSError?, error.code == -999 {
+                // TO-DO: More user-friendly error alerting
+                print("Failure! \(error.localizedDescription)")
+            } else if let httpResponse = response as? HTTPURLResponse,
+                      httpResponse.statusCode == 200 {
+                print("Success!")
+                if let data = data {
+                    // Parse JSON on a background thread
+                    self.searchResults = self.parse(data: data)
+                    self.searchResults = self.filterSearchResults()
+                    self.slugs = self.spellsArrayToSlugs(self.searchResults)
+                    self.spellsArrayToDict(self.searchResults)
+                    self.coreDataOverwrite(coreDataSpells!)
 
-                        DispatchQueue.main.async {
-                            self.isLoading = false
-                            success = true
-                        }
-                    }
-                }
-                else {
-                    // TO-DO: More user-friendly error alerting
-                    print("Failure! \(response!)")
-                }
-                
-                // Inform user of network error
-                DispatchQueue.main.async {
-                    if !success {
-                        self.hasSearched = false
+                    DispatchQueue.main.async {
                         self.isLoading = false
+                        success = true
                     }
-                    completion(success)
                 }
+            } else {
+                // TO-DO: More user-friendly error alerting
+                print("Failure! \(response!)")
             }
             
-            // Start the data task on an async background thread
-            dataTask?.resume()
+            // Inform user of network error
+            DispatchQueue.main.async {
+                if !success {
+                    self.hasSearched = false
+                    self.isLoading = false
+                }
+                completion(success)
+            }
         }
+        
+        // Start the data task on an async background thread
+        dataTask?.resume()
     }
     
     // Creates the properly encoded API URL to gather spells
@@ -98,9 +92,7 @@ class Search {
     ) -> URL {
         let encodedText = searchText.addingPercentEncoding(
               withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-          let urlString = String(
-            format: "https://api.open5e.com/spells/?limit=400&search=%@",
-            encodedText)
+          let urlString = String(format: "https://api.open5e.com/spells/?limit=400&search=%@", encodedText)
         let url = URL(string: urlString)
         return url!
     }
@@ -126,6 +118,48 @@ class Search {
             slugs.append(spell.slug!)
         }
         return slugs
+    }
+    
+    private func filterSearchResults() -> [SearchResult] {
+        var filteredSearchResults: [SearchResult] = []
+        
+        filteredSearchResults = searchResults.filter { searchResult in
+            return filterHelper(searchResult)
+        }
+        
+        return filteredSearchResults
+    }
+    
+    private func filterHelper(_ searchResult: SearchResult) -> Bool {
+        var passesFilter = true
+        if let filters = filters {
+            // Level must be one of those selected
+            if !((filters.levelFilter.contains(searchResult.levelNum!))) {
+                passesFilter = false
+            }
+            
+            // Classes must include all selected, at least
+            if !(filters.classFilter.isSubset(of: Set(searchResult.dndClass!.components(separatedBy: ", ")))) {
+                passesFilter = false
+            }
+            
+            // Components must include all selected, at least
+            if !(filters.componentsFilter.isSubset(of: Set(searchResult.components!.components(separatedBy: ", ")))) {
+                passesFilter = false
+            }
+            
+            // School must include that which was selected
+            if !(filters.schoolFilter.contains(searchResult.school!)) {
+                passesFilter = false
+            }
+            
+            // Concentration must include that which was selected
+            if !(filters.concentrationFilter.contains(searchResult.concentration!)) {
+                passesFilter = false
+            }
+        }
+        
+        return passesFilter
     }
  
     // MARK: - Methods for All Spells
