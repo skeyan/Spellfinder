@@ -1,0 +1,93 @@
+Sources Cited for iOS App
+- UI Apprentice - Locations App
+- UI Apprentice - StoreSearch App
+- UI Apprentice - Checklists App
+- Icon - https://www.flaticon.com/free-icon/book_1679109?term=spellbook&related_id=1679109 
+- Character Icons - Icons made by 
+    - https://www.flaticon.com/authors/darius-dan
+    - Darius Dan from Flaticon 
+- Audio https://rcptones.com/dev_tones/ 
+
+v1.0 - Spell Detail Screen and All Spells (Basic)
+- https://stackoverflow.com/questions/53622438/change-title-text-color-of-a-specific-segment-in-uisegmentedcontrol
+- https://stackoverflow.com/questions/46202644/how-to-get-color-from-assets-xcassets 
+- https://stackoverflow.com/questions/25632394/swift-uitableview-set-rowheight 
+- https://stackoverflow.com/questions/27436057/how-to-arrange-a-double-array-from-biggest-to-smallest-in-swift 
+- https://stackoverflow.com/questions/5273775/how-do-i-switch-uisegmentedcontrol-programmatically 
+- https://developer.apple.com/documentation/uikit/uiview/animationoptions 
+- https://www.roryba.in/programming/swift/2018/03/24/animating-uibutton.html 
+- https://stackoverflow.com/questions/46299045/provide-action-for-button-in-the-xib-file-using-swift3 
+    - Also https://www.quora.com/How-do-I-detect-the-iOS-custom-xib-view-button-tap-in-view-controller-Swift & https://stackoverflow.com/questions/46299045/provide-action-for-button-in-the-xib-file-using-swift3 
+- https://www.hackingwithswift.com/example-code/uikit/how-to-perform-a-segue-programmatically-using-performsegue 
+    - https://stackoverflow.com/questions/24040692/prepare-for-segue-in-swift 
+    - https://stackoverflow.com/questions/33061723/how-do-i-perform-a-segue-to-a-different-view-controller-with-a-nib 
+- https://stackoverflow.com/questions/45039846/xcode-9-localization-issue-warning-storyboard/45040394 
+    - https://stackoverflow.com/questions/57847239/xcode-source-control-push-local-changes-stuck-on-loading 
+- https://www.hackingwithswift.com/example-code/language/fixing-class-viewcontroller-has-no-initializers 
+- https://stackoverflow.com/questions/31592272/resize-label-to-fit-text-amount-swift 
+- https://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin 
+
+v1.1 - Refactoring into Core Data
+- https://stackoverflow.com/questions/27313242/how-to-append-elements-into-a-dictionary-in-swift
+    - https://stackoverflow.com/questions/24090016/sort-dictionary-by-values-in-swift 
+    - https://stackoverflow.com/questions/31527754/sort-dictionary-by-key-value 
+    - https://stackoverflow.com/questions/47148473/how-to-sort-dictionary-by-keys-where-values-are-array-of-objects-in-swift-4 
+- https://stackoverflow.com/questions/27604192/ios-how-to-segue-programmatically-using-swift 
+- https://stackoverflow.com/questions/44658152/swift-3-ios10-core-data-check-if-record-already-exist-base-on-id
+    - https://www.hackingwithswift.com/read/38/7/examples-of-using-nspredicate-to-filter-nsfetchrequest 
+-  https://stackoverflow.com/questions/38041688/how-to-change-button-image-in-swift 
+    - https://stackoverflow.com/questions/26837371/how-to-change-uibutton-image-in-swift 
+- https://www.andrewcbancroft.com/2015/02/18/core-data-cheat-sheet-for-swift-ios-developers/#delete-single-entity 
+- https://www.avanderlee.com/xcode/launch-screen/ 
+- https://stackoverflow.com/questions/25867439/get-the-indexpath-from-inside-a-uitableviewcell-subclass-in-swift 
+- Tried https://stackoverflow.com/questions/2308487/core-data-uitableview-with-multiple-nsfetchedresultcontrollers 
+- https://stackoverflow.com/questions/10228760/how-do-i-fix-a-git-detached-head 
+- https://stackoverflow.com/questions/24072766/accessing-variables-from-another-viewcontroller-in-swift/24072883 
+
+v1.2 - Characters and Core Data + Spells for Characters
+- https://stackoverflow.com/questions/47995595/ios-11-x-system-colors 
+    - https://www.reddit.com/r/iOSProgramming/comments/41sjnc/changing_uibutton_background_color_based_on_state/ 
+    - https://medium.com/fabcoding/designing-a-beautiful-gradient-button-in-swift-b307924700e6 
+    - https://stackoverflow.com/questions/31320819/scale-uibutton-animation-swift/31321914 
+    - https://stackoverflow.com/questions/37177128/performing-a-segue-after-animation-is-finished 
+- https://developer.apple.com/documentation/uikit/text_display_and_fonts/adding_a_custom_font_to_your_app 
+- https://stackoverflow.com/questions/49873540/swift-uitableview-section-heading-style 
+    - https://stackoverflow.com/questions/30531111/how-do-i-customize-a-uitableview-right-top-and-bottom-border 
+- https://www.hackingwithswift.com/example-code/strings/how-to-trim-whitespace-in-a-string 
+- https://stackoverflow.com/questions/24161336/convert-int-to-string-in-swift 
+- https://stackoverflow.com/questions/26326296/changing-text-of-uibutton-programmatically-swift 
+- https://stackoverflow.com/questions/24062285/how-to-set-uitableviewcellstylesubtitle-and-dequeuereusablecell-in-swift 
+- https://stackoverflow.com/questions/38666400/how-do-i-keep-track-of-cells-that-have-been-selected-using-nsindexpath 
+    - https://stackoverflow.com/questions/43678076/how-to-reset-tab-or-tab-controller-of-uitabbarcontroller-when-user-select-tab 
+    - https://stackoverflow.com/questions/24266467/swift-tableview-cell-set-accessory-type 
+    - https://stackoverflow.com/questions/37331281/core-data-fetching-with-objectid 
+    - http://iphoneincubator.com/blog/data-management/delete-the-nsfetchedresultscontroller-cache-before-changing-the-nspredicate 
+    - https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622283-deletecache 
+- https://stackoverflow.com/questions/5306240/ios-dismiss-keyboard-when-touching-outside-of-uitextfield 
+    - https://stackoverflow.com/questions/24529373/tableview-scroll-content-when-keyboard-shows 
+    - https://stackoverflow.com/questions/49605153/cgrectmake-is-unavailable-in-swift/49605344 
+    - https://stackoverflow.com/questions/28338981/how-to-add-done-button-to-numpad-in-ios-using-swift 
+
+v1.3 - Search and Filter + Miscellaneous Improvements
+- https://stackoverflow.com/questions/5143873/dismissing-the-keyboard-in-a-uiscrollview 
+    - https://stackoverflow.com/questions/4399357/hide-keyboard-when-scroll-uitableview/4399893#4399893 
+- https://stackoverflow.com/questions/33146848/remove-top-and-bottom-border-of-uisearchbar-and-shadow/64489801 
+- https://stackoverflow.com/questions/1074006/is-it-possible-to-disable-floating-headers-in-uitableview-with-uitableviewstylep 
+- https://stackoverflow.com/questions/24180954/how-to-hide-keyboard-in-swift-on-pressing-return-key 
+- https://stackoverflow.com/questions/27715861/how-do-you-check-current-view-controller-class-in-swift/27715920 
+- https://stackoverflow.com/questions/28129401/determining-if-swift-dictionary-contains-key-and-obtaining-any-of-its-values 
+- https://stackoverflow.com/questions/38585344/swift-constants-struct-or-enum 
+- https://stackoverflow.com/questions/52065329/swift-better-way-to-remove-a-specific-object-from-an-array 
+- https://www.hackingwithswift.com/example-code/language/how-to-convert-a-string-to-an-int 
+- https://www.hackingwithswift.com/example-code/arrays/how-to-join-an-array-of-strings-into-a-single-string 
+- https://stackoverflow.com/questions/30233468/disable-the-uitableview-highlighting-but-allow-the-selection-of-individual-cells 
+- https://stackoverflow.com/questions/53147808/i-keep-getting-this-error-implicit-use-of-self-in-closure-use-self-to-ma 
+- https://www.donnywals.com/how-to-filter-an-array-in-swift/ 
+- https://stackoverflow.com/questions/16608536/how-to-get-the-previous-viewcontroller-that-pushed-my-current-view 
+- https://stackoverflow.com/questions/52718582/xcodes-rebase-local-changes-onto-upstream-changes/53848339 
+- https://stackoverflow.com/questions/17954402/viewwilldisappear-not-called-when-calling-poptorootviewcontrolleranimated 
+    - https://stackoverflow.com/questions/27713747/execute-action-when-back-bar-button-of-uinavigationcontroller-is-pressed 
+- https://stackoverflow.com/questions/46873124/change-the-text-of-the-cell-delete-button/46875480 
+- https://stackoverflow.com/questions/57134259/how-to-resolve-keywindow-was-deprecated-in-ios-13-0 
+    - https://stackoverflow.com/questions/30052299/show-uialertcontroller-outside-of-viewcontroller/30053731 
+    - https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/ 
