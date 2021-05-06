@@ -267,9 +267,14 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        // Perform segue to Spell Detail
-        let cell = tableView.cellForRow(at: indexPath) as? SpellForCharacterCell
-        performSegue(withIdentifier: "ShowCharacterDetailSpellDetail", sender: cell)
+        // Perform segue to Spell Detail if network is available
+        if !(allSpellsViewController.search.searchResults.isEmpty)
+        {
+            let cell = tableView.cellForRow(at: indexPath) as? SpellForCharacterCell
+            performSegue(withIdentifier: "ShowCharacterDetailSpellDetail", sender: cell)
+        } else {
+            Helper.showNetworkAlert()
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

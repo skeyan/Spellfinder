@@ -73,7 +73,6 @@ class Search {
                 DispatchQueue.main.async {
                     self.showAlert()
                 }
-                print("Failure! \(response!)")
             }
             
             // Inform user of network error
