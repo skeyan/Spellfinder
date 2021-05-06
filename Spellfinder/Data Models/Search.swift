@@ -52,10 +52,8 @@ class Search {
                 DispatchQueue.main.async {
                     self.showAlert()
                 }
-                print("Failure! \(error.localizedDescription)")
             } else if let httpResponse = response as? HTTPURLResponse,
                       httpResponse.statusCode == 200 {
-                print("Success!")
                 if let data = data {
                     // Parse JSON on a background thread
                     self.searchResults = self.parse(data: data)
@@ -110,7 +108,6 @@ class Search {
             DispatchQueue.main.async {
                 self.showAlert()
             }
-            print("JSON Decoding Error: \(error)")
             return []
         }
     }
