@@ -23,7 +23,7 @@ protocol AddCharacterViewControllerDelegate: class {
         didFinishEditing character: Character
     )
 }
-class AddCharacterViewController: UITableViewController {
+class AddCharacterViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var classValueLabel: UILabel!
@@ -142,6 +142,9 @@ class AddCharacterViewController: UITableViewController {
         
         // Done button and toolbar to keyboard
         addDoneButtonOnKeyboard()
+        
+        // Done button for name text field
+        nameValueTextField.delegate = self
     }
     
     // UI improvement - dismiss the keyboard when tapping out of a text field
@@ -203,6 +206,12 @@ class AddCharacterViewController: UITableViewController {
             let controller = segue.destination as! ClassPickerViewController
             controller.delegate = self
         }
+    }
+    
+    // MARK: - Text Field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     // MARK: - Table View
