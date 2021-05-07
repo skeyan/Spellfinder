@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Network
 
 // Contains the search logic within a class
 // Provides centralized access to the search state and results
@@ -39,23 +40,24 @@ class Search {
         coreDataSpells: [Spell]?,
         completion: @escaping SearchComplete
     ) {
-        // Indicate we are getting data from API
+        // Indicate we are attempting to get data from API
         dataTask?.cancel()
         isLoading = true
         hasSearched = true
        
+        // Create the URL session
         let url = spellsURL(searchText: text)
         let session = URLSession.shared
+        
+        // Attempt to hit the API to get the data
         dataTask = session.dataTask(with: url) {data, response, error in
             var success = false
-            if let error = error as NSError?, error.code == -999 {
+            if let error = error as NSError?, error.code == -999 { // Failure
                 DispatchQueue.main.async {
                     self.showAlert()
                 }
-            } else if let httpResponse = response as? HTTPURLResponse,
-                      httpResponse.statusCode == 200 {
+            } else if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 { // Success
                 if let data = data {
-                    // Parse JSON on a background thread
                     self.searchResults = self.parse(data: data)
                     self.searchResults = self.filterSearchResults()
                     self.slugs = self.spellsArrayToSlugs(self.searchResults)
@@ -67,13 +69,13 @@ class Search {
                         success = true
                     }
                 }
-            } else {
+            } else { // Failure
                 DispatchQueue.main.async {
                     self.showAlert()
                 }
             }
             
-            // Inform user of network error
+            // Inform user of network error or success
             DispatchQueue.main.async {
                 if !success {
                     self.hasSearched = false
@@ -114,7 +116,7 @@ class Search {
     
     // Show alert on error
     func showAlert() -> Void {
-        let alertController = UIAlertController(title: "Error with data", message: "The data could not be retrieved and parsed successfully from the API.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Retrieval error", message: "The data could not be retrieved and parsed successfully from the API.", preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         alertController.show()
     }

@@ -16,6 +16,7 @@
 		B03752BF262A962B0062E281 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03752BE262A962B0062E281 /* FavoritesViewController.swift */; };
 		B03752C7262AA6A60062E281 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */; };
 		B03838C9262A352B00316511 /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03838C8262A352B00316511 /* NothingFoundCell.xib */; };
+		B03A890326449CED00FC8957 /* NetworkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A890226449CED00FC8957 /* NetworkingHandler.swift */; };
 		B05A329826269358002F630D /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05A329726269358002F630D /* SearchResultCell.swift */; };
 		B05FAF7C2641E6C800C9E173 /* marimba_lowered.caf in Resources */ = {isa = PBXBuildFile; fileRef = B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */; };
 		B05FAF802641FA8300C9E173 /* UIAlertController+Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FAF7F2641FA8300C9E173 /* UIAlertController+Show.swift */; };
@@ -68,6 +69,7 @@
 		B03752BE262A962B0062E281 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		B03752C6262AA6A60062E281 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		B03838C8262A352B00316511 /* NothingFoundCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		B03A890226449CED00FC8957 /* NetworkingHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingHandler.swift; sourceTree = "<group>"; };
 		B05A329726269358002F630D /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		B05FAF7B2641E6C800C9E173 /* marimba_lowered.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = marimba_lowered.caf; sourceTree = "<group>"; };
 		B05FAF7F2641FA8300C9E173 /* UIAlertController+Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Show.swift"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				B0845EAD261D82FD00D56FB0 /* SearchResult.swift */,
 				B03752BB262A95B60062E281 /* Search.swift */,
 				B0F2DCBB2640AA8C00AE818C /* Filter.swift */,
+				B03A890226449CED00FC8957 /* NetworkingHandler.swift */,
 			);
 			path = "Data Models";
 			sourceTree = "<group>";
@@ -389,6 +392,7 @@
 				B029DBC6263272340004D096 /* Functions.swift in Sources */,
 				B0F2DCBC2640AA8C00AE818C /* Filter.swift in Sources */,
 				B0D6513426162B3B00919473 /* AppDelegate.swift in Sources */,
+				B03A890326449CED00FC8957 /* NetworkingHandler.swift in Sources */,
 				B05FAF802641FA8300C9E173 /* UIAlertController+Show.swift in Sources */,
 				B0F2DCAB263FBC6200AE818C /* ClassFilterViewController.swift in Sources */,
 				B0F2DC95263B5C4B00AE818C /* SearchFilterViewController.swift in Sources */,

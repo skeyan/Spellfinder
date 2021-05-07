@@ -17,14 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="MxE-rX-CSA">
-                                <rect key="frame" x="137" y="213" width="140" height="140"/>
+                                <rect key="frame" x="137.33333333333331" y="213" width="139.33333333333331" height="139.33333333333337"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="0QZ-CL-Ir7"/>
-                                    <constraint firstAttribute="width" constant="140" id="sqw-SZ-E4O"/>
+                                    <constraint firstAttribute="width" secondItem="MxE-rX-CSA" secondAttribute="height" multiplier="1:1" id="KDJ-4E-iT7"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SpellfinderText" translatesAutoresizingMaskIntoConstraints="NO" id="BZX-7p-kcg">
-                                <rect key="frame" x="126" y="403" width="162" height="45"/>
+                                <rect key="frame" x="125.66666666666667" y="402.33333333333331" width="162.66666666666663" height="45.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="BZX-7p-kcg" secondAttribute="height" multiplier="240:67" id="1nL-Vl-Uha"/>
                                 </constraints>
@@ -33,12 +32,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BZX-7p-kcg" secondAttribute="bottom" constant="288.33333333333337" id="V1d-a4-hAY"/>
-                            <constraint firstItem="MxE-rX-CSA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="137" id="cUq-5A-Ti5"/>
+                            <constraint firstItem="MxE-rX-CSA" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.336554" id="DmZ-Qf-xES"/>
+                            <constraint firstItem="MxE-rX-CSA" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="PEz-d8-mqZ"/>
+                            <constraint firstItem="BZX-7p-kcg" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="RPf-LJ-sjW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="BZX-7p-kcg" secondAttribute="bottom" constant="288.32999999999998" id="V1d-a4-hAY"/>
+                            <constraint firstItem="BZX-7p-kcg" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.392915" id="a2o-CB-Lu2"/>
                             <constraint firstItem="BZX-7p-kcg" firstAttribute="top" secondItem="MxE-rX-CSA" secondAttribute="bottom" constant="50" id="jrN-Uh-xjj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MxE-rX-CSA" secondAttribute="trailing" constant="137" id="mqC-r5-k5J"/>
-                            <constraint firstItem="BZX-7p-kcg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="126" id="plX-0n-r4p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BZX-7p-kcg" secondAttribute="trailing" constant="126" id="tJU-0f-V3l"/>
                             <constraint firstItem="MxE-rX-CSA" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="213" id="xbL-DD-kIb"/>
                         </constraints>
                     </view>

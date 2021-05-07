@@ -166,6 +166,14 @@ class DetailCharacterViewController: UIViewController, NSFetchedResultsControlle
         levelValueLabel.text = character.level
     }
     
+    
+    func showNetworkAlert() -> Void {
+        // Show alert on error
+        let alertController = UIAlertController(title: "Network error", message: "Spell data cannot be loaded because your iPhone is not connected to the internet.", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alertController.show()
+    }
+    
     // MARK: - NSFetchedResultsController Delegate
     func controllerWillChangeContent(
       _ controller: NSFetchedResultsController<NSFetchRequestResult>
@@ -273,7 +281,7 @@ extension DetailCharacterViewController: UITableViewDelegate, UITableViewDataSou
             let cell = tableView.cellForRow(at: indexPath) as? SpellForCharacterCell
             performSegue(withIdentifier: "ShowCharacterDetailSpellDetail", sender: cell)
         } else {
-            Helper.showNetworkAlert()
+            showNetworkAlert()
         }
     }
     

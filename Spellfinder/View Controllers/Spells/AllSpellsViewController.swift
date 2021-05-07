@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import AudioToolbox
+import Network
 
 // Favoriting protocol
 protocol FavoritingSpellsDelegate {
@@ -53,9 +54,9 @@ class AllSpellsViewController: UIViewController, SearchResultCellDelegate {
             sender.selectedSegmentIndex,
             forKey: "SegmentIndex")
     }
+
     
     // MARK: - View
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -564,9 +564,12 @@
                                                         <action selector="searchButtonWasTapped:" destination="jTR-S1-imX" eventType="touchUpInside" id="lpy-bC-WZ7"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfY-ft-usf">
-                                                    <rect key="frame" x="169" y="86" width="82" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SfY-ft-usf">
+                                                    <rect key="frame" x="166" y="86" width="82" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="82" id="bbz-OE-5QZ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="xWT-zW-l2k"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="tintColor" red="0.61282850150000001" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <state key="normal" title="Reset filters">
@@ -584,8 +587,11 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SfY-ft-usf" secondAttribute="bottom" constant="9" id="Kkr-JC-ZrU"/>
                                                 <constraint firstItem="f8f-1J-MFm" firstAttribute="centerY" secondItem="tDS-m7-WAd" secondAttribute="centerY" constant="-25.5" id="LLi-Ix-plg"/>
                                                 <constraint firstItem="f8f-1J-MFm" firstAttribute="centerX" secondItem="tDS-m7-WAd" secondAttribute="centerX" id="njK-Xc-zc6"/>
+                                                <constraint firstItem="SfY-ft-usf" firstAttribute="centerX" secondItem="tDS-m7-WAd" secondAttribute="centerX" id="pMd-im-T07"/>
+                                                <constraint firstItem="SfY-ft-usf" firstAttribute="top" secondItem="f8f-1J-MFm" secondAttribute="bottom" constant="22" id="qwY-8X-yxz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

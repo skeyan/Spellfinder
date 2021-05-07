@@ -42,11 +42,4 @@ class Helper {
                        alpha: 1.0
         )
     }
-    
-    static func showNetworkAlert() -> Void {
-        // Show alert on error
-        let alertController = UIAlertController(title: "Network error", message: "The data could not be retrieved and parsed successfully from the API.", preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        alertController.show()
-    }
 }
