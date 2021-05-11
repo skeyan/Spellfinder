@@ -116,7 +116,7 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rit." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wAC-Uk-r1g">
                         <rect key="frame" x="293" y="67" width="23" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="23" id="ck3-HT-Y1Q"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="23" id="ck3-HT-Y1Q"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <color key="textColor" name="GreyColor"/>
@@ -128,6 +128,7 @@
                     <constraint firstItem="ll2-nx-2Xn" firstAttribute="leading" secondItem="ea2-wd-5cX" secondAttribute="trailing" constant="16" id="6Za-WQ-Jn7"/>
                     <constraint firstAttribute="trailing" secondItem="dzr-lX-aaO" secondAttribute="trailing" constant="20" symbolic="YES" id="6p8-Kc-4LJ"/>
                     <constraint firstItem="ea2-wd-5cX" firstAttribute="top" secondItem="c6Z-D8-efQ" secondAttribute="top" constant="32" id="7Ex-Cb-VCX"/>
+                    <constraint firstAttribute="trailing" secondItem="wAC-Uk-r1g" secondAttribute="trailing" constant="59" id="7Oh-13-lMb"/>
                     <constraint firstItem="LPh-59-Wgx" firstAttribute="leading" secondItem="c6Z-D8-efQ" secondAttribute="leading" constant="20" id="8jD-Hn-yQY"/>
                     <constraint firstItem="dAg-vy-eNi" firstAttribute="top" secondItem="ll2-nx-2Xn" secondAttribute="bottom" constant="2" id="8yK-wz-4Fr"/>
                     <constraint firstItem="ehp-1n-W0n" firstAttribute="leading" secondItem="dAg-vy-eNi" secondAttribute="trailing" constant="18" id="Fbq-Cf-eol"/>
@@ -158,7 +159,6 @@
                     <constraint firstItem="Jb6-fP-93a" firstAttribute="leading" secondItem="1ap-U7-a8c" secondAttribute="trailing" constant="18" id="tPQ-Mv-Rdc"/>
                     <constraint firstItem="dAg-vy-eNi" firstAttribute="leading" secondItem="wUI-Us-WtX" secondAttribute="trailing" constant="1" id="ukc-Cj-bm0"/>
                     <constraint firstItem="peS-jS-D2v" firstAttribute="leading" secondItem="ehp-1n-W0n" secondAttribute="trailing" constant="1" id="uny-Kh-8iB"/>
-                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="wAC-Uk-r1g" secondAttribute="trailing" constant="39" id="zFh-dj-u7b"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

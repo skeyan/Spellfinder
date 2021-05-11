@@ -53,7 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level and School" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="837-3m-gMj">
-                        <rect key="frame" x="63" y="30" width="99.5" height="15"/>
+                        <rect key="frame" x="63" y="30" width="261" height="15"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                         <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
@@ -112,7 +112,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="SX6-6a-7RT" firstAttribute="leading" secondItem="4u6-ax-gjt" secondAttribute="leading" constant="20" id="17b-xl-mak"/>
-                    <constraint firstAttribute="trailing" secondItem="837-3m-gMj" secondAttribute="trailing" constant="212.5" id="1hb-cd-yP3"/>
+                    <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="837-3m-gMj" secondAttribute="trailing" constant="51" id="1hb-cd-yP3"/>
                     <constraint firstItem="7pG-a1-ikS" firstAttribute="top" secondItem="kWh-nq-M6k" secondAttribute="bottom" constant="4" id="27X-ZO-tAz"/>
                     <constraint firstItem="SX6-6a-7RT" firstAttribute="top" secondItem="4u6-ax-gjt" secondAttribute="top" constant="32" id="2RN-cf-p4S"/>
                     <constraint firstItem="SIc-3C-lXN" firstAttribute="top" secondItem="7kY-LB-rh4" secondAttribute="bottom" constant="3" id="36Y-eb-XFc"/>
@@ -132,7 +132,6 @@
                     <constraint firstItem="41u-gb-oKL" firstAttribute="top" secondItem="ijP-np-znL" secondAttribute="bottom" constant="4" id="SVT-K2-CMG"/>
                     <constraint firstAttribute="trailing" secondItem="XPc-Wg-XgX" secondAttribute="trailing" constant="51" id="Tc8-EQ-voD"/>
                     <constraint firstItem="837-3m-gMj" firstAttribute="top" secondItem="XPc-Wg-XgX" secondAttribute="bottom" constant="2.6699999999999999" id="UNn-Tp-yls"/>
-                    <constraint firstItem="15X-lW-5Kw" firstAttribute="leading" secondItem="4u6-ax-gjt" secondAttribute="leadingMargin" constant="43" id="ZeC-9I-uPo"/>
                     <constraint firstItem="837-3m-gMj" firstAttribute="leading" secondItem="SX6-6a-7RT" secondAttribute="trailing" constant="18" id="ZhH-V8-CVX"/>
                     <constraint firstItem="7pG-a1-ikS" firstAttribute="leading" secondItem="41u-gb-oKL" secondAttribute="trailing" constant="4" id="Zng-Un-uMj"/>
                     <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="7pG-a1-ikS" secondAttribute="trailing" constant="39" id="cJ9-iO-jxL"/>
@@ -143,6 +142,7 @@
                     <constraint firstItem="ijP-np-znL" firstAttribute="leading" secondItem="7kY-LB-rh4" secondAttribute="trailing" constant="18" id="m4e-xO-4q3"/>
                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="SIc-3C-lXN" secondAttribute="bottom" constant="8" id="oJF-Xj-Y01"/>
                     <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="15X-lW-5Kw" secondAttribute="bottom" constant="8" id="wK3-Wt-h5f"/>
+                    <constraint firstItem="15X-lW-5Kw" firstAttribute="leading" secondItem="4u6-ax-gjt" secondAttribute="leading" constant="63" id="wm2-wr-cKu"/>
                     <constraint firstItem="kWh-nq-M6k" firstAttribute="trailing" secondItem="4u6-ax-gjt" secondAttribute="trailingMargin" constant="-31" id="yUb-7q-sJY"/>
                 </constraints>
             </tableViewCellContentView>
@@ -156,7 +156,7 @@
                 <outlet property="ritualValueLabel" destination="7pG-a1-ikS" id="i0g-G5-p8G"/>
                 <outlet property="spellNameValueLabel" destination="XPc-Wg-XgX" id="iCb-Gv-xLH"/>
             </connections>
-            <point key="canvasLocation" x="-421.01449275362324" y="67.663043478260875"/>
+            <point key="canvasLocation" x="-421.01449275362324" y="67.633928571428569"/>
         </tableViewCell>
     </objects>
     <resources>

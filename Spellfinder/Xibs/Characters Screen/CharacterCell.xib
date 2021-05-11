@@ -12,7 +12,7 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="CharacterCell" rowHeight="88" id="3eU-Dj-XbQ" customClass="CharacterCell" customModule="Spellfinder" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3eU-Dj-XbQ" id="k6v-Om-HC6">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3eU-Dj-XbQ" id="k6v-Om-HC6">
                 <rect key="frame" x="0.0" y="0.0" width="331" height="88"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -50,10 +50,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Spells Known" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ta-lF-ciy">
-                        <rect key="frame" x="174" y="55" width="154" height="17"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="154" id="kmH-qJ-OmO"/>
-                        </constraints>
+                        <rect key="frame" x="174" y="55" width="137" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" name="DarkGreyColor"/>
                         <nil key="highlightedColor"/>
@@ -80,7 +77,7 @@
                     <constraint firstItem="h5O-Mn-eDB" firstAttribute="leading" secondItem="0on-pc-6C0" secondAttribute="trailing" constant="14" id="1Ge-qd-JBK"/>
                     <constraint firstItem="GzY-Qj-KJN" firstAttribute="top" secondItem="h5O-Mn-eDB" secondAttribute="bottom" constant="4" id="1L0-Im-gcg"/>
                     <constraint firstItem="CaD-Vu-hA5" firstAttribute="top" secondItem="pEX-uo-ew4" secondAttribute="bottom" constant="4.5" id="2CH-VC-rdY"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2Ta-lF-ciy" secondAttribute="trailing" constant="20" id="425-v3-Pad"/>
+                    <constraint firstAttribute="trailing" secondItem="2Ta-lF-ciy" secondAttribute="trailing" constant="20" id="425-v3-Pad"/>
                     <constraint firstItem="2Ta-lF-ciy" firstAttribute="top" secondItem="CaD-Vu-hA5" secondAttribute="bottom" constant="5" id="8X8-la-JGZ"/>
                     <constraint firstItem="CaD-Vu-hA5" firstAttribute="leading" secondItem="aor-xc-Gpj" secondAttribute="trailing" constant="1" id="Aeh-KL-ONr"/>
                     <constraint firstItem="aor-xc-Gpj" firstAttribute="leading" secondItem="h5O-Mn-eDB" secondAttribute="trailing" constant="5" id="L24-qY-DNd"/>
