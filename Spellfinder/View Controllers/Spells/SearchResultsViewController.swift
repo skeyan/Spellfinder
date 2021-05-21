@@ -52,7 +52,7 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
     func favoritesButtonTapped(cell: SearchResultCell) {
         // Save the spell entity if that spell doesn't already exist in Core Data
         // Otherwise, if that spell is in Core Data, unfavorite it
-        if !(someEntityExists(slug: cell.data.slug!)) {
+        if !(someEntityExists(slug: cell.data.slug!)) { // Spell does not exist in Core Data
             // Create the spell entity
             let spellToSave = Spell(context: managedObjectContext)
             spellToSave.archetype = cell.data.archetype
@@ -92,7 +92,7 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
             } catch {
                 fatalCoreDataError(error)
             }
-        } else {
+        } else { // Spell exists in Core Data
             // Update local instance array for table
             search.searchResultsDict[cell.data.slug!]!.isFavorited = !search.searchResultsDict[cell.data.slug!]!.isFavorited
             cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
@@ -105,7 +105,7 @@ class SearchResultsViewController: UIViewController, SearchResultCellDelegate {
             let spellToUpdate = retrieveSpell(slug: cell.data.slug!)
             
             if let character = spellToUpdate!.character {
-                if (character.count == 0) {
+                if (character.count == 0) { // If the spell belongs to a character
                     managedObjectContext.delete(spellToUpdate!)
                 } else {
                     spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited

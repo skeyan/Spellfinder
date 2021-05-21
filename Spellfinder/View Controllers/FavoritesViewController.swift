@@ -110,13 +110,14 @@ class FavoritesViewController: UIViewController, FavoritesCellDelegate {
         }
         
         // Update in Core Data
-        if let character = favoritedSpell.character {
-            if (character.count == 0) {
+        if let character = favoritedSpell.character { // Character is not nil
+            if (character.count == 0 && favoritedSpell.isFavorited) {
+                // Unfavorite by deleting
                 managedObjectContext.delete(favoritedSpell)
             } else {
                 favoritedSpell.isFavorited = !favoritedSpell.isFavorited
             }
-        } else {
+        } else { // Character is nil
             favoritedSpell.isFavorited = !favoritedSpell.isFavorited
         }
         

@@ -349,7 +349,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
 
 
     
-    // MARK: - Core Data
+    // MARK: - Search Result Cell Delegate
     func addButtonTapped(cell: SearchResultCell) {
         performSegue(withIdentifier: "SelectCharacter", sender: cell)
     }
@@ -392,7 +392,7 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             } catch {
                 fatalCoreDataError(error)
             }
-        } else {
+        } else { // Spell entity does not exist in Core Data
             // Update local instance array for table
             search.searchResultsDict[cell.data.slug!]!.isFavorited = !search.searchResultsDict[cell.data.slug!]!.isFavorited
             cell.data.isFavorited = search.searchResultsDict[cell.data.slug!]!.isFavorited
@@ -400,14 +400,25 @@ extension AllSpellsViewController: UITableViewDelegate, UITableViewDataSource {
             // Update core data
             let spellToUpdate = retrieveSpell(slug: cell.data.slug!)
             
-            if let character = spellToUpdate!.character {
-                if (character.count == 0) {
+            if let character = spellToUpdate!.character { // Character is not nil
+                // If the character doesn't belong to a character and it's favorited,
+                // unfavorite by deleting it from core data
+                if (character.count == 0 && spellToUpdate!.isFavorited) {
                     managedObjectContext.delete(spellToUpdate!)
                 } else {
+                    // If the character belongs to a character, then just favorite/unfavorite it
                     spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
                 }
-            } else {
-                spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+            } else { // Character is nil
+                // If the character is nil (does not belong to a character) and it's favorited,
+                // unfavorite by deleting it form core data
+                if (spellToUpdate!.isFavorited) {
+                    // Unfavorite it by deleting it from Core Data
+                    managedObjectContext.delete(spellToUpdate!)
+                } else {
+                    // If the character is nil and it's not favorited, then favorite it
+                    spellToUpdate!.isFavorited = !spellToUpdate!.isFavorited
+                }
             }
             
             do {
