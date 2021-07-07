@@ -60,7 +60,9 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-A simple iOS mobile app for saving, searching, and adding core spells for Dungeons & Dragons 5e.
+A simple iOS mobile app for saving, searching, and adding core spells for Dungeons & Dragons 5e (SRD only).
+
+Spellfinder is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
 
 
 ### Built With
