@@ -22,14 +22,8 @@
 <br />
 <p align="center">
   <a href="https://github.com/skeyan/Spellfinder">
-    <img src="https://i.imgur.com/4P1t9Pc.png" alt="Logo" width="80" height="80">
+    <img src="https://i.imgur.com/5iuh9My.png" alt="Application splash screen">
   </a>
-
-  <h3 align="center">Spellfinder</h3>
-
-  <div align="center">
-  Demo Coming Soon!
-  </div>
   <div align="center">
   Contact: <a href="https://www.linkedin.com/in/sk-evayan/" target="_blank">LinkedIn</a>
   </div>
@@ -60,18 +54,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-A simple iOS mobile app for saving, searching, and adding core spells for Dungeons & Dragons 5e (SRD only).
+A simple iOS mobile app for saving, searching, and adding core spells, and saving your character's spellbooks for Dungeons & Dragons 5e (SRD only).
 
 Spellfinder is unofficial Fan Content permitted under the Fan Content Policy. Not approved/endorsed by Wizards. Portions of the materials used are property of Wizards of the Coast. ©Wizards of the Coast LLC.
 
 
 ### Built With
-* Open5e API
+* [Open5e API](https://open5e.com/)
 * Xcode 12 
 * Swift 5
 * UIKit
 * CoreData
-
 
 
 <!-- GETTING STARTED -->
@@ -95,16 +88,17 @@ To get a local copy up and running follow these simple steps.
 <!-- CONTACT -->
 ## Contact
 
-Eva Yan @ [LinkedIn](https://www.linkedin.com/in/sk-evayan/)
+Eva Yan
+- [LinkedIn](https://www.linkedin.com/in/sk-evayan/)  
+- [Art + Design](https://evayan27.myportfolio.com/)  
 
 Project Link: [Spellfinder](https://github.com/skeyan/Spellfinder)
-
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
 * Professor Ali El Sayed
-* Open5e Discord
+* Open5e Community
 * Icons from Flaticon [[1]](https://www.flaticon.com/authors/darius-dan) [[2]](https://www.flaticon.com/free-icon/book_1679109?term=spellbook&related_id=1679109)
 
 
