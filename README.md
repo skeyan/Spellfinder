@@ -46,7 +46,6 @@
       <li><a href="#installation">Installation</a></li>
     </ul>
   </li>
-  <li><a href="#contact">Contact</a></li>
   <li><a href="#acknowledgements">Acknowledgements</a></li>
 </ol>
 
@@ -84,15 +83,6 @@ To get a local copy up and running follow these simple steps.
    ```
 2. Open Xcode project in Xcode 
 3. Build
-
-<!-- CONTACT -->
-## Contact
-
-Eva Yan
-- [LinkedIn](https://www.linkedin.com/in/sk-evayan/)  
-- [Art + Design](https://evayan27.myportfolio.com/)  
-
-Project Link: [Spellfinder](https://github.com/skeyan/Spellfinder)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
